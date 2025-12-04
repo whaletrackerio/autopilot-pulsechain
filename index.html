@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>AutoPilot PulseChain Bot – Automatisation HEX & ATROPA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0b1020;
+      --card: #111827;
+      --accent: #a855f7;
+      --accent-soft: #7c3aed;
+      --accent-strong: #ec4899;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --danger: #f97373;
+      --radius-lg: 16px;
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.65);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e1b4b 0, #020617 45%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 20% 0%, #ec4899, #8b5cf6 40%, #0ea5e9 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 20px;
+      color: #f9fafb;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.7);
+    }
+
+    .brand-text-title {
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 18px;
+    }
+
+    .brand-text-sub {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .header-tag {
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 12px;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15,23,42,0.75);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-tag span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34,197,94,0.9);
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-left h1 {
+      font-size: clamp(26px, 4vw, 34px);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #ec4899, #a855f7, #22d3ee);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 520px;
+      margin-bottom: 18px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+      font-size: 11px;
+    }
+
+    .badge {
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.3);
+      color: #c4c4ff;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(120deg, #ec4899, #a855f7, #22d3ee);
+      color: #f9fafb;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.6);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary span.icon {
+      font-size: 16px;
+      transform: translateY(1px);
+    }
+
+    .btn-ghost {
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      cursor: pointer;
+      background: transparent;
+      color: var(--muted);
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-note {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-right {
+      background: radial-gradient(circle at top, rgba(236,72,153,0.25), transparent 55%),
+                  radial-gradient(circle at bottom, rgba(56,189,248,0.22), transparent 55%);
+      border-radius: 24px;
+      border: 1px solid rgba(148,163,184,0.3);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .hero-right-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .metric-card {
+      background: rgba(15,23,42,0.9);
+      border-radius: 14px;
+      padding: 10px;
+      border: 1px solid rgba(148,163,184,0.35);
+      font-size: 11px;
+    }
+
+    .metric-label {
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .metric-tag {
+      font-size: 10px;
+      color: #a5b4fc;
+    }
+
+    .hero-qr-box {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 14px;
+      background: rgba(15,23,42,0.85);
+      border: 1px dashed rgba(148,163,184,0.6);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-qr-text {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-qr-code {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 0%, #ec4899, #8b5cf6 40%, #0ea5e9 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #f9fafb;
+      text-align: center;
+      padding: 6px;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2.section-title {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 14px 14px 16px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+    }
+
+    .card h3 {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #a5b4fc;
+      margin-bottom: 4px;
+    }
+
+    .list {
+      font-size: 12px;
+      color: var(--muted);
+      padding-left: 16px;
+    }
+
+    .list li {
+      margin-bottom: 4px;
+    }
+
+    /* Pricing */
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .pricing {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .price-card {
+      background: radial-gradient(circle at top, rgba(168,85,247,0.25), #020617 55%);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148,163,184,0.45);
+      padding: 16px 16px 18px;
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-card.pro {
+      border-color: var(--accent-strong);
+      box-shadow: 0 0 28px rgba(236,72,153,0.45);
+    }
+
+    .price-name {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .price-badge {
+      font-size: 10px;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 0.14em;
+      margin-bottom: 6px;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .price span.per {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .price-desc {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .price-list {
+      font-size: 11px;
+      color: #e5e7eb;
+      padding-left: 16px;
+      margin-bottom: 10px;
+    }
+
+    .price-list li {
+      margin-bottom: 4px;
+    }
+
+    .price-cta {
+      font-size: 11px;
+      color: #a5b4fc;
+    }
+
+    /* FAQ */
+    .faq-item {
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .faq-a {
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid rgba(148,163,184,0.3);
+      padding-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="brand-logo">A</div>
+        <div>
+          <div class="brand-text-title">AutoPilot PulseChain Bot</div>
+          <div class="brand-text-sub">HEX • ATROPA • PLS</div>
+        </div>
+      </div>
+      <div class="header-tag">
+        <span class="dot"></span>
+        <span>Automatisation de trading sur PulseChain</span>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <h1>
+          Ton trading <span class="gradient-text">PulseChain</span><br />
+          passe enfin en pilote automatique.
+        </h1>
+        <p class="hero-sub">
+          AutoPilot PulseChain Bot automatise tes stratégies sur HEX et ATROPA : achat intelligent,
+          take profit, stop loss, ré-entrée, le tout exécuté depuis ton propre PC. Aucune clé privée
+          envoyée en ligne, aucun abonnement, aucun bullshit.
+        </p>
+
+        <div class="hero-badges">
+          <span class="badge">HEX / PHEX AutoPilot</span>
+          <span class="badge">ATROPA / DAI AutoPilot</span>
+          <span class="badge">TP / SL automatiques</span>
+          <span class="badge">Paiement en PLS</span>
+        </div>
+
+        <div class="hero-cta">
+          <button class="btn-primary">
+            <span class="icon">⚡</span>
+            Obtenir le Pack PRO (99$)
+          </button>
+          <button class="btn-ghost">
+            📩 DM sur X pour commander
+          </button>
+        </div>
+        <div class="hero-note">
+          Paiement simple en PLS &nbsp;•&nbsp; Envoi du pack par mail ou DM après confirmation de la transaction.
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-right-title">Vue rapide du système</div>
+        <div class="hero-right-sub">Deux bots, une seule logique : faire travailler ton sac à ta place.</div>
+
+        <div class="hero-metrics">
+          <div class="metric-card">
+            <div class="metric-label">Bot HEX / PHEX</div>
+            <div class="metric-value">TP +0,35%</div>
+            <div class="metric-tag">Stop Loss −0,30% • Accumulation</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Bot ATROPA / DAI</div>
+            <div class="metric-value">TP +0,35%*</div>
+            <div class="metric-tag">Mode Turbo dynamique • Scalping</div>
+          </div>
+        </div>
+
+        <div class="hero-qr-box">
+          <div class="hero-qr-code">
+            PLS<br/>QR<br/>Code
+          </div>
+          <div class="hero-qr-text">
+            Paiement en PLS sur PulseChain.<br/>
+            Adresse : <code>0x7a23b7...57a1</code><br/>
+            Après paiement, envoie ton TX hash en DM pour recevoir ton pack.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: POURQUOI -->
+    <section>
+      <h2 class="section-title">Pourquoi AutoPilot PulseChain Bot est différent ?</h2>
+      <p class="section-sub">
+        La plupart des “bots” PulseChain sont soit des snipers opaques, soit des scripts incomplets.
+        AutoPilot PulseChain Bot, c’est un pack <b>transparent</b>, <b>documenté</b> et <b>orienté sécurité</b>,
+        que tu contrôles totalement depuis ton PC.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-tag">Sécurité</div>
+          <h3>Ton wallet, ton contrôle</h3>
+          <p>
+            Les bots tournent en local sur ta machine. Aucune clé privée n’est envoyée à un serveur externe.
+            Tu vois le code, tu comprends ce qu’il fait, tu gardes le contrôle.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-tag">Automatisation</div>
+          <h3>TP / SL & ré-entrée auto</h3>
+          <p>
+            Les bots gèrent automatiquement les prises de bénéfices, les stop loss et les ré-entrées.
+            Tu définis les paramètres une fois, ils travaillent 24/7.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-tag">PulseChain natif</div>
+          <h3>Conçu pour HEX & ATROPA</h3>
+          <p>
+            Les stratégies sont optimisées spécifiquement pour le comportement de HEX / PHEX et ATROPA / DAI
+            sur PulseChain : volatilité, profondeur, rythme du marché.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: COMMENT ÇA MARCHE -->
+    <section>
+      <h2 class="section-title">Comment ça marche concrètement ?</h2>
+      <p class="section-sub">
+        Tu n’as pas besoin d’être développeur. Le pack est pensé pour être installé en quelques étapes simples,
+        avec une documentation claire.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>1. Installation</h3>
+          <ul class="list">
+            <li>Installer Python (Windows 10/11)</li>
+            <li>Extraire le pack sur ton PC</li>
+            <li>Installer les dépendances (web3, requests…)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>2. Configuration</h3>
+          <ul class="list">
+            <li>Renseigner ton adresse et ta clé privée (en local)</li>
+            <li>Choisir la taille de tes trades (en %)</li>
+            <li>Vérifier l’RPC PulseChain</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>3. Lancement</h3>
+          <ul class="list">
+            <li>Double clic sur <code>lancer_hex.bat</code></li>
+            <li>Double clic sur <code>lancer_atropa.bat</code></li>
+            <li>Surveiller la console au début, puis laisser tourner</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: PACKS -->
+    <section>
+      <h2 class="section-title">Choisis ton pack</h2>
+      <p class="section-sub">
+        Pas d’abonnement, pas de renewal automatique. Tu payes une fois, le pack est à toi.
+      </p>
+
+      <div class="pricing">
+        <div class="price-card">
+          <div class="price-badge">Essentiel</div>
+          <div class="price-name">Starter</div>
+          <div class="price">39$ <span class="per">/ paiement unique</span></div>
+          <p class="price-desc">
+            Pour découvrir l’automatisation PulseChain en douceur.
+          </p>
+          <ul class="price-list">
+            <li>1 bot (HEX <b>ou</b> ATROPA)</li>
+            <li>Config de base incluse</li>
+            <li>Guide PDF d’installation rapide</li>
+            <li>Support par mail 3 jours</li>
+          </ul>
+          <div class="price-cta">
+            👉 Idéal si tu veux tester avant de passer au PRO.
+          </div>
+        </div>
+
+        <div class="price-card pro">
+          <div class="price-badge">Recommandé</div>
+          <div class="price-name">Pro</div>
+          <div class="price">79$ <span class="per">/ paiement unique</span></div>
+          <p class="price-desc">
+            L’option la plus équilibrée pour automatiser HEX & ATROPA simultanément.
+          </p>
+          <ul class="price-list">
+            <li>Bot HEX / PHEX AutoPilot</li>
+            <li>Bot ATROPA / DAI AutoPilot</li>
+            <li>Configs optimisées par défaut</li>
+            <li>Documentation complète (PDF + glossaire)</li>
+            <li>Support installation 7 jours (mail / DM)</li>
+          </ul>
+          <div class="price-cta">
+            👉 Le meilleur rapport puissance / simplicité pour ton trading PulseChain.
+          </div>
+        </div>
+
+        <div class="price-card">
+          <div class="price-badge">Avancé</div>
+          <div class="price-name">Ultimate</div>
+          <div class="price">149$ <span class="per">/ paiement unique</span></div>
+          <p class="price-desc">
+            Pour ceux qui veulent un accompagnement complet et des bonus.
+          </p>
+          <ul class="price-list">
+            <li>Tout le pack PRO</li>
+            <li>Mises à jour futures incluses</li>
+            <li>Priorité support</li>
+            <li>Accès aux futurs modules (nouveaux bots)</li>
+            <li>Ressources marketing si tu veux revendre en affiliation (selon conditions)</li>
+          </ul>
+          <div class="price-cta">
+            👉 Parfait si tu vois AutoPilot PulseChain comme un vrai outil long terme.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: FAQ -->
+    <section>
+      <h2 class="section-title">FAQ – Questions fréquentes</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">Est-ce que je dois envoyer ma clé privée quelque part ?</div>
+        <div class="faq-a">
+          Non. Ta clé privée reste dans le fichier de configuration sur ton PC. Les bots signent les transactions
+          depuis ta machine, il n’y a pas de serveur externe ni d’API centralisée.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Est-ce que c’est garanti de faire des gains ?</div>
+        <div class="faq-a">
+          Non, évidemment. Le bot automatise une stratégie, mais le marché reste risqué.
+          Tu dois toujours utiliser un capital que tu es prêt à voir fluctuer.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Comment je paie et comment je reçois le pack ?</div>
+        <div class="faq-a">
+          Tu paies en PLS sur PulseChain à l’adresse indiquée, puis tu envoies ton TX hash en DM (ou par mail).
+          Après vérification, tu reçois ton pack (ZIP) + documentation.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Et si j’ai un problème pour l’installer ?</div>
+        <div class="faq-a">
+          Les packs Pro et Ultimate incluent un support pour t’aider à installer et vérifier que tout tourne
+          correctement sur ton PC.
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      AutoPilot PulseChain Bot – Outil d’automatisation de trading pour HEX & ATROPA sur PulseChain.<br/>
+      Ce projet ne garantit aucun rendement. Tu restes responsable de l’utilisation de tes fonds.
+    </footer>
+  </div>
+</body>
+</html>
