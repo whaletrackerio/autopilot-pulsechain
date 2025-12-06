@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,187 +21,108 @@
       --shadow-soft: 0 18px 45px rgba(0,0,0,0.65);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: system-ui, sans-serif;
       background: radial-gradient(circle at top, #1e1b4b 0, #020617 45%, #020617 100%);
       color: var(--text);
       line-height: 1.6;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 24px 16px 64px;
-    }
+    .page { max-width: 1100px; margin: 0 auto; padding: 24px 16px 64px; }
 
     header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; margin-bottom: 32px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
+    .brand { display: flex; align-items: center; gap: 12px; }
     .brand-logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
+      width: 44px; height: 44px; border-radius: 14px;
       background: radial-gradient(circle at 20% 0%, #ec4899, #8b5cf6 40%, #0ea5e9 80%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 20px;
-      color: #f9fafb;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 20px; color: #fff;
       box-shadow: 0 12px 35px rgba(0,0,0,0.7);
     }
 
-    .brand-text-title {
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      font-size: 18px;
-    }
-
+    .brand-text-title { font-weight: 700; font-size: 18px; }
     .brand-text-sub {
-      font-size: 12px;
-      color: var(--muted);
-      text-transform: uppercase;
+      font-size: 12px; color: var(--muted); text-transform: uppercase;
       letter-spacing: 0.18em;
     }
 
     .header-tag {
-      padding: 4px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      font-size: 12px;
-      color: var(--muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(15,23,42,0.75);
-      backdrop-filter: blur(12px);
+      padding: 4px 12px; border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      font-size: 12px; color: var(--muted);
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(15,23,42,0.75); backdrop-filter: blur(12px);
     }
 
-    .header-tag span.dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 12px rgba(34,197,94,0.9);
+    .header-tag .dot {
+      width: 7px; height: 7px; border-radius: 999px;
+      background: #22c55e; box-shadow: 0 0 12px rgba(34,197,94,0.9);
     }
 
     /* HERO */
     .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
-      gap: 24px;
-      margin-bottom: 40px;
+      display: grid; grid-template-columns: 3fr 2.3fr;
+      gap: 24px; margin-bottom: 40px;
     }
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-    }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
 
     .hero-left h1 {
       font-size: clamp(26px, 4vw, 34px);
-      line-height: 1.2;
-      margin-bottom: 12px;
+      line-height: 1.2; margin-bottom: 12px;
     }
 
     .gradient-text {
       background: linear-gradient(90deg, #ec4899, #a855f7, #22d3ee);
-      -webkit-background-clip: text;
-      color: transparent;
+      -webkit-background-clip: text; color: transparent;
     }
 
-    .hero-sub {
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 520px;
-      margin-bottom: 18px;
-    }
+    .hero-sub { color: var(--muted); font-size: 14px; max-width: 520px; margin-bottom: 18px; }
 
     .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 18px;
-      font-size: 11px;
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 18px; font-size: 11px;
     }
 
     .badge {
-      padding: 5px 10px;
-      border-radius: 999px;
+      padding: 5px 10px; border-radius: 999px;
       background: rgba(15,23,42,0.9);
       border: 1px solid rgba(148,163,184,0.3);
       color: #c4c4ff;
     }
 
     .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
     }
 
-    .btn-primary,
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.2s;
+    .btn-primary, .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px; border-radius: 999px;
+      cursor: pointer; font-size: 14px; font-weight: 600;
+      text-decoration: none; transition: 0.2s;
     }
 
     .btn-primary {
       background: linear-gradient(120deg, #ec4899, #a855f7, #22d3ee);
-      color: #f9fafb;
-      box-shadow: 0 14px 30px rgba(0,0,0,0.6);
+      color: #fff; box-shadow: 0 14px 30px rgba(0,0,0,0.6);
     }
+    .btn-primary:hover { opacity: 0.85; }
 
     .btn-ghost {
-      background: transparent;
-      border: 1px solid rgba(148,163,184,0.4);
+      background: transparent; border: 1px solid rgba(148,163,184,0.4);
       color: var(--muted);
     }
-
-    .btn-primary:hover {
-      opacity: 0.85;
-    }
-
-    .btn-ghost:hover {
-      border-color: #a5b4fc;
-      color: #a5b4fc;
-    }
+    .btn-ghost:hover { border-color: #a5b4fc; color: #a5b4fc; }
 
     .hero-note {
-      margin-top: 8px;
-      font-size: 11px;
-      color: var(--muted);
+      margin-top: 8px; font-size: 11px; color: var(--muted);
     }
 
     /* RIGHT BOX */
@@ -215,84 +135,47 @@
       padding: 18px 16px;
     }
 
-    .hero-right-title {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .hero-right-sub {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
+    .hero-right-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    .hero-right-sub { font-size: 11px; color: var(--muted); margin-bottom: 16px; }
 
     .hero-metrics {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 10px;
-      margin-bottom: 16px;
+      display: grid; grid-template-columns: repeat(2,1fr);
+      gap: 10px; margin-bottom: 16px;
     }
 
     .metric-card {
       background: rgba(15,23,42,0.9);
-      border-radius: 14px;
-      padding: 10px;
+      border-radius: 14px; padding: 10px;
       border: 1px solid rgba(148,163,184,0.35);
       font-size: 11px;
     }
 
-    .metric-label {
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .metric-value {
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .metric-tag {
-      font-size: 10px;
-      color: #a5b4fc;
-    }
+    .metric-label { color: var(--muted); margin-bottom: 4px; }
+    .metric-value { font-size: 14px; font-weight: 700; }
+    .metric-tag { font-size: 10px; color: #a5b4fc; }
 
     .hero-qr-box {
-      margin-top: 10px;
-      padding: 10px;
-      border-radius: 14px;
-      background: rgba(15,23,42,0.85);
+      margin-top: 10px; padding: 10px;
+      border-radius: 14px; background: rgba(15,23,42,0.85);
       border: 1px dashed rgba(148,163,184,0.6);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      display: flex; align-items: center; gap: 10px;
     }
 
     .hero-qr-code {
-      width: 64px;
-      height: 64px;
-      border-radius: 12px;
-      background: radial-gradient(circle at 20% 0%, #ec4899, #8b5cf6 40%, #0ea5e9 80%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      color: #f9fafb;
-      text-align: center;
-      padding: 6px;
+      width: 64px; height: 64px; border-radius: 12px;
+      background: radial-gradient(circle, #ec4899, #8b5cf6, #0ea5e9);
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      font-size: 10px; text-align: center;
     }
 
     footer {
-      margin-top: 20px;
-      font-size: 11px;
-      color: var(--muted);
-      text-align: center;
-      border-top: 1px solid rgba(148,163,184,0.3);
+      margin-top: 20px; font-size: 11px; color: var(--muted);
+      text-align: center; border-top: 1px solid rgba(148,163,184,0.3);
       padding-top: 12px;
     }
-
   </style>
 </head>
+
 <body>
   <div class="page">
 
@@ -313,14 +196,16 @@
 
     <!-- HERO -->
     <section class="hero">
+
       <div class="hero-left">
         <h1>
           Ton trading <span class="gradient-text">PulseChain</span><br />
           passe enfin en pilote automatique.
         </h1>
+
         <p class="hero-sub">
-          AutoPilot PulseChain Bot automatise tes stratégies sur HEX et ATROPA : achat intelligent,
-          take profit, stop loss, ré-entrée, le tout exécuté depuis ton propre PC.
+          AutoPilot PulseChain Bot automatise tes stratégies sur HEX et ATROPA :
+          achat intelligent, take profit, stop loss, ré-entrée, le tout exécuté depuis ton propre PC.
         </p>
 
         <div class="hero-badges">
@@ -330,7 +215,7 @@
           <span class="badge">Paiement en PLS</span>
         </div>
 
-        <!-- ⭐⭐ BOUTONS CLIQUABLES ⭐⭐ -->
+        <!-- ⭐ BOUTONS FONCTIONNELS ⭐ -->
         <div class="hero-cta">
 
           <!-- Bouton violet → X -->
@@ -340,22 +225,24 @@
             ⚡ Obtenir le Pack PRO (DM sur X)
           </a>
 
-          <!-- Bouton gris → Email -->
+          <!-- Bouton gris → mail -->
           <a class="btn-ghost"
-             href="mailto:whaletracker16@gmail.com?subject=Commande%20AutoPilot%20PulseChain%20Bot&body=Salut,%20je%20veux%20commander%20le%20pack.%0AMon%20TX%20hash%20:%0A">
+             href="mailto:whaletracker16@gmail.com?subject=Commande%20AutoPilot%20PulseChain%20Bot&body=Salut,%20je%20veux%20commander%20le%20pack.%0A%0AMon%20TX%20hash%20:%0A">
             📩 Ou par email
           </a>
 
         </div>
 
         <div class="hero-note">
-          Paiement simple en PLS • Envoi du pack par mail ou DM après confirmation.
+          Paiement en PLS • Pack livré par mail ou DM après confirmation.
         </div>
       </div>
 
+      <!-- RIGHT BOX -->
       <div class="hero-right">
+
         <div class="hero-right-title">Vue rapide du système</div>
-        <div class="hero-right-sub">Deux bots, une seule logique : faire travailler ton sac.</div>
+        <div class="hero-right-sub">Deux bots, une seule logique.</div>
 
         <div class="hero-metrics">
           <div class="metric-card">
@@ -366,32 +253,29 @@
 
           <div class="metric-card">
             <div class="metric-label">Bot ATROPA / DAI</div>
-            <div class="metric-value">TP +0,35%*</div>
+            <div class="metric-value">TP +0,35%</div>
             <div class="metric-tag">Mode Turbo • Scalping</div>
           </div>
         </div>
 
         <div class="hero-qr-box">
-          <div class="hero-qr-code">
-            QR<br/>PLS
-          </div>
+          <div class="hero-qr-code">PLS<br>QR</div>
           <div class="hero-qr-text">
-            Paiement en PLS sur PulseChain.<br/>
-            Adresse : <code>0x7a23b7...57a1</code><br/>
-            Envoie ton TX hash pour recevoir ton pack.
+            Adresse : <code>0x7a23b7...57a1</code><br>
+            Envoie ton TX hash après paiement.
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- (le reste de la page est inchangé, tu n'as rien à modifier) -->
-
     <footer>
-      AutoPilot PulseChain Bot – Automatisation HEX & ATROPA sur PulseChain.<br/>
-      Contact : <a href="mailto:whaletracker16@gmail.com">whaletracker16@gmail.com</a><br/>
-      Aucune garantie de gain. Utilisation à tes risques.
+      AutoPilot PulseChain Bot • HEX & ATROPA sur PulseChain<br>
+      Contact : <a href="mailto:whaletracker16@gmail.com">whaletracker16@gmail.com</a><br>
+      Aucun rendement garanti.  
     </footer>
 
   </div>
 </body>
 </html>
+
