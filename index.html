@@ -21,108 +21,202 @@
       --shadow-soft: 0 18px 45px rgba(0,0,0,0.65);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      font-family: system-ui, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #1e1b4b 0, #020617 45%, #020617 100%);
       color: var(--text);
       line-height: 1.6;
     }
 
-    a { color: inherit; text-decoration: none; }
-
-    .page { max-width: 1100px; margin: 0 auto; padding: 24px 16px 64px; }
-
-    header {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 16px; margin-bottom: 32px;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .brand { display: flex; align-items: center; gap: 12px; }
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .brand-logo {
-      width: 44px; height: 44px; border-radius: 14px;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
       background: radial-gradient(circle at 20% 0%, #ec4899, #8b5cf6 40%, #0ea5e9 80%);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 20px; color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 20px;
+      color: #f9fafb;
       box-shadow: 0 12px 35px rgba(0,0,0,0.7);
     }
 
-    .brand-text-title { font-weight: 700; font-size: 18px; }
+    .brand-text-title {
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 18px;
+    }
+
     .brand-text-sub {
-      font-size: 12px; color: var(--muted); text-transform: uppercase;
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
       letter-spacing: 0.18em;
     }
 
     .header-tag {
-      padding: 4px 12px; border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.4);
-      font-size: 12px; color: var(--muted);
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(15,23,42,0.75); backdrop-filter: blur(12px);
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 12px;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15,23,42,0.75);
+      backdrop-filter: blur(12px);
     }
 
-    .header-tag .dot {
-      width: 7px; height: 7px; border-radius: 999px;
-      background: #22c55e; box-shadow: 0 0 12px rgba(34,197,94,0.9);
+    .header-tag span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34,197,94,0.9);
     }
 
     /* HERO */
     .hero {
-      display: grid; grid-template-columns: 3fr 2.3fr;
-      gap: 24px; margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 24px;
+      margin-bottom: 40px;
     }
-    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
 
     .hero-left h1 {
       font-size: clamp(26px, 4vw, 34px);
-      line-height: 1.2; margin-bottom: 12px;
+      line-height: 1.2;
+      margin-bottom: 12px;
     }
 
     .gradient-text {
       background: linear-gradient(90deg, #ec4899, #a855f7, #22d3ee);
-      -webkit-background-clip: text; color: transparent;
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
-    .hero-sub { color: var(--muted); font-size: 14px; max-width: 520px; margin-bottom: 18px; }
+    .hero-sub {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 520px;
+      margin-bottom: 18px;
+    }
 
     .hero-badges {
-      display: flex; flex-wrap: wrap; gap: 8px;
-      margin-bottom: 18px; font-size: 11px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+      font-size: 11px;
     }
 
     .badge {
-      padding: 5px 10px; border-radius: 999px;
+      padding: 5px 10px;
+      border-radius: 999px;
       background: rgba(15,23,42,0.9);
       border: 1px solid rgba(148,163,184,0.3);
       color: #c4c4ff;
     }
 
     .hero-cta {
-      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 6px;
     }
 
-    .btn-primary, .btn-ghost {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 20px; border-radius: 999px;
-      cursor: pointer; font-size: 14px; font-weight: 600;
-      text-decoration: none; transition: 0.2s;
+    .hero-cta a,
+    .hero-cta button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      text-decoration: none;
+      transition: 0.2s;
+      white-space: nowrap;
     }
 
-    .btn-primary {
+    .btn-x {
       background: linear-gradient(120deg, #ec4899, #a855f7, #22d3ee);
-      color: #fff; box-shadow: 0 14px 30px rgba(0,0,0,0.6);
+      color: #f9fafb;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.6);
     }
-    .btn-primary:hover { opacity: 0.85; }
 
-    .btn-ghost {
-      background: transparent; border: 1px solid rgba(148,163,184,0.4);
-      color: var(--muted);
+    .btn-x:hover {
+      opacity: 0.9;
     }
-    .btn-ghost:hover { border-color: #a5b4fc; color: #a5b4fc; }
+
+    .btn-gmail {
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--muted);
+      background: rgba(15,23,42,0.7);
+    }
+
+    .btn-gmail:hover {
+      border-color: #a5b4fc;
+      color: #a5b4fc;
+    }
+
+    .btn-copy {
+      border: 1px dashed rgba(148,163,184,0.5);
+      color: #e5e7eb;
+      font-size: 12px;
+      padding: 8px 16px;
+    }
+
+    .btn-copy:hover {
+      border-color: #e5e7eb;
+    }
 
     .hero-note {
-      margin-top: 8px; font-size: 11px; color: var(--muted);
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--muted);
     }
 
     /* RIGHT BOX */
@@ -135,47 +229,242 @@
       padding: 18px 16px;
     }
 
-    .hero-right-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
-    .hero-right-sub { font-size: 11px; color: var(--muted); margin-bottom: 16px; }
+    .hero-right-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .hero-right-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
 
     .hero-metrics {
-      display: grid; grid-template-columns: repeat(2,1fr);
-      gap: 10px; margin-bottom: 16px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+      margin-bottom: 16px;
     }
 
     .metric-card {
       background: rgba(15,23,42,0.9);
-      border-radius: 14px; padding: 10px;
+      border-radius: 14px;
+      padding: 10px;
       border: 1px solid rgba(148,163,184,0.35);
       font-size: 11px;
     }
 
-    .metric-label { color: var(--muted); margin-bottom: 4px; }
-    .metric-value { font-size: 14px; font-weight: 700; }
-    .metric-tag { font-size: 10px; color: #a5b4fc; }
+    .metric-label {
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .metric-tag {
+      font-size: 10px;
+      color: #a5b4fc;
+    }
 
     .hero-qr-box {
-      margin-top: 10px; padding: 10px;
-      border-radius: 14px; background: rgba(15,23,42,0.85);
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 14px;
+      background: rgba(15,23,42,0.85);
       border: 1px dashed rgba(148,163,184,0.6);
-      display: flex; align-items: center; gap: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--muted);
     }
 
     .hero-qr-code {
-      width: 64px; height: 64px; border-radius: 12px;
-      background: radial-gradient(circle, #ec4899, #8b5cf6, #0ea5e9);
-      color: #fff; display: flex; align-items: center; justify-content: center;
-      font-size: 10px; text-align: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 0%, #ec4899, #8b5cf6 40%, #0ea5e9 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #f9fafb;
+      text-align: center;
+      padding: 6px;
+    }
+
+    /* Sections génériques */
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2.section-title {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 14px 14px 16px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+    }
+
+    .card h3 {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #a5b4fc;
+      margin-bottom: 4px;
+    }
+
+    .list {
+      font-size: 12px;
+      color: var(--muted);
+      padding-left: 16px;
+    }
+
+    .list li {
+      margin-bottom: 4px;
+    }
+
+    /* Pricing */
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .pricing {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .price-card {
+      background: radial-gradient(circle at top, rgba(168,85,247,0.25), #020617 55%);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148,163,184,0.45);
+      padding: 16px 16px 18px;
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-card.pro {
+      border-color: var(--accent-strong);
+      box-shadow: 0 0 28px rgba(236,72,153,0.45);
+    }
+
+    .price-name {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .price-badge {
+      font-size: 10px;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 0.14em;
+      margin-bottom: 6px;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .price span.per {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .price-desc {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .price-list {
+      font-size: 11px;
+      color: #e5e7eb;
+      padding-left: 16px;
+      margin-bottom: 10px;
+    }
+
+    .price-list li {
+      margin-bottom: 4px;
+    }
+
+    .price-cta {
+      font-size: 11px;
+      color: #a5b4fc;
+    }
+
+    /* FAQ */
+    .faq-item {
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .faq-a {
+      color: var(--muted);
     }
 
     footer {
-      margin-top: 20px; font-size: 11px; color: var(--muted);
-      text-align: center; border-top: 1px solid rgba(148,163,184,0.3);
+      margin-top: 20px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid rgba(148,163,184,0.3);
       padding-top: 12px;
     }
   </style>
 </head>
-
 <body>
   <div class="page">
 
@@ -196,16 +485,16 @@
 
     <!-- HERO -->
     <section class="hero">
-
       <div class="hero-left">
         <h1>
           Ton trading <span class="gradient-text">PulseChain</span><br />
           passe enfin en pilote automatique.
         </h1>
-
         <p class="hero-sub">
           AutoPilot PulseChain Bot automatise tes stratégies sur HEX et ATROPA :
-          achat intelligent, take profit, stop loss, ré-entrée, le tout exécuté depuis ton propre PC.
+          achat intelligent, take profit, stop loss, ré-entrée, le tout exécuté
+          depuis ton propre PC. Aucune clé privée envoyée en ligne, aucun
+          abonnement, aucun bullshit.
         </p>
 
         <div class="hero-badges">
@@ -215,34 +504,36 @@
           <span class="badge">Paiement en PLS</span>
         </div>
 
-        <!-- ⭐ BOUTONS FONCTIONNELS ⭐ -->
+        <!-- CTA : 3 BOUTONS -->
         <div class="hero-cta">
-
-          <!-- Bouton violet → X -->
-          <a class="btn-primary"
+          <!-- 1. DM X -->
+          <a class="btn-x"
              href="https://x.com/jhonivangonthi1"
-             target="_blank">
-            ⚡ Obtenir le Pack PRO (DM sur X)
+             target="_blank" rel="noopener noreferrer">
+            ⚡ Commander via X (DM)
           </a>
 
-          <!-- Bouton gris → mail -->
-          <a class="btn-ghost"
-             href="mailto:whaletracker16@gmail.com?subject=Commande%20AutoPilot%20PulseChain%20Bot&body=Salut,%20je%20veux%20commander%20le%20pack.%0A%0AMon%20TX%20hash%20:%0A">
-            📩 Ou par email
+          <!-- 2. Gmail web -->
+          <a class="btn-gmail"
+             href="https://mail.google.com/mail/?view=cm&fs=1&to=whaletracker16@gmail.com&su=Commande%20AutoPilot%20PulseChain%20Bot&body=Salut,%20je%20veux%20commander%20le%20pack%20AutoPilot%20PulseChain%20Bot.%0A%0AMon%20TX%20hash%20:%0A"
+             target="_blank" rel="noopener noreferrer">
+            📩 Commander par Gmail
           </a>
 
+          <!-- 3. Copier email -->
+          <button type="button" class="btn-copy" onclick="copyEmail()">
+            📋 Copier l’adresse email
+          </button>
         </div>
 
         <div class="hero-note">
-          Paiement en PLS • Pack livré par mail ou DM après confirmation.
+          Paiement en PLS • Pack livré par mail ou DM après confirmation de la transaction.
         </div>
       </div>
 
-      <!-- RIGHT BOX -->
       <div class="hero-right">
-
         <div class="hero-right-title">Vue rapide du système</div>
-        <div class="hero-right-sub">Deux bots, une seule logique.</div>
+        <div class="hero-right-sub">Deux bots, une seule logique : faire travailler ton sac à ta place.</div>
 
         <div class="hero-metrics">
           <div class="metric-card">
@@ -250,32 +541,223 @@
             <div class="metric-value">TP +0,35%</div>
             <div class="metric-tag">Stop Loss −0,30% • Accumulation</div>
           </div>
-
           <div class="metric-card">
             <div class="metric-label">Bot ATROPA / DAI</div>
-            <div class="metric-value">TP +0,35%</div>
-            <div class="metric-tag">Mode Turbo • Scalping</div>
+            <div class="metric-value">TP +0,35%*</div>
+            <div class="metric-tag">Mode Turbo dynamique • Scalping</div>
           </div>
         </div>
 
         <div class="hero-qr-box">
-          <div class="hero-qr-code">PLS<br>QR</div>
-          <div class="hero-qr-text">
-            Adresse : <code>0x7a23b7...57a1</code><br>
-            Envoie ton TX hash après paiement.
+          <div class="hero-qr-code">
+            PLS<br/>QR<br/>Code
+          </div>
+          <div>
+            Paiement en PLS sur PulseChain.<br/>
+            Adresse : <code>0x7a23b7...57a1</code><br/>
+            Après paiement, envoie ton TX hash en DM ou par mail pour recevoir ton pack.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: POURQUOI -->
+    <section>
+      <h2 class="section-title">Pourquoi AutoPilot PulseChain Bot est différent ?</h2>
+      <p class="section-sub">
+        La plupart des “bots” PulseChain sont soit des snipers opaques, soit des scripts incomplets.
+        AutoPilot PulseChain Bot, c’est un pack <b>transparent</b>, <b>documenté</b> et <b>orienté sécurité</b>,
+        que tu contrôles totalement depuis ton PC.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-tag">Sécurité</div>
+          <h3>Ton wallet, ton contrôle</h3>
+          <p>
+            Les bots tournent en local sur ta machine. Aucune clé privée n’est envoyée à un serveur externe.
+            Tu vois le code, tu comprends ce qu’il fait, tu gardes le contrôle.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-tag">Automatisation</div>
+          <h3>TP / SL & ré-entrée auto</h3>
+          <p>
+            Les bots gèrent automatiquement les prises de bénéfices, les stop loss et les ré-entrées.
+            Tu définis les paramètres une fois, ils travaillent 24/7.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-tag">PulseChain natif</div>
+          <h3>Conçu pour HEX & ATROPA</h3>
+          <p>
+            Les stratégies sont optimisées spécifiquement pour le comportement de HEX / PHEX et ATROPA / DAI
+            sur PulseChain : volatilité, profondeur, rythme du marché.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: COMMENT ÇA MARCHE -->
+    <section>
+      <h2 class="section-title">Comment ça marche concrètement ?</h2>
+      <p class="section-sub">
+        Tu n’as pas besoin d’être développeur. Le pack est pensé pour être installé en quelques étapes simples,
+        avec une documentation claire.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>1. Installation</h3>
+          <ul class="list">
+            <li>Installer Python (Windows 10/11)</li>
+            <li>Extraire le pack sur ton PC</li>
+            <li>Installer les dépendances (web3, requests…)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>2. Configuration</h3>
+          <ul class="list">
+            <li>Renseigner ton adresse et ta clé privée (en local)</li>
+            <li>Choisir la taille de tes trades (en %)</li>
+            <li>Vérifier l’RPC PulseChain</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>3. Lancement</h3>
+          <ul class="list">
+            <li>Double clic sur <code>lancer_hex.bat</code></li>
+            <li>Double clic sur <code>lancer_atropa.bat</code></li>
+            <li>Surveiller la console au début, puis laisser tourner</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: PACKS -->
+    <section>
+      <h2 class="section-title">Choisis ton pack</h2>
+      <p class="section-sub">
+        Pas d’abonnement, pas de renewal automatique. Tu payes une fois, le pack est à toi.
+      </p>
+
+      <div class="pricing">
+        <div class="price-card">
+          <div class="price-badge">Essentiel</div>
+          <div class="price-name">Starter</div>
+          <div class="price">39$ <span class="per">/ paiement unique</span></div>
+          <p class="price-desc">
+            Pour découvrir l’automatisation PulseChain en douceur.
+          </p>
+          <ul class="price-list">
+            <li>1 bot (HEX <b>ou</b> ATROPA)</li>
+            <li>Config de base incluse</li>
+            <li>Guide PDF d’installation rapide</li>
+            <li>Support par mail 3 jours</li>
+          </ul>
+          <div class="price-cta">
+            👉 Idéal si tu veux tester avant de passer au PRO.
           </div>
         </div>
 
+        <div class="price-card pro">
+          <div class="price-badge">Recommandé</div>
+          <div class="price-name">Pro</div>
+          <div class="price">79$ <span class="per">/ paiement unique</span></div>
+          <p class="price-desc">
+            L’option la plus équilibrée pour automatiser HEX & ATROPA simultanément.
+          </p>
+          <ul class="price-list">
+            <li>Bot HEX / PHEX AutoPilot</li>
+            <li>Bot ATROPA / DAI AutoPilot</li>
+            <li>Configs optimisées par défaut</li>
+            <li>Documentation complète (PDF + glossaire)</li>
+            <li>Support installation 7 jours (mail / DM)</li>
+          </ul>
+          <div class="price-cta">
+            👉 Le meilleur rapport puissance / simplicité pour ton trading PulseChain.
+          </div>
+        </div>
+
+        <div class="price-card">
+          <div class="price-badge">Avancé</div>
+          <div class="price-name">Ultimate</div>
+          <div class="price">149$ <span class="per">/ paiement unique</span></div>
+          <p class="price-desc">
+            Pour ceux qui veulent un accompagnement complet et des bonus.
+          </p>
+          <ul class="price-list">
+            <li>Tout le pack PRO</li>
+            <li>Mises à jour futures incluses</li>
+            <li>Priorité support</li>
+            <li>Accès aux futurs modules (nouveaux bots)</li>
+            <li>Ressources marketing si tu veux revendre en affiliation (selon conditions)</li>
+          </ul>
+          <div class="price-cta">
+            👉 Parfait si tu vois AutoPilot PulseChain comme un vrai outil long terme.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: FAQ -->
+    <section>
+      <h2 class="section-title">FAQ – Questions fréquentes</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">Est-ce que je dois envoyer ma clé privée quelque part ?</div>
+        <div class="faq-a">
+          Non. Ta clé privée reste dans le fichier de configuration sur ton PC. Les bots signent les transactions
+          depuis ta machine, il n’y a pas de serveur externe ni d’API centralisée.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Est-ce que c’est garanti de faire des gains ?</div>
+        <div class="faq-a">
+          Non, évidemment. Le bot automatise une stratégie, mais le marché reste risqué.
+          Tu dois toujours utiliser un capital que tu es prêt à voir fluctuer.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Comment je paie et comment je reçois le pack ?</div>
+        <div class="faq-a">
+          Tu paies en PLS sur PulseChain à l’adresse indiquée, puis tu envoies ton TX hash en DM (ou par mail).
+          Après vérification, tu reçois ton pack (ZIP) + documentation.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Et si j’ai un problème pour l’installer ?</div>
+        <div class="faq-a">
+          Les packs Pro et Ultimate incluent un support pour t’aider à installer et vérifier que tout tourne
+          correctement sur ton PC.
+        </div>
       </div>
     </section>
 
     <footer>
-      AutoPilot PulseChain Bot • HEX & ATROPA sur PulseChain<br>
-      Contact : <a href="mailto:whaletracker16@gmail.com">whaletracker16@gmail.com</a><br>
-      Aucun rendement garanti.  
+      AutoPilot PulseChain Bot – Outil d’automatisation de trading pour HEX & ATROPA sur PulseChain.<br/>
+      Contact : <a href="mailto:whaletracker16@gmail.com">whaletracker16@gmail.com</a><br/>
+      Aucun rendement n’est garanti. Tu restes responsable de tes fonds.
     </footer>
-
   </div>
+
+  <script>
+    function copyEmail() {
+      const email = 'whaletracker16@gmail.com';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(function () {
+          alert('Adresse email copiée dans le presse-papier : ' + email);
+        }, function () {
+          alert('Impossible de copier automatiquement. Adresse : ' + email);
+        });
+      } else {
+        alert('Adresse email : ' + email);
+      }
+    }
+  </script>
 </body>
 </html>
 
