@@ -275,9 +275,7 @@
             documentation et configs optimisées.
           </p>
 
-          <div class="info-chip-group" id="pack-chips">
-            <!-- Rempli dynamiquement -->
-          </div>
+          <div class="info-chip-group" id="pack-chips"></div>
         </div>
 
         <div class="download-box">
@@ -292,8 +290,7 @@
 
           <p class="warning">
             ⚠️ <strong>Important :</strong> ne partage pas ce lien ni le contenu du pack.
-            L’usage est strictement personnel. Tu restes responsable de la sécurité de
-            ton wallet et de tes fonds.
+            L’usage est strictement personnel.
           </p>
         </div>
       </section>
@@ -306,27 +303,22 @@
   </main>
 
   <script>
-    // Récupération du paramètre ?pack= dans l'URL
     const params = new URLSearchParams(window.location.search);
     const packParam = (params.get("pack") || "pro").toLowerCase();
 
-    // 🔗 Liens Google Drive (REMPLACE les ID quand tu auras les autres ZIP)
-    // Format : https://drive.google.com/uc?export=download&id=ID_DU_FICHIER
     const packs = {
       starter: {
         name: "Pack Starter",
         price: "39 $ – paiement unique",
-        desc: "1 bot (HEX ou ATROPA), config de base, guide PDF d’installation rapide.",
-        chips: ["1 bot (au choix)", "Config de base", "Support 3 jours (mail)"],
-        // TODO: remplace l'ID ci-dessous par l'ID réel du ZIP Starter
-        driveId: "ID_GOOGLE_DRIVE_STARTER"
+        desc: "1 bot ATROPA, config de base, guide PDF d’installation rapide.",
+        chips: ["1 bot ATROPA", "Config de base", "Support 3 jours (mail)"],
+        driveId: "1cW2s25-E-9ZEfOG0fsmTJdJUvZFrvi7t"
       },
       pro: {
         name: "Pack Pro",
         price: "79 $ – paiement unique",
         desc: "Bots HEX + ATROPA AutoPilot, configs optimisées, guide complet et support 7 jours.",
         chips: ["Bots HEX & ATROPA", "Configs optimisées", "Documentation complète", "Support 7 jours"],
-        // ✅ ID réel de ton fichier : 1-QLPcZbyQ294oQk0PLp1oUOCvpztKt8h
         driveId: "1-QLPcZbyQ294oQk0PLp1oUOCvpztKt8h"
       },
       ultimate: {
@@ -334,21 +326,17 @@
         price: "149 $ – paiement unique",
         desc: "Tout le pack Pro + mises à jour futures, priorité support et ressources marketing.",
         chips: ["Tout le pack Pro", "Mises à jour incluses", "Priorité support", "Ressources marketing"],
-        // TODO: remplace l'ID ci-dessous par l'ID réel du ZIP Ultimate
         driveId: "ID_GOOGLE_DRIVE_ULTIMATE"
       }
     };
 
-    // Choix du pack (fallback sur Pro si inconnu)
     const pack = packs[packParam] || packs.pro;
 
-    // Construction du lien de téléchargement Google Drive
     let downloadUrl = "#";
     if (pack.driveId && !pack.driveId.startsWith("ID_GOOGLE_DRIVE")) {
       downloadUrl = `https://drive.google.com/uc?export=download&id=${pack.driveId}`;
     }
 
-    // Injection dans la page
     document.getElementById("pack-name").textContent = pack.name;
     document.getElementById("pack-price").textContent = pack.price;
     document.getElementById("pack-desc").textContent = pack.desc;
@@ -373,4 +361,5 @@
   </script>
 </body>
 </html>
+
 
