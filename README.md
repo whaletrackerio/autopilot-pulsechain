@@ -30,3 +30,58 @@ Le pack contient :
 
 Allez dans le dossier :
 
+`launcher_windows/`
+
+Puis double-cliquez sur :
+
+- `lancer_phex_pls.bat`  
+- `lancer_scalper_pls.bat`  
+- `lancer_atropa_dai.bat`  
+
+---
+
+## 🍎 Utilisation macOS
+
+Les fichiers `.command` doivent être activés une seule fois.
+
+➡️ Lire les instructions complètes ici :  
+👉 **[README_MAC.md](README_MAC.md)**
+
+---
+
+## ⚙️ Structure du pack
+
+AutoPilot/
+│
+├── bots/
+│   ├── hex/
+│   └── atropa/
+│
+├── launcher_windows/
+├── launcher_mac/
+└── config/
+
+---
+
+## 📞 Support
+
+Pour toute question ou assistance, contactez-nous :
+
+- **X (Twitter)** : https://x.com/jhonivangonthi1  
+- **Email** : whaletracker16@gmail.com  
+
+---
+
+## 🔒 Sécurité
+
+AutoPilot PulseChain Bot fonctionne **uniquement en local**.  
+Votre clé privée n'est jamais envoyée à un serveur externe.  
+Vous gardez 100% du contrôle sur vos fonds.
+
+---
+
+## 🔥 À propos
+
+AutoPilot PulseChain Bot est conçu pour offrir des stratégies  
+d’automatisation fiables, transparentes et faciles à utiliser.  
+Merci de soutenir ce projet !
