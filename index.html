@@ -47,6 +47,16 @@
 
     .brand { display:flex; align-items:center; gap:12px; }
 
+    /* Nouveau : logo image réel */
+    .brand-logo-img {
+      width: 80px;
+      max-width: 24vw;
+      height: auto;
+      border-radius: 18px;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.75);
+    }
+
+    /* Ancienne pastille A (non utilisée désormais, je la laisse au cas où) */
     .brand-logo {
       width:44px; height:44px;
       border-radius:14px;
@@ -322,7 +332,8 @@
     <!-- HEADER -->
     <header>
       <div class="brand">
-        <div class="brand-logo">A</div>
+        <!-- Nouveau : logo image -->
+        <img src="logo.png" alt="AutoPilot PulseChain Bot" class="brand-logo-img">
         <div>
           <div class="brand-text-title">AutoPilot PulseChain Bot</div>
           <div class="brand-text-sub">HEX • ATROPA • PLS</div>
