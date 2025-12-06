@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>AutoPilot PulseChain Bot – Téléchargement du pack</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta charset="UTF-8">
+  <title>AutoPilot PulseChain Bot – Téléchargement</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
       --bg: #050816;
-      --bg-soft: #0b1020;
-      --card: #111827;
+      --card: #0f172a;
       --accent: #a855f7;
       --accent-soft: #7c3aed;
-      --accent-strong: #ec4899;
       --text: #e5e7eb;
       --muted: #9ca3af;
-      --border: #1f2937;
       --danger: #f97373;
       --radius-lg: 16px;
-      --shadow-soft: 0 18px 45px rgba(0,0,0,0.65);
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.55);
     }
 
     * {
@@ -29,344 +25,171 @@
 
     body {
       min-height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      color: var(--text);
-      background: radial-gradient(circle at top, #1d2343 0, #050816 45%, #020617 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 32px 16px;
-    }
-
-    .wrapper {
-      width: 100%;
-      max-width: 720px;
-      background: linear-gradient(145deg, rgba(148,163,184,0.06), rgba(15,23,42,0.95));
-      border-radius: 24px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(148,163,184,0.25);
-      padding: 28px 24px 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .glow {
-      position: absolute;
-      inset: -120px;
-      background:
-        radial-gradient(circle at top left, rgba(168,85,247,0.28), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(236,72,153,0.22), transparent 55%);
-      opacity: 0.9;
-      pointer-events: none;
-    }
-
-    .wrapper-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 12px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.85);
-      border: 1px solid rgba(148,163,184,0.5);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 12px rgba(34,197,94,0.9);
-    }
-
-    h1 {
-      font-size: clamp(26px, 3vw, 32px);
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-
-    h1 span {
-      background: linear-gradient(120deg, #a855f7, #ec4899, #f97316);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .subtitle {
-      font-size: 14px;
-      color: var(--muted);
-      max-width: 520px;
-      margin-bottom: 24px;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 55%, #000 100%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      padding: 16px;
     }
 
     .card {
-      background: radial-gradient(circle at top left, rgba(30,64,175,0.25), rgba(15,23,42,0.98));
-      border-radius: 18px;
-      padding: 18px 18px 16px;
-      border: 1px solid rgba(148,163,184,0.35);
-      margin-bottom: 18px;
-      display: grid;
-      grid-template-columns: minmax(0,1.1fr) minmax(0,0.9fr);
-      gap: 16px;
-      align-items: flex-start;
+      background: linear-gradient(145deg, #020617, #020617 40%, #111827 100%);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 24px 20px;
+      max-width: 460px;
+      width: 100%;
+      border: 1px solid rgba(148,163,184,0.2);
     }
 
-    @media (max-width: 700px) {
-      .card {
-        grid-template-columns: minmax(0,1fr);
-      }
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    .card-title {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
+    h1 span {
+      font-size: 1.9rem;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
       color: var(--muted);
-      margin-bottom: 4px;
+      margin-bottom: 1.5rem;
     }
 
     .pack-name {
-      font-size: 18px;
       font-weight: 600;
-      margin-bottom: 4px;
+      color: var(--accent-soft);
     }
 
-    .pack-price {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .pack-desc {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .info-chip-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .info-chip {
-      font-size: 11px;
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.6);
-      color: var(--muted);
-      background: rgba(15,23,42,0.8);
-    }
-
-    .download-box {
-      background: rgba(15,23,42,0.9);
-      border-radius: 14px;
-      padding: 12px 14px;
-      border: 1px solid rgba(148,163,184,0.4);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .download-label {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .primary-btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 16px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 500;
-      color: white;
-      background: linear-gradient(120deg, #a855f7, #ec4899);
-      box-shadow: 0 12px 30px rgba(168,85,247,0.45);
-      text-decoration: none;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
-      white-space: nowrap;
-    }
-
-    .primary-btn:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-      box-shadow: 0 16px 38px rgba(168,85,247,0.6);
-    }
-
-    .primary-btn:active {
-      transform: translateY(0);
-      box-shadow: 0 8px 22px rgba(168,85,247,0.5);
-    }
-
-    .primary-btn span.icon {
-      font-size: 16px;
+    .info {
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.4;
     }
 
     .warning {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 8px;
+      background: rgba(248, 113, 113, 0.08);
+      border: 1px solid rgba(248, 113, 113, 0.4);
+      color: var(--danger);
+      padding: 0.6rem 0.75rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      margin-bottom: 1.2rem;
     }
 
-    .warning strong {
-      color: #f97373;
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: radial-gradient(circle at top left, var(--accent-soft), var(--accent));
+      color: white;
+      font-size: 0.98rem;
       font-weight: 600;
-    }
-
-    .foot {
-      margin-top: 18px;
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      font-size: 11px;
-      color: var(--muted);
-      flex-wrap: wrap;
-    }
-
-    .foot a {
-      color: var(--accent-soft);
       text-decoration: none;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, opacity 0.1s ease;
+      box-shadow: 0 12px 30px rgba(129, 140, 248, 0.45);
+      margin-bottom: 0.8rem;
     }
 
-    .foot a:hover {
-      text-decoration: underline;
+    .btn-download:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(129, 140, 248, 0.6);
+      opacity: 0.95;
+    }
+
+    .btn-download span.icon {
+      font-size: 1.2rem;
+    }
+
+    .footnote {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .error {
+      color: var(--danger);
+      font-size: 0.9rem;
+      margin-top: 0.8rem;
     }
   </style>
 </head>
 <body>
-  <main class="wrapper">
-    <div class="glow"></div>
-    <div class="wrapper-inner">
-      <div class="badge">
-        <span class="badge-dot"></span>
-        Téléchargement sécurisé
-      </div>
+  <div class="card">
+    <h1>
+      <span>✅</span>
+      <span>Téléchargement de votre bot</span>
+    </h1>
+    <p class="subtitle">
+      Merci pour votre confiance 🙏 Votre achat a bien été pris en compte.
+    </p>
 
-      <h1>
-        Merci pour ta commande <span>AutoPilot PulseChain Bot</span> ✨
-      </h1>
-      <p class="subtitle">
-        Tu peux télécharger ton pack ci-dessous. Garde ce lien pour toi, il est
-        personnel et réservé à ton usage uniquement.
-      </p>
+    <p class="info">
+      Pack sélectionné : <span id="packName" class="pack-name">Starter</span>
+    </p>
 
-      <section class="card">
-        <div>
-          <p class="card-title">Pack sélectionné</p>
-          <p class="pack-name" id="pack-name">Pack Pro</p>
-          <p class="pack-price" id="pack-price">79&nbsp;$ – paiement unique</p>
-          <p class="pack-desc" id="pack-desc">
-            Automatisation de ton trading HEX & ATROPA sur PulseChain, avec
-            documentation et configs optimisées.
-          </p>
-
-          <div class="info-chip-group" id="pack-chips"></div>
-        </div>
-
-        <div class="download-box">
-          <p class="download-label">
-            Cliquez sur le bouton ci-dessous pour télécharger ton pack au format ZIP.
-          </p>
-
-          <a id="download-btn" class="primary-btn" href="#" download>
-            <span class="icon">⬇️</span>
-            <span>Télécharger mon pack</span>
-          </a>
-
-          <p class="warning">
-            ⚠️ <strong>Important :</strong> ne partage pas ce lien ni le contenu du pack.
-            L’usage est strictement personnel.
-          </p>
-        </div>
-      </section>
-
-      <div class="foot">
-        <span>AutoPilot PulseChain Bot – HEX / ATROPA / PulseChain</span>
-        <span>Support : <a href="mailto:whaletracker16@gmail.com">whaletracker16@gmail.com</a></span>
-      </div>
+    <div class="warning">
+      💾 Gardez ce fichier en sécurité et ne le partagez pas.  
+      L’usage est strictement réservé à l’acheteur.
     </div>
-  </main>
 
-    <script>
-    // Récupération du paramètre ?pack= dans l'URL
-    const params = new URLSearchParams(window.location.search);
-    const packParam = (params.get("pack") || "pro").toLowerCase();
+    <a id="downloadBtn" class="btn-download" href="#" download>
+      <span class="icon">⬇️</span>
+      <span>Télécharger le pack maintenant</span>
+    </a>
 
-    // Packs + IDs Google Drive
-    // Format lien direct : https://drive.google.com/uc?export=download&id=ID_DU_FICHIER
-    const packs = {
-      starter: {
-        name: "Pack Starter",
-        price: "39 $ – paiement unique",
-        desc: "1 bot ATROPA, config de base, guide PDF d’installation rapide.",
-        chips: ["1 bot ATROPA", "Config de base", "Support 3 jours (mail)"],
-        driveId: "1cW2s25-E-9ZEfOG0fsmTJdJUvZFrvi7t"
-      },
-      pro: {
-        name: "Pack Pro",
-        price: "79 $ – paiement unique",
-        desc: "Bots HEX + ATROPA AutoPilot, configs optimisées, guide complet et support 7 jours.",
-        chips: ["Bots HEX & ATROPA", "Configs optimisées", "Documentation complète", "Support 7 jours"],
-        driveId: "1fyrN12wAMNIVjyQVEYpi2TJgEqkjaXNG"
-      },
-      ultimate: {
-        name: "Pack Ultimate",
-        price: "149 $ – paiement unique",
-        desc: "Bots HEX + ATROPA + Scalper, mises à jour futures, priorité support et ressources bonus.",
-        chips: ["HEX + ATROPA + Scalper", "Mises à jour incluses", "Priorité support", "Ressources bonus"],
-        driveId: "1pkunOM6n1pWeY9F_MhoojCMGZh976DAs"
-      }
+    <p id="errorMsg" class="error" style="display:none;">
+      Impossible d’identifier le pack. Merci de contacter le support avec votre preuve d’achat.
+    </p>
+
+    <p class="footnote">
+      Si le téléchargement ne se lance pas, faites clic droit sur le bouton puis 
+      <strong>“Enregistrer le lien sous…”</strong>.<br><br>
+      Support : <strong>whaletracker16@gmail.com</strong>
+    </p>
+  </div>
+
+  <script>
+    // Mapping des packs -> liens Google Drive
+    const LINKS = {
+      starter: "https://drive.google.com/uc?export=download&id=1SOCIGU-tiATzw-F2YxpGY4m3YSmlKhBM",
+      pro:     "https://drive.google.com/uc?export=download&id=ID_DRIVE_PRO_A_METTRE_ICI",
+      ultimate:"https://drive.google.com/uc?export=download&id=ID_DRIVE_ULTIMATE_A_METTRE_ICI"
     };
 
-    // Choix du pack (fallback sur Pro si inconnu)
-    const pack = packs[packParam] || packs.pro;
+    const PACK_LABELS = {
+      starter: "AutoPilot PulseChain Bot – STARTER",
+      pro: "AutoPilot PulseChain Bot – PRO",
+      ultimate: "AutoPilot PulseChain Bot – ULTIMATE"
+    };
 
-    // Construction du lien de téléchargement Google Drive
-    let downloadUrl = "#";
-    if (pack.driveId) {
-      downloadUrl = `https://drive.google.com/uc?export=download&id=${pack.driveId}`;
-    }
+    const params = new URLSearchParams(window.location.search);
+    const pack = (params.get("pack") || "starter").toLowerCase();
 
-    // Injection dans la page
-    document.getElementById("pack-name").textContent = pack.name;
-    document.getElementById("pack-price").innerHTML = pack.price;
-    document.getElementById("pack-desc").textContent = pack.desc;
+    const packNameEl = document.getElementById("packName");
+    const downloadBtn = document.getElementById("downloadBtn");
+    const errorMsg = document.getElementById("errorMsg");
 
-    const chipsContainer = document.getElementById("pack-chips");
-    chipsContainer.innerHTML = "";
-    pack.chips.forEach((c) => {
-      const span = document.createElement("span");
-      span.className = "info-chip";
-      span.textContent = c;
-      chipsContainer.appendChild(span);
-    });
-
-    const downloadBtn = document.getElementById("download-btn");
-    downloadBtn.href = downloadUrl;
-
-    if (downloadUrl === "#") {
-      downloadBtn.textContent = "Lien de téléchargement bientôt disponible";
-      downloadBtn.style.opacity = "0.6";
-      downloadBtn.style.pointerEvents = "none";
+    if (LINKS[pack]) {
+      packNameEl.textContent = PACK_LABELS[pack] || "Pack " + pack;
+      downloadBtn.href = LINKS[pack];
+    } else {
+      packNameEl.textContent = "Pack inconnu";
+      downloadBtn.style.display = "none";
+      errorMsg.style.display = "block";
     }
   </script>
-
 </body>
 </html>
-
-
