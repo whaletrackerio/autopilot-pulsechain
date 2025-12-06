@@ -21,11 +21,7 @@
       --shadow-soft: 0 18px 45px rgba(0,0,0,0.65);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing:border-box; margin:0; padding:0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -34,10 +30,7 @@
       line-height: 1.6;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .page {
       max-width: 1100px;
@@ -46,422 +39,269 @@
     }
 
     header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 32px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:32px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .brand { display:flex; align-items:center; gap:12px; }
 
     .brand-logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      background: radial-gradient(circle at 20% 0%, #ec4899, #8b5cf6 40%, #0ea5e9 80%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 20px;
-      color: #f9fafb;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.7);
+      width:44px; height:44px;
+      border-radius:14px;
+      background:radial-gradient(circle at 20% 0%, #ec4899, #8b5cf6 40%, #0ea5e9 80%);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:800; font-size:20px; color:#f9fafb;
+      box-shadow:0 12px 35px rgba(0,0,0,0.7);
     }
 
-    .brand-text-title {
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      font-size: 18px;
-    }
-
+    .brand-text-title { font-weight:700; letter-spacing:0.03em; font-size:18px; }
     .brand-text-sub {
-      font-size: 12px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
+      font-size:12px; color:var(--muted);
+      text-transform:uppercase; letter-spacing:0.18em;
     }
 
     .header-tag {
-      padding: 4px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      font-size: 12px;
-      color: var(--muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(15,23,42,0.75);
-      backdrop-filter: blur(12px);
+      padding:4px 12px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,0.4);
+      font-size:12px; color:var(--muted);
+      display:inline-flex; align-items:center; gap:6px;
+      background:rgba(15,23,42,0.75);
+      backdrop-filter:blur(12px);
     }
 
     .header-tag span.dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 12px rgba(34,197,94,0.9);
+      width:7px; height:7px; border-radius:999px;
+      background:#22c55e; box-shadow:0 0 12px rgba(34,197,94,0.9);
     }
 
     /* HERO */
     .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
-      gap: 24px;
-      margin-bottom: 40px;
+      display:grid;
+      grid-template-columns:minmax(0,3fr) minmax(0,2.3fr);
+      gap:24px; margin-bottom:40px;
     }
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-    }
+    @media (max-width:900px){ .hero{ grid-template-columns:1fr; } }
 
     .hero-left h1 {
-      font-size: clamp(26px, 4vw, 34px);
-      line-height: 1.2;
-      margin-bottom: 12px;
+      font-size:clamp(26px,4vw,34px);
+      line-height:1.2; margin-bottom:12px;
     }
 
     .gradient-text {
-      background: linear-gradient(90deg, #ec4899, #a855f7, #22d3ee);
-      -webkit-background-clip: text;
-      color: transparent;
+      background:linear-gradient(90deg,#ec4899,#a855f7,#22d3ee);
+      -webkit-background-clip:text; color:transparent;
     }
 
     .hero-sub {
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 520px;
-      margin-bottom: 18px;
+      color:var(--muted); font-size:14px;
+      max-width:520px; margin-bottom:18px;
     }
 
     .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 18px;
-      font-size: 11px;
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-bottom:18px; font-size:11px;
     }
 
     .badge {
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.9);
-      border: 1px solid rgba(148,163,184,0.3);
-      color: #c4c4ff;
+      padding:5px 10px; border-radius:999px;
+      background:rgba(15,23,42,0.9);
+      border:1px solid rgba(148,163,184,0.3);
+      color:#c4c4ff;
     }
 
     .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 6px;
+      display:flex; flex-wrap:wrap;
+      gap:10px; align-items:center;
+      margin-bottom:6px;
     }
 
     .hero-cta a,
     .hero-cta button {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 600;
-      border: none;
-      background: transparent;
-      text-decoration: none;
-      transition: 0.2s;
-      white-space: nowrap;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 20px; border-radius:999px;
+      cursor:pointer; font-size:14px; font-weight:600;
+      border:none; background:transparent;
+      text-decoration:none; transition:0.2s;
+      white-space:nowrap;
     }
 
     .btn-x {
-      background: linear-gradient(120deg, #ec4899, #a855f7, #22d3ee);
-      color: #f9fafb;
-      box-shadow: 0 14px 30px rgba(0,0,0,0.6);
+      background:linear-gradient(120deg,#ec4899,#a855f7,#22d3ee);
+      color:#f9fafb; box-shadow:0 14px 30px rgba(0,0,0,0.6);
     }
-
-    .btn-x:hover {
-      opacity: 0.9;
-    }
+    .btn-x:hover { opacity:0.9; }
 
     .btn-gmail {
-      border: 1px solid rgba(148,163,184,0.4);
-      color: var(--muted);
-      background: rgba(15,23,42,0.7);
+      border:1px solid rgba(148,163,184,0.4);
+      color:var(--muted); background:rgba(15,23,42,0.7);
     }
-
-    .btn-gmail:hover {
-      border-color: #a5b4fc;
-      color: #a5b4fc;
-    }
+    .btn-gmail:hover { border-color:#a5b4fc; color:#a5b4fc; }
 
     .btn-copy {
-      border: 1px dashed rgba(148,163,184,0.5);
-      color: #e5e7eb;
-      font-size: 12px;
-      padding: 8px 16px;
+      border:1px dashed rgba(148,163,184,0.5);
+      color:#e5e7eb; font-size:12px; padding:8px 16px;
     }
+    .btn-copy:hover { border-color:#e5e7eb; }
 
-    .btn-copy:hover {
-      border-color: #e5e7eb;
-    }
-
-    .hero-note {
-      margin-top: 4px;
-      font-size: 11px;
-      color: var(--muted);
-    }
+    .hero-note { margin-top:4px; font-size:11px; color:var(--muted); }
 
     /* RIGHT BOX */
     .hero-right {
-      background: radial-gradient(circle at top, rgba(236,72,153,0.25), transparent 55%),
-                  radial-gradient(circle at bottom, rgba(56,189,248,0.22), transparent 55%);
-      border-radius: 24px;
-      border: 1px solid rgba(148,163,184,0.3);
-      box-shadow: var(--shadow-soft);
-      padding: 18px 16px;
+      background:
+        radial-gradient(circle at top,rgba(236,72,153,0.25),transparent 55%),
+        radial-gradient(circle at bottom,rgba(56,189,248,0.22),transparent 55%);
+      border-radius:24px;
+      border:1px solid rgba(148,163,184,0.3);
+      box-shadow:var(--shadow-soft);
+      padding:18px 16px;
     }
 
-    .hero-right-title {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .hero-right-sub {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
+    .hero-right-title { font-size:14px; font-weight:600; margin-bottom:4px; }
+    .hero-right-sub { font-size:11px; color:var(--muted); margin-bottom:16px; }
 
     .hero-metrics {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 10px;
-      margin-bottom: 16px;
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px; margin-bottom:16px;
     }
 
     .metric-card {
-      background: rgba(15,23,42,0.9);
-      border-radius: 14px;
-      padding: 10px;
-      border: 1px solid rgba(148,163,184,0.35);
-      font-size: 11px;
+      background:rgba(15,23,42,0.9);
+      border-radius:14px; padding:10px;
+      border:1px solid rgba(148,163,184,0.35);
+      font-size:11px;
     }
 
-    .metric-label {
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .metric-value {
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .metric-tag {
-      font-size: 10px;
-      color: #a5b4fc;
-    }
+    .metric-label { color:var(--muted); margin-bottom:4px; }
+    .metric-value { font-size:14px; font-weight:700; }
+    .metric-tag { font-size:10px; color:#a5b4fc; }
 
     .hero-qr-box {
-      margin-top: 10px;
-      padding: 10px;
-      border-radius: 14px;
-      background: rgba(15,23,42,0.85);
-      border: 1px dashed rgba(148,163,184,0.6);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 11px;
-      color: var(--muted);
+      margin-top:10px; padding:10px;
+      border-radius:14px;
+      background:rgba(15,23,42,0.85);
+      border:1px dashed rgba(148,163,184,0.6);
+      display:flex; align-items:center; gap:10px;
+      font-size:11px; color:var(--muted);
     }
 
     .hero-qr-code {
-      width: 64px;
-      height: 64px;
-      border-radius: 12px;
-      background: radial-gradient(circle at 20% 0%, #ec4899, #8b5cf6 40%, #0ea5e9 80%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      color: #f9fafb;
-      text-align: center;
-      padding: 6px;
+      width:64px; height:64px;
+      border-radius:12px;
+      overflow:hidden;
+      cursor:pointer;
+      box-shadow:0 10px 25px rgba(0,0,0,0.6);
     }
 
-    /* Sections génériques */
-    section {
-      margin-bottom: 40px;
+    .hero-qr-code img {
+      width:100%; height:100%; object-fit:cover;
     }
 
-    h2.section-title {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .section-sub {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
+    section { margin-bottom:40px; }
+    h2.section-title { font-size:18px; margin-bottom:10px; }
+    .section-sub { font-size:13px; color:var(--muted); margin-bottom:16px; }
 
     .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 16px;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
     }
-
-    @media (max-width: 900px) {
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-    }
+    @media (max-width:900px){ .grid-3{ grid-template-columns:1fr; } }
 
     .card {
-      background: var(--card);
-      border-radius: var(--radius-lg);
-      padding: 14px 14px 16px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-soft);
-      font-size: 13px;
+      background:var(--card);
+      border-radius:var(--radius-lg);
+      padding:14px 14px 16px;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow-soft);
+      font-size:13px;
     }
-
-    .card h3 {
-      font-size: 14px;
-      margin-bottom: 6px;
-    }
-
-    .card p {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
+    .card h3 { font-size:14px; margin-bottom:6px; }
+    .card p { font-size:12px; color:var(--muted); }
     .card-tag {
-      display: inline-block;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #a5b4fc;
-      margin-bottom: 4px;
+      display:inline-block; font-size:10px;
+      text-transform:uppercase; letter-spacing:0.12em;
+      color:#a5b4fc; margin-bottom:4px;
     }
 
-    .list {
-      font-size: 12px;
-      color: var(--muted);
-      padding-left: 16px;
-    }
-
-    .list li {
-      margin-bottom: 4px;
-    }
+    .list { font-size:12px; color:var(--muted); padding-left:16px; }
+    .list li { margin-bottom:4px; }
 
     /* Pricing */
     .pricing {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 16px;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
     }
-
-    @media (max-width: 900px) {
-      .pricing {
-        grid-template-columns: 1fr;
-      }
-    }
+    @media (max-width:900px){ .pricing{ grid-template-columns:1fr; } }
 
     .price-card {
-      background: radial-gradient(circle at top, rgba(168,85,247,0.25), #020617 55%);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(148,163,184,0.45);
-      padding: 16px 16px 18px;
-      box-shadow: var(--shadow-soft);
-      font-size: 13px;
-      position: relative;
-      overflow: hidden;
+      background:radial-gradient(circle at top,rgba(168,85,247,0.25),#020617 55%);
+      border-radius:var(--radius-lg);
+      border:1px solid rgba(148,163,184,0.45);
+      padding:16px 16px 18px;
+      box-shadow:var(--shadow-soft);
+      font-size:13px;
+      position:relative;
+      overflow:hidden;
     }
-
     .price-card.pro {
-      border-color: var(--accent-strong);
-      box-shadow: 0 0 28px rgba(236,72,153,0.45);
+      border-color:var(--accent-strong);
+      box-shadow:0 0 28px rgba(236,72,153,0.45);
     }
 
-    .price-name {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
+    .price-name { font-weight:600; margin-bottom:4px; }
     .price-badge {
-      font-size: 10px;
-      text-transform: uppercase;
-      color: var(--muted);
-      letter-spacing: 0.14em;
-      margin-bottom: 6px;
+      font-size:10px; text-transform:uppercase;
+      color:var(--muted); letter-spacing:0.14em;
+      margin-bottom:6px;
     }
 
-    .price {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
+    .price { font-size:20px; font-weight:700; margin-bottom:8px; }
+    .price span.per { font-size:11px; font-weight:400; color:var(--muted); }
 
-    .price span.per {
-      font-size: 11px;
-      font-weight: 400;
-      color: var(--muted);
-    }
-
-    .price-desc {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
+    .price-desc { font-size:11px; color:var(--muted); margin-bottom:10px; }
     .price-list {
-      font-size: 11px;
-      color: #e5e7eb;
-      padding-left: 16px;
-      margin-bottom: 10px;
+      font-size:11px; color:#e5e7eb;
+      padding-left:16px; margin-bottom:10px;
     }
+    .price-list li { margin-bottom:4px; }
 
-    .price-list li {
-      margin-bottom: 4px;
+    .price-cta { font-size:11px; color:#a5b4fc; margin-bottom:6px; }
+
+    .price-order {
+      display:inline-block;
+      margin-top:4px;
+      font-size:11px;
+      padding:6px 12px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,0.6);
+      cursor:pointer;
+      text-decoration:none;
+      color:#e5e7eb;
+      background:rgba(15,23,42,0.9);
     }
-
-    .price-cta {
-      font-size: 11px;
-      color: #a5b4fc;
+    .price-order:hover {
+      border-color:#a5b4fc;
+      color:#a5b4fc;
     }
 
     /* FAQ */
-    .faq-item {
-      margin-bottom: 10px;
-      font-size: 12px;
-    }
-
-    .faq-q {
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-
-    .faq-a {
-      color: var(--muted);
-    }
+    .faq-item { margin-bottom:10px; font-size:12px; }
+    .faq-q { font-weight:600; margin-bottom:2px; }
+    .faq-a { color:var(--muted); }
 
     footer {
-      margin-top: 20px;
-      font-size: 11px;
-      color: var(--muted);
-      text-align: center;
-      border-top: 1px solid rgba(148,163,184,0.3);
-      padding-top: 12px;
+      margin-top:20px;
+      font-size:11px;
+      color:var(--muted);
+      text-align:center;
+      border-top:1px solid rgba(148,163,184,0.3);
+      padding-top:12px;
     }
   </style>
 </head>
@@ -549,13 +389,15 @@
         </div>
 
         <div class="hero-qr-box">
-          <div class="hero-qr-code">
-            PLS<br/>QR<br/>Code
+          <div class="hero-qr-code"
+               onclick="copyAddress()"
+               title="Cliquer pour copier l’adresse PLS">
+            <img src="qr_pls.png" alt="QR paiement PLS" />
           </div>
           <div>
             Paiement en PLS sur PulseChain.<br/>
-            Adresse : <code>0x7a23b7...57a1</code><br/>
-            Après paiement, envoie ton TX hash en DM ou par mail pour recevoir ton pack.
+            Adresse : <code>0x7a23b75434942ddd7d9fe19aa0ed2fea08ed57a1</code><br/>
+            Clique sur le QR pour copier l’adresse, puis envoie ton TX hash en DM ou par mail pour recevoir ton pack.
           </div>
         </div>
       </div>
@@ -642,6 +484,7 @@
       </p>
 
       <div class="pricing">
+        <!-- STARTER -->
         <div class="price-card">
           <div class="price-badge">Essentiel</div>
           <div class="price-name">Starter</div>
@@ -658,8 +501,14 @@
           <div class="price-cta">
             👉 Idéal si tu veux tester avant de passer au PRO.
           </div>
+          <a class="price-order"
+             href="https://mail.google.com/mail/?view=cm&fs=1&to=whaletracker16@gmail.com&su=Commande%20Pack%20Starter%20(39$)&body=Salut,%20je%20veux%20commander%20le%20Pack%20Starter%20(39$).%0A%0AMon%20TX%20hash%20:%0A"
+             target="_blank" rel="noopener noreferrer">
+            Commander ce pack
+          </a>
         </div>
 
+        <!-- PRO -->
         <div class="price-card pro">
           <div class="price-badge">Recommandé</div>
           <div class="price-name">Pro</div>
@@ -677,8 +526,14 @@
           <div class="price-cta">
             👉 Le meilleur rapport puissance / simplicité pour ton trading PulseChain.
           </div>
+          <a class="price-order"
+             href="https://mail.google.com/mail/?view=cm&fs=1&to=whaletracker16@gmail.com&su=Commande%20Pack%20Pro%20(79$)&body=Salut,%20je%20veux%20commander%20le%20Pack%20Pro%20(79$).%0A%0AMon%20TX%20hash%20:%0A"
+             target="_blank" rel="noopener noreferrer">
+            Commander ce pack
+          </a>
         </div>
 
+        <!-- ULTIMATE -->
         <div class="price-card">
           <div class="price-badge">Avancé</div>
           <div class="price-name">Ultimate</div>
@@ -696,6 +551,11 @@
           <div class="price-cta">
             👉 Parfait si tu vois AutoPilot PulseChain comme un vrai outil long terme.
           </div>
+          <a class="price-order"
+             href="https://mail.google.com/mail/?view=cm&fs=1&to=whaletracker16@gmail.com&su=Commande%20Pack%20Ultimate%20(149$)&body=Salut,%20je%20veux%20commander%20le%20Pack%20Ultimate%20(149$).%0A%0AMon%20TX%20hash%20:%0A"
+             target="_blank" rel="noopener noreferrer">
+            Commander ce pack
+          </a>
         </div>
       </div>
     </section>
@@ -745,16 +605,28 @@
   </div>
 
   <script>
+    const PLS_ADDRESS = '0x7a23b75434942ddd7d9fe19aa0ed2fea08ed57a1';
+
     function copyEmail() {
       const email = 'whaletracker16@gmail.com';
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(email).then(function () {
-          alert('Adresse email copiée dans le presse-papier : ' + email);
-        }, function () {
-          alert('Impossible de copier automatiquement. Adresse : ' + email);
-        });
+        navigator.clipboard.writeText(email).then(
+          () => alert('Adresse email copiée : ' + email),
+          () => alert('Adresse email : ' + email)
+        );
       } else {
         alert('Adresse email : ' + email);
+      }
+    }
+
+    function copyAddress() {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(PLS_ADDRESS).then(
+          () => alert('Adresse PLS copiée : ' + PLS_ADDRESS),
+          () => alert('Adresse PLS : ' + PLS_ADDRESS)
+        );
+      } else {
+        alert('Adresse PLS : ' + PLS_ADDRESS);
       }
     }
   </script>
