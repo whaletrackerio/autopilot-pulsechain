@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>AutoPilot PulseChain Bot – Téléchargement de votre pack</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050816;
+      --card: #111827;
+      --accent: #a855f7;
+      --accent-strong: #ec4899;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius-lg: 16px;
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.65);
+    }
+
+    * { box-sizing:border-box; margin:0; padding:0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e1b4b 0, #020617 45%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+    }
+
+    .card {
+      width:100%;
+      max-width: 640px;
+      background: var(--card);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      padding: 24px 20px 26px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 8px;
+      text-align:center;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      text-align:center;
+      margin-bottom: 18px;
+    }
+
+    .info-box {
+      background: rgba(15,23,42,0.9);
+      border-radius: 14px;
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 12px 12px;
+      font-size: 12px;
+      margin-bottom: 18px;
+    }
+
+    .info-box b {
+      color: #e5e7eb;
+    }
+
+    .packs {
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    @media (max-width: 700px) {
+      .packs { grid-template-columns: 1fr; }
+    }
+
+    .pack-card {
+      background: rgba(15,23,42,0.9);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 12px 10px 14px;
+      font-size: 12px;
+    }
+
+    .pack-name {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .pack-price {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .pack-desc {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border:none;
+      cursor:pointer;
+      font-size: 12px;
+      font-weight: 600;
+      background: linear-gradient(120deg,#ec4899,#a855f7,#22d3ee);
+      color:#f9fafb;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.5);
+      text-decoration:none;
+      transition:0.15s;
+    }
+
+    .btn:hover {
+      opacity:0.92;
+      transform: translateY(-1px);
+    }
+
+    .warning {
+      font-size:11px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .warning b {
+      color:#f97373;
+    }
+
+    footer {
+      margin-top: 12px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align:center;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Téléchargement de votre pack</h1>
+    <p class="subtitle">
+      Merci pour votre achat 🙌 Sélectionnez le pack que vous avez commandé
+      pour accéder au téléchargement.
+    </p>
+
+    <div class="info-box">
+      <b>Important :</b><br/>
+      • Ce lien est réservé aux clients ayant payé leur pack en PLS.<br/>
+      • Votre paiement peut être vérifié sur PulseChain.<br/>
+      • En cas d’abus, l’accès pourra être révoqué.
+    </div>
+
+    <div class="packs">
+      <!-- STARTER -->
+      <div class="pack-card">
+        <div class="pack-name">Starter</div>
+        <div class="pack-price">39$ – 1 bot (HEX ou ATROPA)</div>
+        <div class="pack-desc">
+          Version d’entrée pour découvrir l’automatisation PulseChain.
+        </div>
+        <a class="btn"
+           href="LIEN_STARTER"
+           target="_blank" rel="noopener noreferrer">
+          🔓 Télécharger le pack Starter
+        </a>
+      </div>
+
+      <!-- PRO -->
+      <div class="pack-card">
+        <div class="pack-name">Pro</div>
+        <div class="pack-price">79$ – HEX + ATROPA</div>
+        <div class="pack-desc">
+          Pack complet avec les 2 bots principaux + docs.
+        </div>
+        <a class="btn"
+           href="https://drive.google.com/file/d/1-QLPcZbyQ294oQk0PLp1oUOCvpztKt8h/view?usp=sharing"
+           target="_blank" rel="noopener noreferrer">
+          🚀 Télécharger le pack Pro
+        </a>
+      </div>
+
+      <!-- ULTIMATE -->
+      <div class="pack-card">
+        <div class="pack-name">Ultimate</div>
+        <div class="pack-price">149$ – Pack complet + bonus</div>
+        <div class="pack-desc">
+          Accès long terme + mises à jour + priorités.
+        </div>
+        <a class="btn"
+           href="LIEN_ULTIMATE"
+           target="_blank" rel="noopener noreferrer">
+          👑 Télécharger le pack Ultimate
+        </a>
+      </div>
+    </div>
+
+    <p class="warning">
+      ⚠️ <b>Si vous n’avez pas encore payé</b>, merci d’effectuer le paiement
+      en PLS à l’adresse indiquée sur la page de vente avant de télécharger.
+    </p>
+
+    <footer>
+      AutoPilot PulseChain Bot – Livraison du pack.<br/>
+      En cas de problème, contactez : whaletracker16@gmail.com
+    </footer>
+  </div>
+</body>
+</html>
