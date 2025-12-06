@@ -37,6 +37,7 @@
       padding: 24px 16px 64px;
     }
 
+    /* --- LOGO + HEADER --- */
     header {
       display:flex;
       align-items:center;
@@ -45,32 +46,30 @@
       margin-bottom:32px;
     }
 
-    .brand { display:flex; align-items:center; gap:12px; }
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
 
-    /* Nouveau : logo image réel */
     .brand-logo-img {
-      width: 80px;
-      max-width: 24vw;
+      width: 120px;          /* logo plus grand sur desktop */
       height: auto;
       border-radius: 18px;
       box-shadow: 0 14px 35px rgba(0,0,0,0.75);
     }
 
-    /* Ancienne pastille A (non utilisée désormais, je la laisse au cas où) */
-    .brand-logo {
-      width:44px; height:44px;
-      border-radius:14px;
-      background:radial-gradient(circle at 20% 0%, #ec4899, #8b5cf6 40%, #0ea5e9 80%);
-      display:flex; align-items:center; justify-content:center;
-      font-weight:800; font-size:20px; color:#f9fafb;
-      box-shadow:0 12px 35px rgba(0,0,0,0.7);
+    .brand-text-title {
+      font-weight:700;
+      letter-spacing:0.03em;
+      font-size:22px;
     }
 
-    .brand-text-title { font-weight:700; letter-spacing:0.03em; font-size:18px; }
-
     .brand-text-sub {
-      font-size:12px; color:var(--muted);
-      text-transform:uppercase; letter-spacing:0.18em;
+      font-size:13px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.18em;
     }
 
     .header-tag {
@@ -86,6 +85,17 @@
     .header-tag span.dot {
       width:7px; height:7px; border-radius:999px;
       background:#22c55e; box-shadow:0 0 12px rgba(34,197,94,0.9);
+    }
+
+    /* Version mobile pour le logo */
+    @media (max-width:600px) {
+      .brand-logo-img {
+        width: 80px;
+      }
+
+      .brand-text-title {
+        font-size:18px;
+      }
     }
 
     /* HERO */
@@ -498,9 +508,9 @@
 
     <!-- SECTION: PACKS -->
     <section>
-      <h2 class="section-title">Choisis ton pack</h2>
+      <h2 class="section-title">Choisissez votre pack</h2>
       <p class="section-sub">
-        Pas d’abonnement, pas de renewal automatique. Tu payes une fois, le pack est à toi.
+        Pas d’abonnement, pas de renouvellement automatique. Vous payez une fois, le pack est à vous.
       </p>
       <div class="pricing">
         <!-- STARTER -->
@@ -518,7 +528,7 @@
             <li>Support par mail 3 jours</li>
           </ul>
           <div class="price-cta">
-            👉 Idéal si tu veux tester avant de passer au PRO.
+            👉 Idéal si vous voulez tester avant de passer au PRO.
           </div>
           <a class="price-order"
              href="https://mail.google.com/mail/?view=cm&fs=1&to=whaletracker16@gmail.com&su=Commande%20Pack%20Starter%20(39$)&body=Salut,%20je%20veux%20commander%20le%20Pack%20Starter%20(39$).%0A%0AMon%20TX%20hash%20:%0A"
@@ -543,7 +553,7 @@
             <li>Support installation 7 jours (mail / DM)</li>
           </ul>
           <div class="price-cta">
-            👉 Le meilleur rapport puissance / simplicité pour ton trading PulseChain.
+            👉 Le meilleur rapport puissance / simplicité pour votre trading PulseChain.
           </div>
           <a class="price-order"
              href="https://mail.google.com/mail/?view=cm&fs=1&to=whaletracker16@gmail.com&su=Commande%20Pack%20Pro%20(79$)&body=Salut,%20je%20veux%20commander%20le%20Pack%20Pro%20(79$).%0A%0AMon%20TX%20hash%20:%0A"
@@ -565,10 +575,10 @@
             <li>Mises à jour futures incluses</li>
             <li>Priorité support</li>
             <li>Accès aux futurs modules (nouveaux bots)</li>
-            <li>Ressources marketing si tu veux revendre en affiliation (selon conditions)</li>
+            <li>Ressources marketing si vous voulez revendre en affiliation (selon conditions)</li>
           </ul>
           <div class="price-cta">
-            👉 Parfait si tu vois AutoPilot PulseChain comme un vrai outil long terme.
+            👉 Parfait si vous voyez AutoPilot PulseChain comme un vrai outil long terme.
           </div>
           <a class="price-order"
              href="https://mail.google.com/mail/?view=cm&fs=1&to=whaletracker16@gmail.com&su=Commande%20Pack%20Ultimate%20(149$)&body=Salut,%20je%20veux%20commander%20le%20Pack%20Ultimate%20(149$).%0A%0AMon%20TX%20hash%20:%0A"
