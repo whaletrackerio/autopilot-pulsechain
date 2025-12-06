@@ -302,10 +302,13 @@
     </div>
   </main>
 
-  <script>
+    <script>
+    // Récupération du paramètre ?pack= dans l'URL
     const params = new URLSearchParams(window.location.search);
     const packParam = (params.get("pack") || "pro").toLowerCase();
 
+    // Packs + IDs Google Drive
+    // Format lien direct : https://drive.google.com/uc?export=download&id=ID_DU_FICHIER
     const packs = {
       starter: {
         name: "Pack Starter",
@@ -319,26 +322,29 @@
         price: "79 $ – paiement unique",
         desc: "Bots HEX + ATROPA AutoPilot, configs optimisées, guide complet et support 7 jours.",
         chips: ["Bots HEX & ATROPA", "Configs optimisées", "Documentation complète", "Support 7 jours"],
-        driveId: "1-QLPcZbyQ294oQk0PLp1oUOCvpztKt8h"
+        driveId: "1fyrN12wAMNIVjyQVEYpi2TJgEqkjaXNG"
       },
       ultimate: {
         name: "Pack Ultimate",
         price: "149 $ – paiement unique",
-        desc: "Tout le pack Pro + mises à jour futures, priorité support et ressources marketing.",
-        chips: ["Tout le pack Pro", "Mises à jour incluses", "Priorité support", "Ressources marketing"],
-        driveId: "ID_GOOGLE_DRIVE_ULTIMATE"
+        desc: "Bots HEX + ATROPA + Scalper, mises à jour futures, priorité support et ressources bonus.",
+        chips: ["HEX + ATROPA + Scalper", "Mises à jour incluses", "Priorité support", "Ressources bonus"],
+        driveId: "1pkunOM6n1pWeY9F_MhoojCMGZh976DAs"
       }
     };
 
+    // Choix du pack (fallback sur Pro si inconnu)
     const pack = packs[packParam] || packs.pro;
 
+    // Construction du lien de téléchargement Google Drive
     let downloadUrl = "#";
-    if (pack.driveId && !pack.driveId.startsWith("ID_GOOGLE_DRIVE")) {
+    if (pack.driveId) {
       downloadUrl = `https://drive.google.com/uc?export=download&id=${pack.driveId}`;
     }
 
+    // Injection dans la page
     document.getElementById("pack-name").textContent = pack.name;
-    document.getElementById("pack-price").textContent = pack.price;
+    document.getElementById("pack-price").innerHTML = pack.price;
     document.getElementById("pack-desc").textContent = pack.desc;
 
     const chipsContainer = document.getElementById("pack-chips");
@@ -359,6 +365,7 @@
       downloadBtn.style.pointerEvents = "none";
     }
   </script>
+
 </body>
 </html>
 
