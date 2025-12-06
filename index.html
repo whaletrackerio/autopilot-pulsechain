@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>AutoPilot PulseChain Bot – Automatisation HEX & ATROPA</title>
+  <title>AutoPilot PulseChain Bot – 3 Bots PRO pour HEX / ATROPA / PLS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
@@ -271,17 +271,20 @@
     }
 
     .hero-qr-code {
-      width: 64px;
-      height: 64px;
+      width: 72px;
+      height: 72px;
       border-radius: 12px;
-      background: radial-gradient(circle at 20% 0%, #ec4899, #8b5cf6 40%, #0ea5e9 80%);
+      overflow: hidden;
+      background: #020617;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
-      color: #f9fafb;
-      text-align: center;
-      padding: 6px;
+    }
+
+    .hero-qr-code img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     /* Sections */
@@ -353,14 +356,8 @@
     /* Pricing */
     .pricing {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      grid-template-columns: minmax(0,1fr);
       gap: 16px;
-    }
-
-    @media (max-width: 900px) {
-      .pricing {
-        grid-template-columns: 1fr;
-      }
     }
 
     .price-card {
@@ -475,57 +472,60 @@
           passe enfin en pilote automatique.
         </h1>
         <p class="hero-sub">
-          AutoPilot PulseChain Bot automatise tes stratégies sur HEX et ATROPA : achat intelligent,
-          take profit, stop loss, ré-entrée, le tout exécuté depuis ton propre PC. Aucune clé privée
-          envoyée en ligne, aucun abonnement, aucun bullshit.
+          AutoPilot PulseChain Bot automatise tes stratégies sur HEX, ATROPA et PLS :
+          achat intelligent, take profit, stop loss, ré-entrée, le tout exécuté depuis ton propre PC.
+          Aucune clé privée envoyée en ligne, aucun abonnement, aucun bullshit.
         </p>
 
         <div class="hero-badges">
           <span class="badge">HEX / PHEX AutoPilot</span>
           <span class="badge">ATROPA / DAI AutoPilot</span>
+          <span class="badge">PLS Scalper</span>
           <span class="badge">TP / SL automatiques</span>
           <span class="badge">Paiement en PLS</span>
         </div>
 
         <div class="hero-cta">
-          <button class="btn-primary">
+          <a href="#paiement" class="btn-primary">
             <span class="icon">⚡</span>
             Obtenir le Pack PRO (99$)
-          </button>
-          <button class="btn-ghost">
+          </a>
+          <a class="btn-ghost" href="https://x.com/jhonivangonthi1" target="_blank" rel="noopener">
             📩 DM sur X pour commander
-          </button>
+          </a>
         </div>
         <div class="hero-note">
-          Paiement simple en PLS &nbsp;•&nbsp; Envoi du pack par mail ou DM après confirmation de la transaction.
+          Paiement simple en PLS • Envoi du pack (ZIP + PDF) par mail ou DM après confirmation de la transaction.
         </div>
       </div>
 
-      <div class="hero-right">
+      <div class="hero-right" id="paiement">
         <div class="hero-right-title">Vue rapide du système</div>
-        <div class="hero-right-sub">Deux bots, une seule logique : faire travailler ton sac à ta place.</div>
+        <div class="hero-right-sub">Trois bots, une seule logique : faire travailler ton sac à ta place.</div>
 
         <div class="hero-metrics">
           <div class="metric-card">
-            <div class="metric-label">Bot HEX / PHEX</div>
-            <div class="metric-value">TP +0,35%</div>
-            <div class="metric-tag">Stop Loss −0,30% • Accumulation</div>
+            <div class="metric-label">HEX / PHEX + PLS Scalper</div>
+            <div class="metric-value">TP +0,35%*</div>
+            <div class="metric-tag">Stop Loss serré • Scalping PulseChain</div>
           </div>
           <div class="metric-card">
-            <div class="metric-label">Bot ATROPA / DAI</div>
-            <div class="metric-value">TP +0,35%*</div>
-            <div class="metric-tag">Mode Turbo dynamique • Scalping</div>
+            <div class="metric-label">ATROPA / DAI</div>
+            <div class="metric-value">Mode Turbo</div>
+            <div class="metric-tag">Stratégie agressive • Volatilité ATROPA</div>
           </div>
         </div>
 
         <div class="hero-qr-box">
           <div class="hero-qr-code">
-            PLS<br/>QR<br/>Code
+            <!-- Mets ici ton vrai fichier QR -->
+            <img src="qr_pls.png" alt="QR Code PLS" />
           </div>
           <div class="hero-qr-text">
             Paiement en PLS sur PulseChain.<br/>
-            Adresse : <code>0x7a23b7...57a1</code><br/>
-            Après paiement, envoie ton TX hash en DM pour recevoir ton pack.
+            Adresse : <code>0x7a23b75434942ddd7d9fe19aa0ed2fea08ed57a1</code><br/>
+            Après paiement, envoie ton TX hash par DM à <b>@jhonivangonthi1</b><br/>
+            ou par mail à <b>whaletracker16@gmail.com</b>.
           </div>
         </div>
       </div>
@@ -559,10 +559,10 @@
         </div>
         <div class="card">
           <div class="card-tag">PulseChain natif</div>
-          <h3>Conçu pour HEX & ATROPA</h3>
+          <h3>Conçu pour HEX, ATROPA & PLS</h3>
           <p>
-            Les stratégies sont optimisées spécifiquement pour le comportement de HEX / PHEX et ATROPA / DAI
-            sur PulseChain : volatilité, profondeur, rythme du marché.
+            Les stratégies sont optimisées spécifiquement pour le comportement de HEX / PHEX, ATROPA / DAI
+            et le scalping PLS sur PulseChain : volatilité, profondeur, rythme du marché.
           </p>
         </div>
       </div>
@@ -573,7 +573,7 @@
       <h2 class="section-title">Comment ça marche concrètement ?</h2>
       <p class="section-sub">
         Tu n’as pas besoin d’être développeur. Le pack est pensé pour être installé en quelques étapes simples,
-        avec une documentation claire.
+        avec une documentation claire (PDF inclus).
       </p>
 
       <div class="grid-3">
@@ -596,75 +596,39 @@
         <div class="card">
           <h3>3. Lancement</h3>
           <ul class="list">
-            <li>Double clic sur <code>lancer_hex.bat</code></li>
-            <li>Double clic sur <code>lancer_atropa.bat</code></li>
-            <li>Surveiller la console au début, puis laisser tourner</li>
+            <li>Double clic sur les launchers (.bat)</li>
+            <li>Surveiller la console au début</li>
+            <li>Puis laisser tourner pendant que tu fais autre chose</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- SECTION: PACKS -->
+    <!-- SECTION: PACK PRO -->
     <section>
-      <h2 class="section-title">Choisis ton pack</h2>
+      <h2 class="section-title">Pack PRO – 3 bots, paiement unique</h2>
       <p class="section-sub">
-        Pas d’abonnement, pas de renewal automatique. Tu payes une fois, le pack est à toi.
+        Pas d’abonnement, pas de renouvellement automatique. Tu payes une fois, le pack est à toi.
       </p>
 
       <div class="pricing">
-        <div class="price-card">
-          <div class="price-badge">Essentiel</div>
-          <div class="price-name">Starter</div>
-          <div class="price">39$ <span class="per">/ paiement unique</span></div>
-          <p class="price-desc">
-            Pour découvrir l’automatisation PulseChain en douceur.
-          </p>
-          <ul class="price-list">
-            <li>1 bot (HEX <b>ou</b> ATROPA)</li>
-            <li>Config de base incluse</li>
-            <li>Guide PDF d’installation rapide</li>
-            <li>Support par mail 3 jours</li>
-          </ul>
-          <div class="price-cta">
-            👉 Idéal si tu veux tester avant de passer au PRO.
-          </div>
-        </div>
-
         <div class="price-card pro">
           <div class="price-badge">Recommandé</div>
-          <div class="price-name">Pro</div>
-          <div class="price">79$ <span class="per">/ paiement unique</span></div>
+          <div class="price-name">Pack PRO – AutoPilot PulseChain Bot</div>
+          <div class="price">99$ <span class="per">/ paiement unique</span></div>
           <p class="price-desc">
-            L’option la plus équilibrée pour automatiser HEX & ATROPA simultanément.
+            L’option complète pour automatiser ton trading HEX, ATROPA et PLS sur PulseChain.
           </p>
           <ul class="price-list">
-            <li>Bot HEX / PHEX AutoPilot</li>
-            <li>Bot ATROPA / DAI AutoPilot</li>
-            <li>Configs optimisées par défaut</li>
-            <li>Documentation complète (PDF + glossaire)</li>
-            <li>Support installation 7 jours (mail / DM)</li>
+            <li>Bot HEX / PHEX AutoPilot (TP / SL auto)</li>
+            <li>Bot ATROPA / DAI Mode Turbo</li>
+            <li>Bot PLS Scalper (micro‐profits fréquents)</li>
+            <li>Config optimisée par défaut</li>
+            <li>Guide PDF complet</li>
+            <li>Support installation (mail / DM X)</li>
           </ul>
           <div class="price-cta">
-            👉 Le meilleur rapport puissance / simplicité pour ton trading PulseChain.
-          </div>
-        </div>
-
-        <div class="price-card">
-          <div class="price-badge">Avancé</div>
-          <div class="price-name">Ultimate</div>
-          <div class="price">149$ <span class="per">/ paiement unique</span></div>
-          <p class="price-desc">
-            Pour ceux qui veulent un accompagnement complet et des bonus.
-          </p>
-          <ul class="price-list">
-            <li>Tout le pack PRO</li>
-            <li>Mises à jour futures incluses</li>
-            <li>Priorité support</li>
-            <li>Accès aux futurs modules (nouveaux bots)</li>
-            <li>Ressources marketing si tu veux revendre en affiliation (selon conditions)</li>
-          </ul>
-          <div class="price-cta">
-            👉 Parfait si tu vois AutoPilot PulseChain comme un vrai outil long terme.
+            👉 Après paiement, envoie ton TX hash à <b>@jhonivangonthi1</b> ou par mail à <b>whaletracker16@gmail.com</b>.
           </div>
         </div>
       </div>
@@ -685,7 +649,7 @@
       <div class="faq-item">
         <div class="faq-q">Est-ce que c’est garanti de faire des gains ?</div>
         <div class="faq-a">
-          Non, évidemment. Le bot automatise une stratégie, mais le marché reste risqué.
+          Non. Le bot automatise une stratégie, mais le marché reste risqué.
           Tu dois toujours utiliser un capital que tu es prêt à voir fluctuer.
         </div>
       </div>
@@ -693,7 +657,8 @@
       <div class="faq-item">
         <div class="faq-q">Comment je paie et comment je reçois le pack ?</div>
         <div class="faq-a">
-          Tu paies en PLS sur PulseChain à l’adresse indiquée, puis tu envoies ton TX hash en DM (ou par mail).
+          Tu paies en PLS sur PulseChain à l’adresse indiquée, puis tu envoies ton TX hash en DM
+          à <b>@jhonivangonthi1</b> ou par mail à <b>whaletracker16@gmail.com</b>.
           Après vérification, tu reçois ton pack (ZIP) + documentation.
         </div>
       </div>
@@ -701,16 +666,18 @@
       <div class="faq-item">
         <div class="faq-q">Et si j’ai un problème pour l’installer ?</div>
         <div class="faq-a">
-          Les packs Pro et Ultimate incluent un support pour t’aider à installer et vérifier que tout tourne
-          correctement sur ton PC.
+          Le pack inclut un support pour t’aider à installer et vérifier que tout tourne
+          correctement sur ton PC (dans la limite du raisonnable).
         </div>
       </div>
     </section>
 
     <footer>
-      AutoPilot PulseChain Bot – Outil d’automatisation de trading pour HEX & ATROPA sur PulseChain.<br/>
-      Ce projet ne garantit aucun rendement. Tu restes responsable de l’utilisation de tes fonds.
+      AutoPilot PulseChain Bot – Outil d’automatisation de trading pour HEX, ATROPA & PLS sur PulseChain.<br/>
+      Aucun rendement n’est garanti. Tu restes responsable de l’utilisation de tes fonds.<br/>
+      Contact : <b>@jhonivangonthi1</b> • <b>whaletracker16@gmail.com</b>
     </footer>
   </div>
 </body>
 </html>
+
