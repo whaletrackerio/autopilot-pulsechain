@@ -200,6 +200,67 @@
       font-size: 14px;
       color: var(--muted);
       line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .code-label {
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .code-input-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .code-input {
+      flex: 1;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(148,163,255,0.6);
+      background: #020617;
+      color: var(--text);
+      font-size: 14px;
+      outline: none;
+    }
+
+    .code-input:focus {
+      border-color: #a855f7;
+      box-shadow: 0 0 0 1px rgba(168,85,247,0.5);
+    }
+
+    .code-btn {
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #a855f7, #ec4899);
+      color: white;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .code-help {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .code-error {
+      font-size: 12px;
+      color: var(--danger);
+      min-height: 16px;
+    }
+
+    .code-success {
+      font-size: 12px;
+      color: #4ade80;
+      min-height: 16px;
     }
 
     .download-btn {
@@ -233,13 +294,10 @@
       box-shadow: 0 10px 25px rgba(236,72,153,0.45);
     }
 
-    .download-icon {
-      font-size: 17px;
-    }
-
     .download-help {
       font-size: 12px;
       color: var(--muted);
+      margin-top: 4px;
     }
 
     .footer {
@@ -279,13 +337,23 @@
       color: var(--danger);
       margin-top: 6px;
     }
+
+    .badge-code {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #facc15;
+      margin-top: 4px;
+      opacity: 0.85;
+    }
   </style>
 </head>
 <body>
   <div class="wrapper">
     <div class="badge">
       <span class="badge-dot"></span>
-      <span>TÉLÉCHARGEMENT SÉCURISÉ</span>
+      <span>TÉLÉCHARGEMENT SÉCURISÉ PAR CODE</span>
     </div>
 
     <h1 class="heading">
@@ -293,8 +361,8 @@
     </h1>
 
     <p class="subtitle">
-      Tu peux télécharger ton pack ci-dessous. Garde ce lien pour toi, il est personnel et
-      réservé à ton usage uniquement.
+      Pour des raisons de sécurité, le téléchargement de ton pack est protégé par un
+      <strong>code unique</strong>. Garde-le confidentiel : il est associé à ton achat.
     </p>
 
     <div class="content">
@@ -314,7 +382,8 @@
         <div class="disclaimer">
           <span class="disclaimer-icon">📁</span>
           <span>
-            Garde ce fichier en sécurité et ne le partage pas. L’usage est strictement réservé à l’acheteur.
+            Ce pack est réservé à l’acheteur. Ne partage pas ton code, ni ce lien, sur les réseaux sociaux
+            ou avec des tiers. Toute diffusion non autorisée peut entraîner la désactivation de l’accès.
           </span>
         </div>
 
@@ -323,16 +392,39 @@
         </div>
       </section>
 
-      <!-- Carte Téléchargement -->
+      <!-- Carte Code + Téléchargement -->
       <section class="download-card">
-        <p class="download-text">
-          Clique sur le bouton ci-dessous pour télécharger ton pack au format ZIP via Google Drive.
-        </p>
-
         <div>
+          <p class="download-text">
+            Entre ton <strong>code de déverrouillage</strong> pour afficher le bouton de téléchargement de ton pack.
+          </p>
+
+          <div class="code-label">Code unique reçu après paiement :</div>
+          <div class="code-input-row">
+            <input
+              id="code-input"
+              class="code-input"
+              type="text"
+              placeholder="Exemple : APB-STARTER-8F29"
+              autocomplete="off"
+            />
+            <button id="code-btn" class="code-btn" type="button">
+              ✅ Valider
+            </button>
+          </div>
+          <div class="code-help">
+            Respecte bien les tirets. Le code peut être utilisé <strong>une seule fois</strong> sur ton appareil.
+          </div>
+          <div id="code-message" class="code-error"></div>
+          <div id="code-message-success" class="code-success"></div>
+          <div class="badge-code">
+            🔐 Sécurité : si ton code est partagé publiquement, il pourra être désactivé.
+          </div>
+        </div>
+
+        <div id="download-section" style="display:none; margin-top: 14px;">
           <a id="download-link" class="download-btn" href="#" target="_blank" rel="noopener">
-            <span class="download-icon">⬇️</span>
-            <span id="download-text">Télécharger mon pack</span>
+            <span>⬇️ Télécharger mon pack</span>
           </a>
           <p class="download-help">
             Si le téléchargement ne se lance pas, fais clic droit sur le bouton puis
@@ -353,36 +445,55 @@
   </div>
 
   <script>
-    // ⚠️ Remplace les IDs si besoin pour associer exactement chaque pack à son bon fichier Google Drive.
-    // Pour un lien de type:
-    //   https://drive.google.com/file/d/ID_DU_FICHIER/view?usp=sharing
-    // on utilise: https://drive.google.com/uc?export=download&id=ID_DU_FICHIER
+    // ======================
+    //  CONFIG PACKS + CODES
+    // ======================
+
+    // ⚠ IMPORTANT :
+    // Remplace les codes exemple par TES codes réels.
+    // Exemple : quand tu vends un Starter, tu donnes APB-STARTER-0001 au client.
+    // Quand il est utilisé, tu pourras ensuite le retirer de la liste dans le code.
 
     const PACKS = {
       starter: {
         name: "Pack Starter",
         price: "39 $ — paiement unique",
         description: "1 bot ATROPA, config de base, guide PDF d’installation rapide.",
-        tags: ["1 bot ATROPA", "Config de base", "Support 3 jours (mail)"],
-        driveId: "1SOCIGU-tiATzw-F2YxpGY4m3YSmlKhBM"   // ⚠️ vérifie que c’est bien le STARTER
+        tags: ["1 bot ATROPA", "Config de base", "Guide d’installation"],
+        driveId: "1SOCIGU-tiATzw-F2YxpGY4m3YSmlKhBM",
+        // Liste de codes autorisés pour le Starter
+        codes: [
+          "APB-STARTER-0001",
+          "APB-STARTER-0002",
+          "APB-STARTER-0003"
+        ]
       },
       pro: {
         name: "Pack Pro",
         price: "79 $ — paiement unique",
         description: "Bots HEX + ATROPA AutoPilot, configs optimisées, guide complet et support 7 jours.",
         tags: ["Bots HEX & ATROPA", "Configs optimisées", "Documentation complète", "Support 7 jours"],
-        driveId: "1sq02bBFdGxvHi3DBDztnwvxnWuXWOiNN"   // tu m’as indiqué ce lien pour le pack PRO
+        driveId: "1sq02bBFdGxvHi3DBDztnwvxnWuXWOiNN",
+        codes: [
+          "APB-PRO-0001",
+          "APB-PRO-0002",
+          "APB-PRO-0003"
+        ]
       },
       ultimate: {
         name: "Pack Ultimate",
         price: "149 $ — paiement unique",
         description: "Bots HEX + ATROPA + Scalper, mises à jour futures, priorité support et ressources bonus.",
-        tags: ["HEX + ATROPA + Scalper", "Mises à jour incluses", "Priorité support", "Ressources bonus"],
-        driveId: "1Tj2W7tvevd5zyRL0ms_oOwFkbObu0dBE"   // ⚠️ vérifie que c’est bien l’ULTIMATE
+        tags: ["HEX + ATROPA + Scalper", "Mises à jour incluses", "Support prioritaire", "Ressources bonus"],
+        driveId: "1Tj2W7tvevd5zyRL0ms_oOwFkbObu0dBE",
+        codes: [
+          "APB-ULTI-0001",
+          "APB-ULTI-0002",
+          "APB-ULTI-0003"
+        ]
       }
     };
 
-    // Lecture du paramètre ?pack=starter|pro|ultimate
     const params = new URLSearchParams(window.location.search);
     const packParam = (params.get("pack") || "starter").toLowerCase();
 
@@ -390,17 +501,15 @@
     const errorEl = document.getElementById("pack-error");
 
     if (!pack) {
-      // Pack inconnu → on bascule sur Starter par défaut
       pack = PACKS["starter"];
       if (errorEl) errorEl.style.display = "block";
     }
 
-    // Mise à jour du texte
+    // Mise à jour des infos pack
     document.getElementById("pack-name").textContent = pack.name;
     document.getElementById("pack-price").textContent = pack.price;
     document.getElementById("pack-description").textContent = pack.description;
 
-    // Tags
     const tagsContainer = document.getElementById("pack-tags");
     tagsContainer.innerHTML = "";
     pack.tags.forEach(t => {
@@ -410,14 +519,64 @@
       tagsContainer.appendChild(span);
     });
 
-    // Lien de téléchargement
     const dlLink = document.getElementById("download-link");
     const baseDriveUrl = "https://drive.google.com/uc?export=download&id=";
     dlLink.href = baseDriveUrl + encodeURIComponent(pack.driveId);
 
-    // Texte du bouton (facultatif, on peut différencier)
-    const dlText = document.getElementById("download-text");
-    dlText.textContent = "Télécharger mon pack";
+    const codeInput = document.getElementById("code-input");
+    const codeBtn = document.getElementById("code-btn");
+    const codeMsg = document.getElementById("code-message");
+    const codeMsgOk = document.getElementById("code-message-success");
+    const dlSection = document.getElementById("download-section");
+
+    // LocalStorage key pour "code déjà utilisé sur cet appareil"
+    function usedKeyFor(code) {
+      return "APB_CODE_USED_" + packParam + "_" + code.toUpperCase();
+    }
+
+    function isCodeUsedLocally(code) {
+      return localStorage.getItem(usedKeyFor(code)) === "1";
+    }
+
+    function markCodeUsedLocally(code) {
+      localStorage.setItem(usedKeyFor(code), "1");
+    }
+
+    codeBtn.addEventListener("click", function () {
+      const raw = (codeInput.value || "").trim();
+      const code = raw.toUpperCase();
+      codeMsg.textContent = "";
+      codeMsgOk.textContent = "";
+
+      if (!code) {
+        codeMsg.textContent = "Merci de saisir ton code.";
+        dlSection.style.display = "none";
+        return;
+      }
+
+      // Vérifie si le code est dans la liste autorisée
+      const validCodes = pack.codes.map(c => c.toUpperCase());
+      const isValid = validCodes.includes(code);
+
+      if (!isValid) {
+        codeMsg.textContent = "Code invalide. Vérifie les tirets et la casse (majuscule/minuscule).";
+        dlSection.style.display = "none";
+        return;
+      }
+
+      // Vérifie si ce code est déjà utilisé sur CET appareil
+      if (isCodeUsedLocally(code)) {
+        codeMsg.textContent = "Ce code a déjà été utilisé sur cet appareil.";
+        dlSection.style.display = "none";
+        return;
+      }
+
+      // Si OK, on marque comme utilisé en local et on affiche le téléchargement
+      markCodeUsedLocally(code);
+      codeMsg.textContent = "";
+      codeMsgOk.textContent = "Code valide. Téléchargement déverrouillé ✅";
+      dlSection.style.display = "block";
+    });
   </script>
 </body>
 </html>
