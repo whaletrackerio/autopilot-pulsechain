@@ -330,6 +330,48 @@
       border-top:1px solid rgba(148,163,184,0.3);
       padding-top:12px;
     }
+
+    /* ===== AVERTISSEMENT RISQUE TRADING ===== */
+    .warning-box {
+      background: var(--card);
+      border: 1px solid var(--danger);
+      color: var(--text);
+      padding: 1.5rem 1.75rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .warning-box h2 {
+      margin: 0 0 0.75rem 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--danger);
+    }
+
+    .warning-box p {
+      margin: 0 0 0.75rem 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .warning-box ul {
+      margin: 0 0 0.75rem 1.2rem;
+      padding: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .warning-box ul li {
+      margin-bottom: 0.3rem;
+    }
+
+    .warning-box .warning-accept {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
   </style>
 </head>
 <body>
@@ -497,6 +539,25 @@
           </ul>
         </div>
       </div>
+    </section>
+
+    <!-- AVERTISSEMENT IMPORTANT -->
+    <section class="warning-box">
+      <h2>⚠️ Avertissement important</h2>
+      <p>
+        Les bots <strong>AutoPilot PulseChain</strong> sont des outils d’automatisation de trading.
+        Ils comportent des <strong>risques importants de pertes financières</strong>.
+      </p>
+      <ul>
+        <li>Aucun bot ne garantit un profit, même si le marché monte.</li>
+        <li>Les performances passées ne préjugent pas des performances futures.</li>
+        <li>Tu es seul responsable de tes réglages, de ton capital et de tes décisions.</li>
+        <li>Ne trade jamais avec de l’argent que tu ne peux pas te permettre de perdre.</li>
+      </ul>
+      <p class="warning-accept">
+        En téléchargeant et en utilisant ces bots, tu confirmes avoir compris ces risques
+        et accepter d’utiliser ces outils <strong>sous ta seule responsabilité</strong>.
+      </p>
     </section>
 
     <!-- SECTION: PACKS -->
