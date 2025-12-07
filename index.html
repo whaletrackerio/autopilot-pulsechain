@@ -1,4 +1,4 @@
-<!-- rebuild sans pack Ultimate -->
+<!-- rebuild -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -91,7 +91,6 @@
     @media (max-width:600px) {
       .brand-logo-img { width: 80px; }
       .brand-text-title { font-size:18px; }
-      header { flex-direction:column; align-items:flex-start; }
     }
 
     /* HERO */
@@ -159,10 +158,7 @@
 
     .btn-copy {
       border:1px dashed rgba(148,163,184,0.5);
-      color:#e5e7eb; font-size:12px;
-      padding:8px 16px;
-      border-radius:999px;
-      background:rgba(15,23,42,0.9);
+      color:#e5e7eb; font-size:12px; padding:8px 16px;
     }
     .btn-copy:hover { border-color:#e5e7eb; }
 
@@ -209,12 +205,11 @@
     }
 
     .hero-qr-code {
-      width:64px; height:64px;
+      width:72px; height:72px;
       border-radius:12px;
       overflow:hidden;
       cursor:pointer;
       box-shadow:0 10px 25px rgba(0,0,0,0.6);
-      flex-shrink:0;
     }
 
     .hero-qr-code img {
@@ -223,7 +218,7 @@
 
     section { margin-bottom:40px; }
 
-    h2.section-title { font-size:20px; margin-bottom:10px; }
+    h2.section-title { font-size:18px; margin-bottom:10px; }
 
     .section-sub { font-size:13px; color:var(--muted); margin-bottom:16px; }
 
@@ -258,9 +253,10 @@
     /* Pricing */
     .pricing {
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      grid-template-columns:repeat(2,minmax(0,1fr));
       gap:16px;
     }
+    @media (max-width:900px){ .pricing{ grid-template-columns:1fr; } }
 
     .price-card {
       background:radial-gradient(circle at top,rgba(168,85,247,0.25),#020617 55%);
@@ -375,18 +371,21 @@
         </div>
 
         <div class="hero-cta">
+          <!-- 1. DM X -->
           <a class="btn-x"
              href="https://x.com/jhonivangonthi1"
              target="_blank" rel="noopener noreferrer">
             ⚡ Commander via X (DM)
           </a>
 
+          <!-- 2. Gmail web -->
           <a class="btn-gmail"
              href="https://mail.google.com/mail/?view=cm&fs=1&to=whaletracker16@gmail.com&su=Commande%20AutoPilot%20PulseChain%20Bot&body=Salut,%20je%20veux%20commander%20le%20pack%20AutoPilot%20PulseChain%20Bot.%0A%0AMon%20TX%20hash%20:%0A"
              target="_blank" rel="noopener noreferrer">
             📩 Commander par Gmail
           </a>
 
+          <!-- 3. Copier email -->
           <button type="button" class="btn-copy" onclick="copyEmail()">
             📋 Copier l’adresse email
           </button>
@@ -405,7 +404,7 @@
           <div class="metric-card">
             <div class="metric-label">Bot HEX / PHEX</div>
             <div class="metric-value">TP +0,35%</div>
-            <div class="metric-tag">Stop Loss –0,30% • Accumulation</div>
+            <div class="metric-tag">Stop Loss −0,30% • Accumulation</div>
           </div>
           <div class="metric-card">
             <div class="metric-label">Bot ATROPA / DAI</div>
@@ -504,7 +503,7 @@
     <section>
       <h2 class="section-title">Choisis ton pack</h2>
       <p class="section-sub">
-        Pas d’abonnement, pas de renewal automatique. Tu payes une fois, le pack est à toi.
+        Pas d’abonnement, pas de renewal automatique. Tu paies une fois, le pack est à toi.
       </p>
       <div class="pricing">
         <!-- STARTER -->
@@ -516,13 +515,13 @@
             Pour découvrir l’automatisation PulseChain en douceur.
           </p>
           <ul class="price-list">
-            <li>1 bot (HEX ou ATROPA)</li>
+            <li>1 bot ATROPA / DAI AutoPilot</li>
             <li>Config de base incluse</li>
             <li>Guide PDF d’installation rapide</li>
             <li>Support par mail 3 jours</li>
           </ul>
           <div class="price-cta">
-            👉 Idéal si tu veux tester avant de passer au PRO.
+            👉 Idéal pour tester avant de passer au PRO.
           </div>
           <a class="price-order"
              href="https://mail.google.com/mail/?view=cm&fs=1&to=whaletracker16@gmail.com&su=Commande%20Pack%20Starter%20(39$)&body=Salut,%20je%20veux%20commander%20le%20Pack%20Starter%20(39$).%0A%0AMon%20TX%20hash%20:%0A"
@@ -562,14 +561,14 @@
     <section>
       <h2 class="section-title">🎯 Comment commander ?</h2>
       <p class="section-sub">
-        Suivez ces 3 étapes simples pour recevoir votre pack dans les minutes qui suivent.
+        Suis ces 3 étapes simples pour recevoir ton pack dans les minutes qui suivent.
       </p>
       <ul class="list">
-        <li><b>1️⃣ Choisissez votre pack</b> (Starter ou Pro).</li>
-        <li><b>2️⃣ Envoyez le montant en PLS</b> à cette adresse :
+        <li><b>1️⃣ Choisis ton pack</b> (Starter ou Pro).</li>
+        <li><b>2️⃣ Envoie le montant en PLS</b> à cette adresse :
           <code>0x7a23b75434942ddd7d9fe19aa0ed2fea08ed57a1</code>
         </li>
-        <li><b>3️⃣ Envoyez votre TX hash</b> via :
+        <li><b>3️⃣ Envoie ton TX hash</b> via :
           <br>• X (DM) : <b>@jhonivangonthi1</b>
           <br>• Email : <b>whaletracker16@gmail.com</b>
         </li>
@@ -580,7 +579,7 @@
     <section>
       <h2 class="section-title">🔐 Vérification & réception du pack</h2>
       <p class="section-sub">
-        Votre transaction est vérifiée manuellement pour garantir une livraison sécurisée.
+        Ta transaction est vérifiée manuellement pour garantir une livraison sécurisée.
       </p>
       <ul class="list">
         <li>Status : <b>Success</b></li>
@@ -588,10 +587,10 @@
         <li>Montant reçu correspondant au pack sélectionné.</li>
       </ul>
       <p class="section-sub" style="margin-top:10px;">
-        Une fois validé, vous recevrez immédiatement :
+        Une fois validée, tu reçois immédiatement :
       </p>
       <ul class="list">
-        <li>📦 Votre pack ZIP complet</li>
+        <li>📦 Ton pack ZIP complet incluant :</li>
         <li>📘 Documentation PDF</li>
         <li>⚙️ Configurations par défaut</li>
         <li>💬 Support installation (selon le pack)</li>
@@ -611,7 +610,7 @@
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">Est-ce que c’est garanti de faire des gains ?</div>
+        <div class="faq-q">Les gains sont-ils garantis ?</div>
         <div class="faq-a">
           Non, évidemment. Le bot automatise une stratégie, mais le marché reste risqué.
           Tu dois toujours utiliser un capital que tu es prêt à voir fluctuer.
