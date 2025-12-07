@@ -38,7 +38,7 @@
       padding: 24px 16px 64px;
     }
 
-    /* --- LOGO + HEADER --- */
+    /* --- HEADER --- */
     header {
       display:flex;
       align-items:center;
@@ -54,10 +54,10 @@
     }
 
     .brand-logo-img {
-      width: 120px;          /* logo plus grand sur desktop */
-      height: auto;
-      border-radius: 18px;
-      box-shadow: 0 14px 35px rgba(0,0,0,0.75);
+      width: 120px;
+      height:auto;
+      border-radius:18px;
+      box-shadow:0 14px 35px rgba(0,0,0,0.75);
     }
 
     .brand-text-title {
@@ -86,17 +86,6 @@
     .header-tag span.dot {
       width:7px; height:7px; border-radius:999px;
       background:#22c55e; box-shadow:0 0 12px rgba(34,197,94,0.9);
-    }
-
-    /* Version mobile pour le logo */
-    @media (max-width:600px) {
-      .brand-logo-img {
-        width: 80px;
-      }
-
-      .brand-text-title {
-        font-size:18px;
-      }
     }
 
     /* HERO */
@@ -146,7 +135,7 @@
       padding:10px 20px; border-radius:999px;
       cursor:pointer; font-size:14px; font-weight:600;
       border:none; background:transparent;
-      text-decoration:none; transition:0.2s;
+      transition:0.2s;
       white-space:nowrap;
     }
 
@@ -154,19 +143,16 @@
       background:linear-gradient(120deg,#ec4899,#a855f7,#22d3ee);
       color:#f9fafb; box-shadow:0 14px 30px rgba(0,0,0,0.6);
     }
-    .btn-x:hover { opacity:0.9; }
 
     .btn-gmail {
       border:1px solid rgba(148,163,184,0.4);
       color:var(--muted); background:rgba(15,23,42,0.7);
     }
-    .btn-gmail:hover { border-color:#a5b4fc; color:#a5b4fc; }
 
     .btn-copy {
       border:1px dashed rgba(148,163,184,0.5);
       color:#e5e7eb; font-size:12px; padding:8px 16px;
     }
-    .btn-copy:hover { border-color:#e5e7eb; }
 
     .hero-note { margin-top:4px; font-size:11px; color:var(--muted); }
 
@@ -181,85 +167,32 @@
       padding:18px 16px;
     }
 
-    .hero-right-title { font-size:14px; font-weight:600; margin-bottom:4px; }
-    .hero-right-sub { font-size:11px; color:var(--muted); margin-bottom:16px; }
-
-    .hero-metrics {
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:10px; margin-bottom:16px;
-    }
-
-    .metric-card {
-      background:rgba(15,23,42,0.9);
-      border-radius:14px; padding:10px;
-      border:1px solid rgba(148,163,184,0.35);
-      font-size:11px;
-    }
-
-    .metric-label { color:var(--muted); margin-bottom:4px; }
-    .metric-value { font-size:14px; font-weight:700; }
-    .metric-tag { font-size:10px; color:#a5b4fc; }
-
-    .hero-qr-box {
-      margin-top:10px; padding:10px;
-      border-radius:14px;
-      background:rgba(15,23,42,0.85);
-      border:1px dashed rgba(148,163,184,0.6);
-      display:flex; align-items:center; gap:10px;
-      font-size:11px; color:var(--muted);
-    }
-
-    .hero-qr-code {
-      width:64px; height:64px;
-      border-radius:12px;
-      overflow:hidden;
-      cursor:pointer;
-      box-shadow:0 10px 25px rgba(0,0,0,0.6);
-    }
-
-    .hero-qr-code img {
-      width:100%; height:100%; object-fit:cover;
-    }
-
+    /* SECTION TITLES */
     section { margin-bottom:40px; }
-
     h2.section-title { font-size:18px; margin-bottom:10px; }
-
     .section-sub { font-size:13px; color:var(--muted); margin-bottom:16px; }
 
+    /* GRID */
     .grid-3 {
-      display:grid;
+      display:grid; gap:16px;
       grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:16px;
     }
     @media (max-width:900px){ .grid-3{ grid-template-columns:1fr; } }
 
+    /* CARDS */
     .card {
-      background:var(--card);
-      border-radius:var(--radius-lg);
-      padding:14px 14px 16px;
-      border:1px solid var(--border);
+      background:var(--card); border-radius:var(--radius-lg);
+      padding:14px; border:1px solid var(--border);
       box-shadow:var(--shadow-soft);
-      font-size:13px;
     }
 
     .card h3 { font-size:14px; margin-bottom:6px; }
     .card p { font-size:12px; color:var(--muted); }
 
-    .card-tag {
-      display:inline-block; font-size:10px;
-      text-transform:uppercase; letter-spacing:0.12em;
-      color:#a5b4fc; margin-bottom:4px;
-    }
-
-    .list { font-size:12px; color:var(--muted); padding-left:16px; }
-    .list li { margin-bottom:4px; }
-
-    /* Pricing */
+    /* PRICING */
     .pricing {
       display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr)); /* 2 colonnes : Starter + Pro */
+      grid-template-columns:repeat(2,minmax(0,1fr));
       gap:16px;
     }
     @media (max-width:900px){ .pricing{ grid-template-columns:1fr; } }
@@ -268,11 +201,8 @@
       background:radial-gradient(circle at top,rgba(168,85,247,0.25),#020617 55%);
       border-radius:var(--radius-lg);
       border:1px solid rgba(148,163,184,0.45);
-      padding:16px 16px 18px;
+      padding:16px;
       box-shadow:var(--shadow-soft);
-      font-size:13px;
-      position:relative;
-      overflow:hidden;
     }
 
     .price-card.pro {
@@ -280,59 +210,20 @@
       box-shadow:0 0 28px rgba(236,72,153,0.45);
     }
 
-    .price-name { font-weight:600; margin-bottom:4px; }
-
-    .price-badge {
-      font-size:10px; text-transform:uppercase;
-      color:var(--muted); letter-spacing:0.14em;
-      margin-bottom:6px;
-    }
-
-    .price {
-      font-size:20px; font-weight:700; margin-bottom:8px;
-    }
-
-    .price span.per { font-size:11px; font-weight:400; color:var(--muted); }
-
-    .price-desc { font-size:11px; color:var(--muted); margin-bottom:10px; }
-
-    .price-list {
-      font-size:11px; color:#e5e7eb;
-      padding-left:16px; margin-bottom:10px;
-    }
-
-    .price-list li { margin-bottom:4px; }
-
-    .price-cta { font-size:11px; color:#a5b4fc; margin-bottom:6px; }
-
     .price-order {
       display:inline-block;
-      margin-top:4px;
-      font-size:11px;
       padding:6px 12px;
       border-radius:999px;
       border:1px solid rgba(148,163,184,0.6);
-      cursor:pointer;
-      text-decoration:none;
-      color:#e5e7eb;
+      margin-top:10px;
       background:rgba(15,23,42,0.9);
+      font-size:11px;
     }
-
-    .price-order:hover {
-      border-color:#a5b4fc;
-      color:#a5b4fc;
-    }
-
-    /* FAQ */
-    .faq-item { margin-bottom:10px; font-size:12px; }
-    .faq-q { font-weight:600; margin-bottom:2px; }
-    .faq-a { color:var(--muted); }
 
     footer {
-      margin-top:20px;
-      font-size:11px;
-      color:var(--muted);
+      margin-top:40px;
       text-align:center;
+      font-size:11px; color:var(--muted);
       border-top:1px solid rgba(148,163,184,0.3);
       padding-top:12px;
     }
@@ -340,11 +231,11 @@
 </head>
 <body>
   <div class="page">
+
     <!-- HEADER -->
     <header>
       <div class="brand">
-        <!-- Nouveau : logo image -->
-        <img src="logo.png" alt="AutoPilot PulseChain Bot" class="brand-logo-img">
+        <img src="logo.png" class="brand-logo-img" alt="logo" />
         <div>
           <div class="brand-text-title">AutoPilot PulseChain Bot</div>
           <div class="brand-text-sub">HEX • ATROPA • PLS</div>
@@ -359,15 +250,12 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero-left">
-        <h1>
-          Ton trading <span class="gradient-text">PulseChain</span><br />
-          passe enfin en pilote automatique.
-        </h1>
+        <h1>Ton trading <span class="gradient-text">PulseChain</span><br/> passe enfin en pilote automatique.</h1>
+
         <p class="hero-sub">
           AutoPilot PulseChain Bot automatise tes stratégies sur HEX et ATROPA :
-          achat intelligent, take profit, stop loss, ré-entrée, le tout exécuté
-          depuis ton propre PC. Aucune clé privée envoyée en ligne, aucun
-          abonnement, aucun bullshit.
+          achat intelligent, TP, SL, ré-entrée, le tout exécuté depuis ton PC.
+          Aucun abonnement, aucune clé privée envoyée en ligne.
         </p>
 
         <div class="hero-badges">
@@ -377,52 +265,176 @@
           <span class="badge">Paiement en PLS</span>
         </div>
 
-        <!-- CTA : 3 BOUTONS -->
         <div class="hero-cta">
-          <!-- 1. DM X -->
-          <a class="btn-x"
-             href="https://x.com/jhonivangonthi1"
-             target="_blank" rel="noopener noreferrer">
-            ⚡ Commander via X (DM)
-          </a>
-
-          <!-- 2. Gmail web -->
+          <a class="btn-x" href="https://x.com/jhonivangonthi1" target="_blank">⚡ Commander via X (DM)</a>
           <a class="btn-gmail"
-             href="https://mail.google.com/mail/?view=cm&fs=1&to=whaletracker16@gmail.com&su=Commande%20AutoPilot%20PulseChain%20Bot&body=Salut,%20je%20veux%20commander%20le%20pack%20AutoPilot%20PulseChain%20Bot.%0A%0AMon%20TX%20hash%20:%0A"
-             target="_blank" rel="noopener noreferrer">
-            📩 Commander par Gmail
-          </a>
-
-          <!-- 3. Copier email -->
-          <button type="button" class="btn-copy" onclick="copyEmail()">
-            📋 Copier l’adresse email
-          </button>
+             href="https://mail.google.com/mail/?view=cm&fs=1&to=whaletracker16@gmail.com">📩 Commander par Gmail</a>
+          <button class="btn-copy" onclick="copyEmail()">📋 Copier l’adresse email</button>
         </div>
 
-        <div class="hero-note">
-          Paiement en PLS • Pack livré par mail ou DM après confirmation de la transaction.
-        </div>
+        <div class="hero-note">Paiement en PLS • Livraison par mail/DM</div>
       </div>
 
       <div class="hero-right">
         <div class="hero-right-title">Vue rapide du système</div>
-        <div class="hero-right-sub">Deux bots, une seule logique : faire travailler ton sac à ta place.</div>
+        <div class="hero-right-sub">Deux bots, une seule logique.</div>
 
         <div class="hero-metrics">
-          <div class="metric-card">
-            <div class="metric-label">Bot HEX / PHEX</div>
-            <div class="metric-value">TP +0,35%</div>
-            <div class="metric-tag">Stop Loss −0,30% • Accumulation</div>
+          <div>
+            <b>HEX / PHEX</b><br>TP +0,35%<br>SL −0,30%
           </div>
-          <div class="metric-card">
-            <div class="metric-label">Bot ATROPA / DAI</div>
-            <div class="metric-value">TP +0,35%*</div>
-            <div class="metric-tag">Mode Turbo dynamique • Scalping</div>
+          <div>
+            <b>ATROPA / DAI</b><br>TP +0,35%<br>Mode turbo
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="hero-qr-box">
-          <div class="hero-qr-code"
-               onclick="copyAddress()
+    <!-- POURQUOI -->
+    <section>
+      <h2 class="section-title">Pourquoi AutoPilot est différent ?</h2>
+      <p class="section-sub">Un pack transparent, documenté et sécurisé.</p>
 
-::contentReference[oaicite:0]{index=0}
+      <div class="grid-3">
+        <div class="card">
+          <h3>Ton wallet, ton contrôle</h3>
+          <p>Aucune clé privée envoyée en ligne. Tout s’exécute sur ton PC.</p>
+        </div>
+
+        <div class="card">
+          <h3>Automatisation complète</h3>
+          <p>TP, SL, ré-entrées automatiques. Installation en 5 minutes.</p>
+        </div>
+
+        <div class="card">
+          <h3>Optimisé PulseChain</h3>
+          <p>Stratégies conçues pour HEX, PHEX et ATROPA.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMENT ÇA MARCHE -->
+    <section>
+      <h2 class="section-title">Comment ça marche ?</h2>
+      <p class="section-sub">Pas besoin d’être développeur.</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>1. Installation</h3>
+          <p>Installer Python • Extraire le pack • Installer les dépendances</p>
+        </div>
+        <div class="card">
+          <h3>2. Configuration</h3>
+          <p>Adresse • Clé privée • Taille des trades • RPC</p>
+        </div>
+        <div class="card">
+          <h3>3. Lancement</h3>
+          <p>Double clic sur les fichiers .bat pour démarrer les bots</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section>
+      <h2 class="section-title">Choisissez votre pack</h2>
+
+      <div class="pricing">
+        <!-- STARTER -->
+        <div class="price-card">
+          <div class="price-badge">Essentiel</div>
+          <div class="price-name">Starter</div>
+          <div class="price">39$ <span class="per">/ unique</span></div>
+
+          <ul class="price-list">
+            <li>Bot ATROPA AutoPilot</li>
+            <li>Config de base incluse</li>
+            <li>Guide PDF rapide</li>
+            <li>Utilisation autonome</li>
+          </ul>
+
+          <a class="price-order" href="mailto:whaletracker16@gmail.com">Commander ce pack</a>
+        </div>
+
+        <!-- PRO -->
+        <div class="price-card pro">
+          <div class="price-badge">Recommandé</div>
+          <div class="price-name">Pro</div>
+          <div class="price">79$ <span class="per">/ unique</span></div>
+
+          <ul class="price-list">
+            <li>Bot HEX AutoPilot</li>
+            <li>Bot ATROPA AutoPilot</li>
+            <li>Configs prêtes à l’emploi</li>
+            <li>Documentation complète</li>
+            <li>Utilisation autonome</li>
+          </ul>
+
+          <a class="price-order" href="mailto:whaletracker16@gmail.com">Commander ce pack</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMENT COMMANDER -->
+    <section>
+      <h2 class="section-title">Comment commander ?</h2>
+
+      <ul class="list">
+        <li>1️⃣ Choisissez Starter ou Pro</li>
+        <li>2️⃣ Envoyez le montant en PLS à :
+          <code>0x7a23b75434942ddd7d9fe19aa0ed2fea08ed57a1</code>
+        </li>
+        <li>3️⃣ Envoyez votre TX hash via DM ou email</li>
+      </ul>
+    </section>
+
+    <!-- LIVRAISON -->
+    <section>
+      <h2 class="section-title">Réception du pack</h2>
+
+      <ul class="list">
+        <li>📦 ZIP complet</li>
+        <li>📘 Documentation PDF</li>
+        <li>⚙️ Configurations par défaut</li>
+      </ul>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+      <h2 class="section-title">FAQ</h2>
+
+      <div class="faq-item">
+        <b>Ma clé privée est-elle en sécurité ?</b>
+        <p class="faq-a">Elle reste sur ton PC, jamais envoyée en ligne.</p>
+      </div>
+
+      <div class="faq-item">
+        <b>C’est garanti de gagner ?</b>
+        <p class="faq-a">Non. Le bot automatise, mais le marché reste risqué.</p>
+      </div>
+
+      <div class="faq-item">
+        <b>Y a-t-il du support ?</b>
+        <p class="faq-a">Non. Les packs sont vendus comme outils autonomes.</p>
+      </div>
+    </section>
+
+    <footer>
+      AutoPilot PulseChain Bot – HEX & ATROPA Automation • Aucun rendement garanti
+    </footer>
+  </div>
+
+  <script>
+    const PLS_ADDRESS = '0x7a23b75434942ddd7d9fe19aa0ed2fea08ed57a1';
+
+    function copyEmail() {
+      navigator.clipboard.writeText('whaletracker16@gmail.com');
+      alert("Email copié !");
+    }
+
+    function copyAddress() {
+      navigator.clipboard.writeText(PLS_ADDRESS);
+      alert("Adresse PLS copiée !");
+    }
+  </script>
+</body>
+</html>
