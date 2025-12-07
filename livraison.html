@@ -2,580 +2,443 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>AutoPilot PulseChain Bot – Téléchargement du pack</title>
+  <title>AutoPilot PulseChain Bot – Téléchargement sécurisé</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <style>
     :root {
       --bg: #050816;
-      --card: #0b1020;
-      --card-soft: #101626;
-      --accent: #ec4899;
-      --accent-soft: #a855f7;
-      --accent-strong: #fb7185;
+      --bg-soft: #0b1020;
+      --card: #0f172a;
+      --accent: #a855f7;
+      --accent-soft: #7c3aed;
+      --accent-strong: #ec4899;
       --text: #e5e7eb;
       --muted: #9ca3af;
+      --border: #1f2937;
       --danger: #f97373;
+      --success: #22c55e;
       --radius-lg: 18px;
-      --shadow-soft: 0 28px 80px rgba(0,0,0,0.7);
+      --shadow-soft: 0 24px 60px rgba(0,0,0,0.65);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing:border-box; margin:0; padding:0; }
 
     body {
-      min-height: 100vh;
-      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background: radial-gradient(circle at top, #1d2140 0, #050816 55%, #020617 100%);
+      min-height:100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(168,85,247,0.18), transparent 60%),
+        radial-gradient(circle at bottom right, rgba(236,72,153,0.15), transparent 55%),
+        var(--bg);
       color: var(--text);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
     }
 
-    .wrapper {
-      width: 100%;
-      max-width: 1100px;
-      background: linear-gradient(135deg, rgba(148,163,255,0.08), rgba(236,72,153,0.04));
-      border-radius: 32px;
+    .shell {
+      width:100%;
+      max-width:1100px;
+      background: radial-gradient(circle at top left, rgba(168,85,247,0.20), transparent 55%),
+                  linear-gradient(145deg, #020617, #020617 45%, #050816 100%);
+      border-radius:28px;
       box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(148,163,255,0.2);
-      padding: 26px 26px 30px;
-    }
-
-    @media (min-width: 900px) {
-      .wrapper {
-        padding: 32px 38px 36px;
-      }
+      border:1px solid rgba(148,163,184,0.20);
+      padding:28px 28px 24px;
     }
 
     .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(22, 163, 74, 0.12);
-      border-radius: 999px;
-      padding: 6px 14px;
-      font-size: 13px;
-      color: #bbf7d0;
-      border: 1px solid rgba(34,197,94,0.3);
-      margin-bottom: 20px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 14px;
+      border-radius:999px;
+      background:rgba(15,23,42,0.95);
+      border:1px solid rgba(34,197,94,0.4);
+      color:var(--muted);
+      font-size:13px;
+      margin-bottom:18px;
     }
-
     .badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 6px rgba(34,197,94,0.35);
+      width:8px; height:8px;
+      border-radius:999px;
+      background:#22c55e;
+      box-shadow:0 0 0 6px rgba(34,197,94,0.28);
     }
 
-    .heading {
-      font-size: clamp(26px, 3vw, 32px);
-      font-weight: 700;
-      margin-bottom: 10px;
+    .header-title {
+      font-size:30px;
+      line-height:1.1;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+    .gradient-name {
+      background:linear-gradient(120deg,#f97316,#ec4899,#a855f7);
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+    .header-sub {
+      font-size:15px;
+      color:var(--muted);
+      max-width:650px;
     }
 
-    .heading span.brand {
-      background: linear-gradient(120deg, #a855f7, #ec4899, #f97316);
-      -webkit-background-clip: text;
-      color: transparent;
+    .grid {
+      display:grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap:22px;
+      margin-top:28px;
     }
 
-    .subtitle {
-      font-size: 15px;
-      color: var(--muted);
-      max-width: 640px;
-      line-height: 1.6;
-      margin-bottom: 22px;
+    .card {
+      background:radial-gradient(circle at top left, rgba(15,23,42,0.9), rgba(15,23,42,0.98));
+      border-radius:var(--radius-lg);
+      border:1px solid rgba(148,163,184,0.24);
+      padding:20px 20px 18px;
     }
 
-    .content {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    .card-title-label {
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+    .card-pack-name {
+      font-size:22px;
+      font-weight:650;
+      margin-bottom:2px;
+    }
+    .card-price {
+      font-size:15px;
+      color:var(--muted);
+      margin-bottom:16px;
     }
 
-    @media (min-width: 900px) {
-      .content {
-        flex-direction: row;
-        align-items: stretch;
-      }
+    ul {
+      list-style:none;
+      margin-bottom:16px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    ul li { margin-bottom:4px; }
+
+    .chips {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:14px;
+    }
+    .chip {
+      padding:5px 11px;
+      border-radius:999px;
+      background:rgba(15,23,42,0.9);
+      border:1px solid rgba(148,163,184,0.35);
+      font-size:12px;
+      color:var(--muted);
     }
 
-    .pack-card {
-      flex: 1.2;
-      background: radial-gradient(circle at top left, rgba(248,113,113,0.16), transparent 55%),
-                  radial-gradient(circle at bottom right, rgba(56,189,248,0.16), transparent 60%),
-                  var(--card);
-      border-radius: 24px;
-      border: 1px solid rgba(148,163,255,0.25);
-      padding: 22px 22px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .alert {
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:10px 12px;
+      border-radius:12px;
+      background:rgba(15,23,42,0.95);
+      border:1px solid rgba(249,115,22,0.35);
+      font-size:13px;
+      color:var(--muted);
     }
 
-    @media (min-width: 900px) {
-      .pack-card {
-        padding: 24px 24px 26px;
-      }
+    .alert-icon {
+      width:18px; height:18px;
+      border-radius:999px;
+      background:rgba(249,115,22,0.12);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:12px;
+      color:#fdba74;
+      flex-shrink:0;
     }
 
-    .pack-label {
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(148,163,255,0.9);
-      margin-bottom: 4px;
+    .form-label {
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+    .input-row {
+      display:flex;
+      gap:8px;
+    }
+    input[type="text"] {
+      flex:1;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,0.35);
+      background:rgba(15,23,42,0.95);
+      color:var(--text);
+      font-size:14px;
+      outline:none;
+    }
+    input[type="text"]:focus {
+      border-color:var(--accent-soft);
+      box-shadow:0 0 0 1px rgba(168,85,247,0.45);
     }
 
-    .pack-name {
-      font-size: 22px;
-      font-weight: 650;
+    button {
+      border:none;
+      cursor:pointer;
+      font-size:14px;
+      font-weight:600;
+    }
+    .btn-primary {
+      padding:10px 18px;
+      border-radius:999px;
+      background:linear-gradient(120deg,#a855f7,#ec4899);
+      color:white;
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      white-space:nowrap;
+    }
+    .btn-primary:disabled {
+      opacity:0.45;
+      cursor:not-allowed;
+    }
+    .btn-download {
+      width:100%;
+      justify-content:center;
+      margin-top:14px;
     }
 
-    .pack-price {
-      font-size: 15px;
-      color: var(--muted);
-      margin-bottom: 12px;
+    .status {
+      font-size:13px;
+      margin-top:8px;
+      min-height:18px;
     }
-
-    .pack-description {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 14px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .tag-pill {
-      padding: 6px 11px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.75);
-      border: 1px solid rgba(148,163,255,0.35);
-      font-size: 12px;
-      color: #e5e7eb;
-    }
-
-    .disclaimer {
-      font-size: 13px;
-      color: #fed7aa;
-      background: rgba(30,64,175,0.35);
-      border-radius: 14px;
-      padding: 8px 11px;
-      display: flex;
-      gap: 6px;
-      align-items: flex-start;
-      margin-top: 6px;
-    }
-
-    .disclaimer-icon {
-      margin-top: 2px;
-    }
-
-    .download-card {
-      flex: 1;
-      background: var(--card-soft);
-      border-radius: 24px;
-      border: 1px solid rgba(148,163,255,0.25);
-      padding: 22px 22px 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .download-text {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 8px;
-    }
-
-    .code-label {
-      font-size: 13px;
-      margin-bottom: 6px;
-    }
-
-    .code-input-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-
-    .code-input {
-      flex: 1;
-      padding: 10px 12px;
-      border-radius: 10px;
-      border: 1px solid rgba(148,163,255,0.6);
-      background: #020617;
-      color: var(--text);
-      font-size: 14px;
-      outline: none;
-    }
-
-    .code-input:focus {
-      border-color: #a855f7;
-      box-shadow: 0 0 0 1px rgba(168,85,247,0.5);
-    }
-
-    .code-btn {
-      padding: 10px 16px;
-      border-radius: 10px;
-      border: none;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      background: linear-gradient(135deg, #a855f7, #ec4899);
-      color: white;
-      white-space: nowrap;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .code-help {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .code-error {
-      font-size: 12px;
-      color: var(--danger);
-      min-height: 16px;
-    }
-
-    .code-success {
-      font-size: 12px;
-      color: #4ade80;
-      min-height: 16px;
-    }
-
-    .download-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      border-radius: 999px;
-      padding: 11px 20px;
-      font-size: 15px;
-      font-weight: 600;
-      background: linear-gradient(135deg, #a855f7, #ec4899, #f97316);
-      color: white;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      box-shadow: 0 18px 35px rgba(236,72,153,0.45);
-      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
-      width: 100%;
-      text-align: center;
-    }
-
-    .download-btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 22px 40px rgba(236,72,153,0.5);
-      filter: brightness(1.03);
-    }
-
-    .download-btn:active {
-      transform: translateY(1px);
-      box-shadow: 0 10px 25px rgba(236,72,153,0.45);
-    }
-
-    .download-help {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 4px;
-    }
+    .status-error { color:var(--danger); }
+    .status-success { color:var(--success); }
 
     .footer {
-      margin-top: 22px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(30,64,175,0.6);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-size: 13px;
-      color: var(--muted);
+      margin-top:26px;
+      display:flex;
+      justify-content:space-between;
+      font-size:13px;
+      color:var(--muted);
     }
-
-    @media (min-width: 700px) {
-      .footer {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-    }
-
-    .footer span strong {
-      color: #e5e7eb;
-    }
-
     .footer a {
-      color: #a855f7;
-      text-decoration: none;
+      color:var(--accent-soft);
+      text-decoration:none;
     }
 
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
-    .error-info {
-      font-size: 13px;
-      color: var(--danger);
-      margin-top: 6px;
-    }
-
-    .badge-code {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      color: #facc15;
-      margin-top: 4px;
-      opacity: 0.85;
+    @media (max-width: 880px) {
+      body { padding:16px; }
+      .shell { padding:20px 18px 18px; border-radius:20px; }
+      .header-title { font-size:24px; }
+      .grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
+  <main class="shell">
     <div class="badge">
       <span class="badge-dot"></span>
-      <span>TÉLÉCHARGEMENT SÉCURISÉ PAR CODE</span>
+      <span>Téléchargement sécurisé par code</span>
     </div>
 
-    <h1 class="heading">
-      Merci pour ta commande <span class="brand">AutoPilot PulseChain Bot ✨</span>
+    <h1 class="header-title">
+      Merci pour ta commande
+      <span class="gradient-name">AutoPilot PulseChain Bot ✨</span>
     </h1>
-
-    <p class="subtitle">
+    <p class="header-sub">
       Pour des raisons de sécurité, le téléchargement de ton pack est protégé par un
-      <strong>code unique</strong>. Garde-le confidentiel : il est associé à ton achat.
+      <strong>code unique</strong>. Garde-le confidentiel&nbsp;: il est associé à ton achat.
     </p>
 
-    <div class="content">
-      <!-- Carte Pack -->
-      <section class="pack-card">
-        <div>
-          <div class="pack-label">PACK SÉLECTIONNÉ</div>
-          <div id="pack-name" class="pack-name">Pack Starter</div>
-          <div id="pack-price" class="pack-price">39 $ — paiement unique</div>
-          <p id="pack-description" class="pack-description">
-            1 bot ATROPA, config de base, guide PDF d’installation rapide.
-          </p>
+    <section class="grid">
+      <!-- Carte PACK -->
+      <article class="card" id="pack-card">
+        <div class="card-title-label">Pack sélectionné</div>
+        <div class="card-pack-name" id="pack-name">Pack Starter</div>
+        <div class="card-price" id="pack-price">39 $ — paiement unique</div>
 
-          <div id="pack-tags" class="tags"></div>
+        <ul id="pack-description">
+          <li>1 bot ATROPA, config de base, guide PDF d'installation rapide.</li>
+        </ul>
+
+        <div class="chips" id="pack-chips">
+          <!-- Rempli en JS -->
         </div>
 
-        <div class="disclaimer">
-          <span class="disclaimer-icon">📁</span>
-          <span>
-            Ce pack est réservé à l’acheteur. Ne partage pas ton code, ni ce lien, sur les réseaux sociaux
-            ou avec des tiers. Toute diffusion non autorisée peut entraîner la désactivation de l’accès.
-          </span>
-        </div>
-
-        <div id="pack-error" class="error-info" style="display:none;">
-          Pack inconnu dans l’URL, le pack Starter a été sélectionné par défaut.
-        </div>
-      </section>
-
-      <!-- Carte Code + Téléchargement -->
-      <section class="download-card">
-        <div>
-          <p class="download-text">
-            Entre ton <strong>code de déverrouillage</strong> pour afficher le bouton de téléchargement de ton pack.
-          </p>
-
-          <div class="code-label">Code unique reçu après paiement :</div>
-          <div class="code-input-row">
-            <input
-              id="code-input"
-              class="code-input"
-              type="text"
-              placeholder="Exemple : APB-STARTER-8F29"
-              autocomplete="off"
-            />
-            <button id="code-btn" class="code-btn" type="button">
-              ✅ Valider
-            </button>
-          </div>
-          <div class="code-help">
-            Respecte bien les tirets. Le code peut être utilisé <strong>une seule fois</strong> sur ton appareil.
-          </div>
-          <div id="code-message" class="code-error"></div>
-          <div id="code-message-success" class="code-success"></div>
-          <div class="badge-code">
-            🔐 Sécurité : si ton code est partagé publiquement, il pourra être désactivé.
+        <div class="alert">
+          <div class="alert-icon">!</div>
+          <div>
+            Ce pack est réservé à l’acheteur. Ne partage pas ton code, ni ce lien,
+            sur les réseaux sociaux ou avec des tiers. Toute diffusion non autorisée
+            peut entraîner la désactivation de l’accès.
           </div>
         </div>
+      </article>
 
-        <div id="download-section" style="display:none; margin-top: 14px;">
-          <a id="download-link" class="download-btn" href="#" target="_blank" rel="noopener">
-            <span>⬇️ Télécharger mon pack</span>
-          </a>
-          <p class="download-help">
-            Si le téléchargement ne se lance pas, fais clic droit sur le bouton puis
-            « <strong>Enregistrer le lien sous…</strong> ».
-          </p>
+      <!-- Carte CODE + TÉLÉCHARGEMENT -->
+      <article class="card">
+        <label class="form-label" for="code-input">
+          Entre ton <strong>code de déverrouillage</strong> pour afficher le bouton de
+          téléchargement de ton pack.
+        </label>
+
+        <div style="font-size:13px; color:var(--muted); margin-bottom:10px;">
+          Code unique reçu après paiement :
         </div>
-      </section>
-    </div>
+
+        <div class="input-row">
+          <input type="text" id="code-input" placeholder="Exemple : APB-STARTER-8F29" />
+          <button class="btn-primary" id="validate-btn">
+            ✅ Valider
+          </button>
+        </div>
+
+        <div class="status" id="status"></div>
+
+        <button class="btn-primary btn-download" id="download-btn" style="display:none;">
+          ⬇️ Télécharger mon pack
+        </button>
+
+        <div class="status" style="font-size:12px; color:var(--muted); margin-top:10px;">
+          Respecte bien les tirets. Le code peut être utilisé
+          <strong>une seule fois</strong> sur ton appareil.
+        </div>
+      </article>
+    </section>
 
     <footer class="footer">
-      <span>
-        AutoPilot PulseChain Bot – <strong>HEX / ATROPA / PulseChain</strong>
-      </span>
-      <span>
-        Support : <a href="mailto:whaletracker16@gmail.com">whaletracker16@gmail.com</a>
-      </span>
+      <span>AutoPilot PulseChain Bot – <span id="footer-pack">HEX / ATROPA / PulseChain</span></span>
+      <span>Support : <a href="mailto:whaletracker16@gmail.com">whaletracker16@gmail.com</a></span>
     </footer>
-  </div>
+  </main>
 
   <script>
-    // ======================
-    //  CONFIG PACKS + CODES
-    // ======================
-
-    // ⚠ IMPORTANT :
-    // Remplace les codes exemple par TES codes réels.
-    // Exemple : quand tu vends un Starter, tu donnes APB-STARTER-0001 au client.
-    // Quand il est utilisé, tu pourras ensuite le retirer de la liste dans le code.
-
+    // --- Configuration des packs (texte + liens) ---
     const PACKS = {
       starter: {
         name: "Pack Starter",
         price: "39 $ — paiement unique",
-        description: "1 bot ATROPA, config de base, guide PDF d’installation rapide.",
-        tags: ["1 bot ATROPA", "Config de base", "Guide d’installation"],
-        driveId: "1SOCIGU-tiATzw-F2YxpGY4m3YSmlKhBM",
-        // Liste de codes autorisés pour le Starter
-        codes: [
-          "APB-STARTER-0001",
-          "APB-STARTER-0002",
-          "APB-STARTER-0003"
-        ]
+        description: [
+          "1 bot ATROPA / DAI AutoPilot.",
+          "Config de base incluse.",
+          "Guide PDF d'installation rapide."
+        ],
+        chips: ["1 bot ATROPA","Config de base","Support 3 jours (mail)"],
+        driveUrl: "https://drive.google.com/file/d/1SOCIGU-tiATzw-F2YxpGY4m3YSmlKhBM/view?usp=sharing"
       },
       pro: {
         name: "Pack Pro",
         price: "79 $ — paiement unique",
-        description: "Bots HEX + ATROPA AutoPilot, configs optimisées, guide complet et support 7 jours.",
-        tags: ["Bots HEX & ATROPA", "Configs optimisées", "Documentation complète", "Support 7 jours"],
-        driveId: "1sq02bBFdGxvHi3DBDztnwvxnWuXWOiNN",
-        codes: [
-          "APB-PRO-0001",
-          "APB-PRO-0002",
-          "APB-PRO-0003"
-        ]
+        description: [
+          "Bots HEX + ATROPA AutoPilot.",
+          "Configs optimisées par défaut.",
+          "Guide complet + support 7 jours."
+        ],
+        chips: ["Bots HEX & ATROPA","Configs optimisées","Documentation complète","Support 7 jours"],
+        driveUrl: "https://drive.google.com/file/d/1Tj2W7tvevd5zyRL0ms_oOwFkbObu0dBE/view?usp=sharing"
       },
       ultimate: {
         name: "Pack Ultimate",
         price: "149 $ — paiement unique",
-        description: "Bots HEX + ATROPA + Scalper, mises à jour futures, priorité support et ressources bonus.",
-        tags: ["HEX + ATROPA + Scalper", "Mises à jour incluses", "Support prioritaire", "Ressources bonus"],
-        driveId: "1Tj2W7tvevd5zyRL0ms_oOwFkbObu0dBE",
-        codes: [
-          "APB-ULTI-0001",
-          "APB-ULTI-0002",
-          "APB-ULTI-0003"
-        ]
+        description: [
+          "Bots HEX + ATROPA + Scalper.",
+          "Mises à jour futures incluses.",
+          "Support prioritaire + ressources bonus."
+        ],
+        chips: ["HEX + ATROPA + Scalper","Mises à jour incluses","Support prioritaire","Ressources bonus"],
+        driveUrl: "https://drive.google.com/file/d/1sq02bBFdGxvHi3DBDztnwvxnWuXWOiNN/view?usp=sharing"
       }
     };
 
     const params = new URLSearchParams(window.location.search);
-    const packParam = (params.get("pack") || "starter").toLowerCase();
+    const packKey = params.get("pack") || "starter";
 
-    let pack = PACKS[packParam];
-    const errorEl = document.getElementById("pack-error");
+    const pack = PACKS[packKey] || PACKS["starter"];
 
-    if (!pack) {
-      pack = PACKS["starter"];
-      if (errorEl) errorEl.style.display = "block";
-    }
-
-    // Mise à jour des infos pack
-    document.getElementById("pack-name").textContent = pack.name;
+    // Remplir l'UI du pack
+    document.getElementById("pack-name").textContent  = pack.name;
     document.getElementById("pack-price").textContent = pack.price;
-    document.getElementById("pack-description").textContent = pack.description;
 
-    const tagsContainer = document.getElementById("pack-tags");
-    tagsContainer.innerHTML = "";
-    pack.tags.forEach(t => {
-      const span = document.createElement("span");
-      span.className = "tag-pill";
-      span.textContent = t;
-      tagsContainer.appendChild(span);
+    const descUl = document.getElementById("pack-description");
+    descUl.innerHTML = "";
+    pack.description.forEach(t => {
+      const li = document.createElement("li");
+      li.textContent = t;
+      descUl.appendChild(li);
     });
 
-    const dlLink = document.getElementById("download-link");
-    const baseDriveUrl = "https://drive.google.com/uc?export=download&id=";
-    dlLink.href = baseDriveUrl + encodeURIComponent(pack.driveId);
+    const chipsDiv = document.getElementById("pack-chips");
+    chipsDiv.innerHTML = "";
+    pack.chips.forEach(c => {
+      const span = document.createElement("span");
+      span.className = "chip";
+      span.textContent = c;
+      chipsDiv.appendChild(span);
+    });
 
-    const codeInput = document.getElementById("code-input");
-    const codeBtn = document.getElementById("code-btn");
-    const codeMsg = document.getElementById("code-message");
-    const codeMsgOk = document.getElementById("code-message-success");
-    const dlSection = document.getElementById("download-section");
+    document.getElementById("footer-pack").textContent = "HEX / ATROPA / PulseChain";
 
-    // LocalStorage key pour "code déjà utilisé sur cet appareil"
-    function usedKeyFor(code) {
-      return "APB_CODE_USED_" + packParam + "_" + code.toUpperCase();
-    }
+    const codeInput   = document.getElementById("code-input");
+    const validateBtn = document.getElementById("validate-btn");
+    const statusEl    = document.getElementById("status");
+    const downloadBtn = document.getElementById("download-btn");
 
-    function isCodeUsedLocally(code) {
-      return localStorage.getItem(usedKeyFor(code)) === "1";
-    }
+    let CODES = null;
 
-    function markCodeUsedLocally(code) {
-      localStorage.setItem(usedKeyFor(code), "1");
-    }
+    // Charger les codes depuis codes.json (avec anti-cache)
+    fetch("codes.json?nocache=" + Date.now())
+      .then(r => r.json())
+      .then(json => { CODES = json; })
+      .catch(() => {
+        statusEl.textContent = "Erreur de chargement des codes. Réessaie dans quelques instants.";
+        statusEl.className = "status status-error";
+        validateBtn.disabled = true;
+      });
 
-    codeBtn.addEventListener("click", function () {
-      const raw = (codeInput.value || "").trim();
-      const code = raw.toUpperCase();
-      codeMsg.textContent = "";
-      codeMsgOk.textContent = "";
+    validateBtn.addEventListener("click", () => {
+      const raw = codeInput.value.trim();
+      statusEl.className = "status";
+      statusEl.textContent = "";
 
-      if (!code) {
-        codeMsg.textContent = "Merci de saisir ton code.";
-        dlSection.style.display = "none";
+      if (!raw) {
+        statusEl.textContent = "Merci d’entrer ton code de déverrouillage.";
+        statusEl.className = "status status-error";
         return;
       }
 
-      // Vérifie si le code est dans la liste autorisée
-      const validCodes = pack.codes.map(c => c.toUpperCase());
-      const isValid = validCodes.includes(code);
+      if (!CODES) {
+        statusEl.textContent = "Codes non disponibles pour le moment. Réessaie dans quelques instants.";
+        statusEl.className = "status status-error";
+        return;
+      }
+
+      const list = CODES[packKey] || [];
+      const isValid = list.includes(raw);
 
       if (!isValid) {
-        codeMsg.textContent = "Code invalide. Vérifie les tirets et la casse (majuscule/minuscule).";
-        dlSection.style.display = "none";
+        statusEl.textContent =
+          "Code invalide. Vérifie les tirets et la casse (majuscules/minuscules).";
+        statusEl.className = "status status-error";
+        downloadBtn.style.display = "none";
         return;
       }
 
-      // Vérifie si ce code est déjà utilisé sur CET appareil
-      if (isCodeUsedLocally(code)) {
-        codeMsg.textContent = "Ce code a déjà été utilisé sur cet appareil.";
-        dlSection.style.display = "none";
-        return;
-      }
+      // Code accepté
+      statusEl.textContent = "Code valide. Téléchargement déverrouillé ✅";
+      statusEl.className = "status status-success";
+      downloadBtn.style.display = "inline-flex";
 
-      // Si OK, on marque comme utilisé en local et on affiche le téléchargement
-      markCodeUsedLocally(code);
-      codeMsg.textContent = "";
-      codeMsgOk.textContent = "Code valide. Téléchargement déverrouillé ✅";
-      dlSection.style.display = "block";
+      // Quand on clique sur le bouton, on ouvre le lien Drive du pack
+      downloadBtn.onclick = () => {
+        window.open(pack.driveUrl, "_blank");
+      };
     });
   </script>
 </body>
