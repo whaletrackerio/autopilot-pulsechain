@@ -395,7 +395,6 @@
       width: 100%;
       height: auto;
       display: block;
-      /* pas de bordure ni shadow, image brute */
       border-radius: 0;
       box-shadow: none;
     }
@@ -577,24 +576,6 @@
       </div>
     </section>
 
-    <!-- AVERTISSEMENT IMPORTANT (SANS LA PHRASE BARRÉE) -->
-    <section class="warning-box">
-      <h2>⚠️ Avertissement important</h2>
-      <p>
-        Les bots <strong>AutoPilot PulseChain</strong> sont des outils d’automatisation de trading.
-      </p>
-      <ul>
-        <li>Aucun bot ne garantit un profit, même si le marché monte.</li>
-        <li>Les performances passées ne préjugent pas des performances futures.</li>
-        <li>Tu es seul responsable de tes réglages, de ton capital et de tes décisions.</li>
-        <li>Ne trade jamais avec de l’argent que tu ne peux pas te permettre de perdre.</li>
-      </ul>
-      <p class="warning-accept">
-        En téléchargeant et en utilisant ces bots, tu confirmes avoir compris ces risques
-        et accepter d’utiliser ces outils <strong>sous ta seule responsabilité</strong>.
-      </p>
-    </section>
-
     <!-- SECTION: PACKS -->
     <section>
       <h2 class="section-title">Choisis ton pack</h2>
@@ -651,6 +632,28 @@
           </a>
         </div>
       </div>
+    </section>
+
+    <!-- AVERTISSEMENT IMPORTANT (DÉPLACÉ SOUS LES PACKS) -->
+    <section class="warning-box">
+      <h2>⚠️ Avertissement important</h2>
+      <p>
+        Les bots <strong>AutoPilot PulseChain</strong> sont des outils d’automatisation de trading.
+      </p>
+      <ul>
+        <li>Aucun bot ne garantit un profit, même si le marché monte.</li>
+        <li>Les performances passées ne préjugent pas des performances futures.</li>
+        <li>Tu es seul responsable de tes réglages, de ton capital et de tes décisions.</li>
+        <li>Ne trade jamais avec de l’argent que tu ne peux pas te permettre de perdre.</li>
+        <li>Le code source Python est fourni pour transparence ; seules les modifications dans
+          <code>config_b.py</code> (taille de trade, TP, SL, etc.) sont recommandées.</li>
+        <li>Toute modification du code principal des bots est faite sous ta seule responsabilité
+          et peut annuler le support.</li>
+      </ul>
+      <p class="warning-accept">
+        En téléchargeant et en utilisant ces bots, tu confirmes avoir compris ces risques
+        et accepter d’utiliser ces outils <strong>sous ta seule responsabilité</strong>.
+      </p>
     </section>
 
     <!-- BLOC COMMENTAIRE + IMAGE AUTOBOT -->
