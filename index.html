@@ -395,8 +395,9 @@
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 24px;
-      box-shadow: var(--shadow-soft);
+      /* pas de bordure ni shadow, image brute */
+      border-radius: 0;
+      box-shadow: none;
     }
 
     @media (max-width: 900px) {
@@ -576,7 +577,7 @@
       </div>
     </section>
 
-    <!-- AVERTISSEMENT IMPORTANT -->
+    <!-- AVERTISSEMENT IMPORTANT (SANS LA PHRASE BARRÉE) -->
     <section class="warning-box">
       <h2>⚠️ Avertissement important</h2>
       <p>
@@ -698,7 +699,7 @@
 
       <!-- IMAGE AUTOBOT SEULE -->
       <div class="command-image">
-        <img src="autobot_full.png" alt="AutoBot assistant" />
+        <img src="autobot.png" alt="" />
       </div>
     </div>
 
