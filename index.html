@@ -373,38 +373,38 @@
       font-weight: 500;
     }
 
-    /* ===== BLOC AUTOBOT DANS "COMMENT COMMANDER" ===== */
-    .order-section {
-      display:flex;
-      gap:24px;
-      align-items:flex-start;
+    /* === BLOC COMMENTAIRE + IMAGE AUTOBOT === */
+    .command-wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
+      margin-bottom: 40px;
     }
 
-    .order-section-text {
-      flex:1;
-      min-width:0;
+    .command-text {
+      flex: 1 1 0;
+      min-width: 0;
     }
 
-    .order-section-img {
-      flex:0 0 260px;
-      max-width:260px;
+    .command-image {
+      flex: 0 0 280px;
+      max-width: 280px;
     }
 
-    .order-section-img img {
-      width:100%;
-      height:auto;
-      display:block;
-      border-radius:24px;
-      box-shadow:var(--shadow-soft);
+    .command-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 24px;
+      box-shadow: var(--shadow-soft);
     }
 
-    @media (max-width:900px) {
-      .order-section {
-        flex-direction:column-reverse;
-        align-items:center;
+    @media (max-width: 900px) {
+      .command-wrapper {
+        flex-direction: column;
       }
-      .order-section-img {
-        max-width:220px;
+      .command-image {
+        margin: 0 auto;
       }
     }
   </style>
@@ -581,7 +581,6 @@
       <h2>⚠️ Avertissement important</h2>
       <p>
         Les bots <strong>AutoPilot PulseChain</strong> sont des outils d’automatisation de trading.
-        Ils comportent des <strong>risques importants de pertes financières</strong>.
       </p>
       <ul>
         <li>Aucun bot ne garantit un profit, même si le marché monte.</li>
@@ -653,11 +652,12 @@
       </div>
     </section>
 
-    <!-- SECTION: COMMENT COMMANDER (AVEC AUTOBOT À GAUCHE) -->
-    <section>
-      <h2 class="section-title">🎯 Comment commander ?</h2>
-      <div class="order-section">
-        <div class="order-section-text">
+    <!-- BLOC COMMENTAIRE + IMAGE AUTOBOT -->
+    <div class="command-wrapper">
+      <div class="command-text">
+        <!-- SECTION: COMMENT COMMANDER -->
+        <section>
+          <h2 class="section-title">🎯 Comment commander ?</h2>
           <p class="section-sub">
             Suis ces 3 étapes simples pour recevoir ton pack dans les minutes qui suivent.
           </p>
@@ -671,34 +671,36 @@
               <br>• Email : <b>whaletracker16@gmail.com</b>
             </li>
           </ul>
-        </div>
-        <div class="order-section-img">
-          <img src="autobot.png" alt="AutoBot – assistant d’automatisation" />
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- SECTION: APRES PAIEMENT -->
-    <section>
-      <h2 class="section-title">🔐 Vérification & réception du pack</h2>
-      <p class="section-sub">
-        Ta transaction est vérifiée manuellement pour garantir une livraison sécurisée.
-      </p>
-      <ul class="list">
-        <li>Status : <b>Success</b></li>
-        <li>Adresse de destination : <code>0x7a23b7...57a1</code></li>
-        <li>Montant reçu correspondant au pack sélectionné.</li>
-      </ul>
-      <p class="section-sub" style="margin-top:10px;">
-        Une fois validée, tu reçois immédiatement :
-      </p>
-      <ul class="list">
-        <li>📦 Ton pack ZIP complet incluant :</li>
-        <li>📘 Documentation PDF</li>
-        <li>⚙️ Configurations par défaut</li>
-        <li>💬 Support installation (selon le pack)</li>
-      </ul>
-    </section>
+        <!-- SECTION: APRES PAIEMENT -->
+        <section>
+          <h2 class="section-title">🔐 Vérification & réception du pack</h2>
+          <p class="section-sub">
+            Ta transaction est vérifiée manuellement pour garantir une livraison sécurisée.
+          </p>
+          <ul class="list">
+            <li>Status : <b>Success</b></li>
+            <li>Adresse de destination : <code>0x7a23b7...57a1</code></li>
+            <li>Montant reçu correspondant au pack sélectionné.</li>
+          </ul>
+          <p class="section-sub" style="margin-top:10px;">
+            Une fois validée, tu reçois immédiatement :
+          </p>
+          <ul class="list">
+            <li>📦 Ton pack ZIP complet incluant :</li>
+            <li>📘 Documentation PDF</li>
+            <li>⚙️ Configurations par défaut</li>
+            <li>💬 Support installation (selon le pack)</li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- IMAGE AUTOBOT SEULE -->
+      <div class="command-image">
+        <img src="autobot_full.png" alt="AutoBot assistant" />
+      </div>
+    </div>
 
     <!-- SECTION: FAQ -->
     <section>
