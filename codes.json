@@ -64,5 +64,96 @@
     "APB-ULTIMATE-0018",
     "APB-ULTIMATE-0019",
     "APB-ULTIMATE-0020"
-  ]
+  ],
+
+  "dca": {
+    "BOT_DCA_ATROPA": {
+      "name": "Bot DCA ATROPA",
+      "price_usd": 19,
+      "drive_link": "https://drive.google.com/file/d/1tArpFxBu8w30DoK_oFSkFSjyR1Kuwoj4/view?usp=sharing",
+      "codes": [
+        "DCA-ATROPA-0001","DCA-ATROPA-0002","DCA-ATROPA-0003","DCA-ATROPA-0004","DCA-ATROPA-0005",
+        "DCA-ATROPA-0006","DCA-ATROPA-0007","DCA-ATROPA-0008","DCA-ATROPA-0009","DCA-ATROPA-0010",
+        "DCA-ATROPA-0011","DCA-ATROPA-0012","DCA-ATROPA-0013","DCA-ATROPA-0014","DCA-ATROPA-0015",
+        "DCA-ATROPA-0016","DCA-ATROPA-0017","DCA-ATROPA-0018","DCA-ATROPA-0019","DCA-ATROPA-0020"
+      ]
+    },
+    "BOT_DCA_EHEX": {
+      "name": "Bot DCA eHEX",
+      "price_usd": 19,
+      "drive_link": "https://drive.google.com/file/d/1VIEZhXN1xXikDpEdUZjcSaxFJO6cydaO/view?usp=sharing",
+      "codes": [
+        "DCA-EHEX-0001","DCA-EHEX-0002","DCA-EHEX-0003","DCA-EHEX-0004","DCA-EHEX-0005",
+        "DCA-EHEX-0006","DCA-EHEX-0007","DCA-EHEX-0008","DCA-EHEX-0009","DCA-EHEX-0010",
+        "DCA-EHEX-0011","DCA-EHEX-0012","DCA-EHEX-0013","DCA-EHEX-0014","DCA-EHEX-0015",
+        "DCA-EHEX-0016","DCA-EHEX-0017","DCA-EHEX-0018","DCA-EHEX-0019","DCA-EHEX-0020"
+      ]
+    },
+    "BOT_DCA_INC": {
+      "name": "Bot DCA INC",
+      "price_usd": 19,
+      "drive_link": "https://drive.google.com/file/d/1K1DpZOMZXgARbK3wPn5elq-1BrW_MdGm/view?usp=sharing",
+      "codes": [
+        "DCA-INC-0001","DCA-INC-0002","DCA-INC-0003","DCA-INC-0004","DCA-INC-0005",
+        "DCA-INC-0006","DCA-INC-0007","DCA-INC-0008","DCA-INC-0009","DCA-INC-0010",
+        "DCA-INC-0011","DCA-INC-0012","DCA-INC-0013","DCA-INC-0014","DCA-INC-0015",
+        "DCA-INC-0016","DCA-INC-0017","DCA-INC-0018","DCA-INC-0019","DCA-INC-0020"
+      ]
+    },
+    "BOT_DCA_LOAN": {
+      "name": "Bot DCA LOAN",
+      "price_usd": 19,
+      "drive_link": "https://drive.google.com/file/d/1urLQvc7uX759XsXqnDqATjd3lUtKarMj/view?usp=sharing",
+      "codes": [
+        "DCA-LOAN-0001","DCA-LOAN-0002","DCA-LOAN-0003","DCA-LOAN-0004","DCA-LOAN-0005",
+        "DCA-LOAN-0006","DCA-LOAN-0007","DCA-LOAN-0008","DCA-LOAN-0009","DCA-LOAN-0010",
+        "DCA-LOAN-0011","DCA-LOAN-0012","DCA-LOAN-0013","DCA-LOAN-0014","DCA-LOAN-0015",
+        "DCA-LOAN-0016","DCA-LOAN-0017","DCA-LOAN-0018","DCA-LOAN-0019","DCA-LOAN-0020"
+      ]
+    },
+    "BOT_DCA_PHEX": {
+      "name": "Bot DCA PHEX",
+      "price_usd": 19,
+      "drive_link": "https://drive.google.com/file/d/11TfPEKq1v8X831RX5_juu5EzC3U30Rq2/view?usp=sharing",
+      "codes": [
+        "DCA-PHEX-0001","DCA-PHEX-0002","DCA-PHEX-0003","DCA-PHEX-0004","DCA-PHEX-0005",
+        "DCA-PHEX-0006","DCA-PHEX-0007","DCA-PHEX-0008","DCA-PHEX-0009","DCA-PHEX-0010",
+        "DCA-PHEX-0011","DCA-PHEX-0012","DCA-PHEX-0013","DCA-PHEX-0014","DCA-PHEX-0015",
+        "DCA-PHEX-0016","DCA-PHEX-0017","DCA-PHEX-0018","DCA-PHEX-0019","DCA-PHEX-0020"
+      ]
+    },
+    "BOT_DCA_PLS": {
+      "name": "Bot DCA PLS",
+      "price_usd": 19,
+      "drive_link": "https://drive.google.com/file/d/1yyUz-UjDt6chaIs1YnkU_gcmrdqpd19G/view?usp=sharing",
+      "codes": [
+        "DCA-PLS-0001","DCA-PLS-0002","DCA-PLS-0003","DCA-PLS-0004","DCA-PLS-0005",
+        "DCA-PLS-0006","DCA-PLS-0007","DCA-PLS-0008","DCA-PLS-0009","DCA-PLS-0010",
+        "DCA-PLS-0011","DCA-PLS-0012","DCA-PLS-0013","DCA-PLS-0014","DCA-PLS-0015",
+        "DCA-PLS-0016","DCA-PLS-0017","DCA-PLS-0018","DCA-PLS-0019","DCA-PLS-0020"
+      ]
+    },
+    "BOT_DCA_PLSB": {
+      "name": "Bot DCA PLSB",
+      "price_usd": 19,
+      "drive_link": "https://drive.google.com/file/d/1FKjqXadZRdhwXRV0ZvgLMhB6_abxQLUl/view?usp=sharing",
+      "codes": [
+        "DCA-PLSB-0001","DCA-PLSB-0002","DCA-PLSB-0003","DCA-PLSB-0004","DCA-PLSB-0005",
+        "DCA-PLSB-0006","DCA-PLSB-0007","DCA-PLSB-0008","DCA-PLSB-0009","DCA-PLSB-0010",
+        "DCA-PLSB-0011","DCA-PLSB-0012","DCA-PLSB-0013","DCA-PLSB-0014","DCA-PLSB-0015",
+        "DCA-PLSB-0016","DCA-PLSB-0017","DCA-PLSB-0018","DCA-PLSB-0019","DCA-PLSB-0020"
+      ]
+    },
+    "BOT_DCA_PULSEX": {
+      "name": "Bot DCA PULSEX",
+      "price_usd": 19,
+      "drive_link": "https://drive.google.com/file/d/1R4bPR-K57u6isJxEuUZBjErM6f__tm9L/view?usp=sharing",
+      "codes": [
+        "DCA-PULSEX-0001","DCA-PULSEX-0002","DCA-PULSEX-0003","DCA-PULSEX-0004","DCA-PULSEX-0005",
+        "DCA-PULSEX-0006","DCA-PULSEX-0007","DCA-PULSEX-0008","DCA-PULSEX-0009","DCA-PULSEX-0010",
+        "DCA-PULSEX-0011","DCA-PULSEX-0012","DCA-PULSEX-0013","DCA-PULSEX-0014","DCA-PULSEX-0015",
+        "DCA-PULSEX-0016","DCA-PULSEX-0017","DCA-PULSEX-0018","DCA-PULSEX-0019","DCA-PULSEX-0020"
+      ]
+    }
+  }
 }
