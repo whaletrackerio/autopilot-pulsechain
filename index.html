@@ -81,17 +81,18 @@
       display:inline-flex; align-items:center; gap:6px;
       background:rgba(15,23,42,0.75);
       backdrop-filter:blur(12px);
+      white-space:nowrap;
     }
 
-    .header-tag .dot {
+    .header-tag span.dot {
       width:7px; height:7px; border-radius:999px;
       background:#22c55e; box-shadow:0 0 12px rgba(34,197,94,0.9);
-      display:inline-block;
     }
 
     @media (max-width:600px) {
       .brand-logo-img { width: 80px; }
       .brand-text-title { font-size:18px; }
+      .header-tag { display:none; }
     }
 
     /* HERO */
@@ -163,13 +164,17 @@
     }
     .btn-copy:hover { border-color:#e5e7eb; }
 
-    /* ✅ NOUVEAU : BOUTON DCA */
+    /* ✅ BOUTON DCA (IMPORTANT) */
     .btn-dca {
-      background:linear-gradient(120deg,#a855f7,#ec4899);
-      color:#fff;
-      box-shadow:0 14px 30px rgba(0,0,0,0.6);
+      border:1px solid rgba(168,85,247,0.55);
+      background:rgba(15,23,42,0.70);
+      color:#e9d5ff;
     }
-    .btn-dca:hover { opacity:0.92; }
+    .btn-dca:hover {
+      border-color:rgba(236,72,153,0.65);
+      color:#fff;
+      box-shadow:0 0 0 1px rgba(168,85,247,0.25);
+    }
 
     .hero-note { margin-top:4px; font-size:11px; color:var(--muted); }
 
@@ -219,6 +224,7 @@
       overflow:hidden;
       cursor:pointer;
       box-shadow:0 10px 25px rgba(0,0,0,0.6);
+      flex-shrink:0;
     }
 
     .hero-qr-code img {
@@ -325,19 +331,6 @@
       border-color:#a5b4fc;
       color:#a5b4fc;
     }
-
-    /* ✅ NOUVEAU : mini lien DCA sous les packs */
-    .dca-inline {
-      margin-top:12px;
-      font-size:12px;
-      color:var(--muted);
-    }
-    .dca-inline a {
-      color:#a855f7;
-      text-decoration:underline;
-      text-underline-offset:3px;
-    }
-    .dca-inline a:hover { color:#ec4899; }
 
     /* FAQ */
     .faq-item { margin-bottom:10px; font-size:12px; }
@@ -477,9 +470,10 @@
             ⚡ Commander via X (DM)
           </a>
 
-          <!-- ✅ NOUVEAU : PAGE DCA -->
+          <!-- ✅ 1bis. DCA (ouvre la page DCA PulseChain - photo 2) -->
           <a class="btn-dca"
-             href="dca.html">
+             href="https://whaletrackerio.github.io/dca-pulsechain/#commander"
+             target="_blank" rel="noopener noreferrer">
             🟣 Bots DCA – 19$
           </a>
 
@@ -610,7 +604,6 @@
       <p class="section-sub">
         Pas d’abonnement, pas de renewal automatique. Tu paies une fois, le pack est à toi.
       </p>
-
       <div class="pricing">
         <!-- STARTER -->
         <div class="price-card">
@@ -660,11 +653,6 @@
             Commander ce pack
           </a>
         </div>
-      </div>
-
-      <!-- ✅ NOUVEAU : lien DCA sous les packs -->
-      <div class="dca-inline">
-        Tu veux une version DCA à l’unité (19$) ? <a href="dca.html">Voir les Bots DCA</a>
       </div>
     </section>
 
@@ -731,6 +719,15 @@
             <li>⚙️ Configurations par défaut</li>
             <li>💬 Support installation (selon le pack)</li>
           </ul>
+
+          <!-- ✅ Petit rappel DCA ici aussi (optionnel mais utile) -->
+          <p class="section-sub" style="margin-top:12px;">
+            Tu veux plutôt <b>accumuler en DCA</b> (1 bot par token) ?
+            <a href="https://whaletrackerio.github.io/dca-pulsechain/#commander" target="_blank" rel="noopener noreferrer"
+               style="color:#c4b5fd; text-decoration:underline;">
+              Voir les 8 bots DCA
+            </a>
+          </p>
         </section>
       </div>
 
