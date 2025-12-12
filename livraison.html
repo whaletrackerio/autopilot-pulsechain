@@ -81,7 +81,7 @@
     .header-sub {
       font-size:15px;
       color:var(--muted);
-      max-width:650px;
+      max-width:700px;
     }
 
     .grid {
@@ -253,31 +253,28 @@
       <span class="gradient-name">AutoPilot PulseChain Bot ✨</span>
     </h1>
     <p class="header-sub">
-      Pour des raisons de sécurité, le téléchargement de ton pack est protégé par un
-      <strong>code unique</strong>. Garde-le confidentiel&nbsp;: il est associé à ton achat.
+      Entre ton <strong>code unique</strong>. Le système détecte automatiquement ton produit (Starter/Pro/Ultimate ou DCA)
+      et affiche le bouton de téléchargement correspondant.
     </p>
 
     <section class="grid">
-      <!-- Carte PACK -->
+      <!-- Carte PRODUIT -->
       <article class="card" id="pack-card">
-        <div class="card-title-label">Pack sélectionné</div>
-        <div class="card-pack-name" id="pack-name">Pack Starter</div>
-        <div class="card-price" id="pack-price">39 $ — paiement unique</div>
+        <div class="card-title-label">Produit déverrouillé</div>
+        <div class="card-pack-name" id="pack-name">En attente…</div>
+        <div class="card-price" id="pack-price">—</div>
 
         <ul id="pack-description">
-          <li>1 bot ATROPA, config de base, guide PDF d'installation rapide.</li>
+          <li>Entre ton code pour afficher le produit et le lien de téléchargement.</li>
         </ul>
 
-        <div class="chips" id="pack-chips">
-          <!-- Rempli en JS -->
-        </div>
+        <div class="chips" id="pack-chips"></div>
 
         <div class="alert">
           <div class="alert-icon">!</div>
           <div>
-            Ce pack est réservé à l’acheteur. Ne partage pas ton code, ni ce lien,
-            sur les réseaux sociaux ou avec des tiers. Toute diffusion non autorisée
-            peut entraîner la désactivation de l’accès.
+            Ne partage pas ton code ni ce lien. Sur cet appareil, le code est enregistré comme “utilisé”.
+            (Protection navigateur : ce n’est pas une sécurité blockchain, mais ça évite les abus simples.)
           </div>
         </div>
       </article>
@@ -285,8 +282,7 @@
       <!-- Carte CODE + TÉLÉCHARGEMENT -->
       <article class="card">
         <label class="form-label" for="code-input">
-          Entre ton <strong>code de déverrouillage</strong> pour afficher le bouton de
-          téléchargement de ton pack.
+          Entre ton <strong>code de déverrouillage</strong> (ex : APB-STARTER-0001 ou DCA-ATROPA-0001)
         </label>
 
         <div style="font-size:13px; color:var(--muted); margin-bottom:10px;">
@@ -294,21 +290,18 @@
         </div>
 
         <div class="input-row">
-          <input type="text" id="code-input" placeholder="Exemple : APB-STARTER-8F29" />
-          <button class="btn-primary" id="validate-btn">
-            ✅ Valider
-          </button>
+          <input type="text" id="code-input" placeholder="Exemple : DCA-ATROPA-0001" />
+          <button class="btn-primary" id="validate-btn">✅ Valider</button>
         </div>
 
         <div class="status" id="status"></div>
 
         <button class="btn-primary btn-download" id="download-btn" style="display:none;">
-          ⬇️ Télécharger mon pack
+          ⬇️ Télécharger
         </button>
 
         <div class="status" style="font-size:12px; color:var(--muted); margin-top:10px;">
-          Respecte bien les tirets. Le code peut être utilisé
-          <strong>une seule fois</strong> sur ton appareil.
+          Respecte bien les tirets. Le code peut être utilisé <strong>une seule fois</strong> sur cet appareil.
         </div>
       </article>
     </section>
@@ -320,85 +313,167 @@
   </main>
 
   <script>
-    // --- Configuration des packs (texte + liens) ---
+    // --- Texte des packs (starter/pro/ultimate) ---
     const PACKS = {
       starter: {
         name: "Pack Starter",
         price: "39 $ — paiement unique",
         description: [
-          "1 bot ATROPA / DAI AutoPilot.",
-          "Config de base incluse.",
-          "Guide PDF d'installation rapide."
+          "Pack AutoPilot PulseChain (Starter).",
+          "Documentation incluse.",
+          "Support de base."
         ],
-        chips: ["1 bot ATROPA","Config de base","Support 3 jours (mail)"],
+        chips: ["Starter","Documentation","Support"],
         driveUrl: "https://drive.google.com/file/d/1SOCIGU-tiATzw-F2YxpGY4m3YSmlKhBM/view?usp=sharing"
       },
       pro: {
         name: "Pack Pro",
         price: "79 $ — paiement unique",
         description: [
-          "Bots HEX + ATROPA AutoPilot.",
+          "Pack AutoPilot PulseChain (Pro).",
           "Configs optimisées par défaut.",
-          "Guide complet + support 7 jours."
+          "Support 7 jours."
         ],
-        chips: ["Bots HEX & ATROPA","Configs optimisées","Documentation complète","Support 7 jours"],
+        chips: ["Pro","Configs optimisées","Support 7 jours"],
         driveUrl: "https://drive.google.com/file/d/1Tj2W7tvevd5zyRL0ms_oOwFkbObu0dBE/view?usp=sharing"
       },
       ultimate: {
         name: "Pack Ultimate",
         price: "149 $ — paiement unique",
         description: [
-          "Bots HEX + ATROPA + Scalper.",
+          "Pack AutoPilot PulseChain (Ultimate).",
           "Mises à jour futures incluses.",
-          "Support prioritaire + ressources bonus."
+          "Support prioritaire."
         ],
-        chips: ["HEX + ATROPA + Scalper","Mises à jour incluses","Support prioritaire","Ressources bonus"],
+        chips: ["Ultimate","Mises à jour","Support prioritaire"],
         driveUrl: "https://drive.google.com/file/d/1sq02bBFdGxvHi3DBDztnwvxnWuXWOiNN/view?usp=sharing"
       }
     };
-
-    const params = new URLSearchParams(window.location.search);
-    const packKey = params.get("pack") || "starter";
-
-    const pack = PACKS[packKey] || PACKS["starter"];
-
-    // Remplir l'UI du pack
-    document.getElementById("pack-name").textContent  = pack.name;
-    document.getElementById("pack-price").textContent = pack.price;
-
-    const descUl = document.getElementById("pack-description");
-    descUl.innerHTML = "";
-    pack.description.forEach(t => {
-      const li = document.createElement("li");
-      li.textContent = t;
-      descUl.appendChild(li);
-    });
-
-    const chipsDiv = document.getElementById("pack-chips");
-    chipsDiv.innerHTML = "";
-    pack.chips.forEach(c => {
-      const span = document.createElement("span");
-      span.className = "chip";
-      span.textContent = c;
-      chipsDiv.appendChild(span);
-    });
-
-    document.getElementById("footer-pack").textContent = "HEX / ATROPA / PulseChain";
 
     const codeInput   = document.getElementById("code-input");
     const validateBtn = document.getElementById("validate-btn");
     const statusEl    = document.getElementById("status");
     const downloadBtn = document.getElementById("download-btn");
 
+    const packNameEl  = document.getElementById("pack-name");
+    const packPriceEl = document.getElementById("pack-price");
+    const descUl      = document.getElementById("pack-description");
+    const chipsDiv    = document.getElementById("pack-chips");
+
     let CODES = null;
 
-    // Charger les codes depuis codes.json (avec anti-cache)
+    function setStatus(msg, ok=false) {
+      statusEl.textContent = msg;
+      statusEl.className = "status " + (ok ? "status-success" : "status-error");
+    }
+
+    function resetUI() {
+      downloadBtn.style.display = "none";
+      downloadBtn.onclick = null;
+    }
+
+    function renderProductUI(product) {
+      // product: {name, price, description[], chips[], driveUrl}
+      packNameEl.textContent = product.name || "Produit";
+      packPriceEl.textContent = product.price || "";
+
+      descUl.innerHTML = "";
+      (product.description || []).forEach(t => {
+        const li = document.createElement("li");
+        li.textContent = t;
+        descUl.appendChild(li);
+      });
+
+      chipsDiv.innerHTML = "";
+      (product.chips || []).forEach(c => {
+        const span = document.createElement("span");
+        span.className = "chip";
+        span.textContent = c;
+        chipsDiv.appendChild(span);
+      });
+
+      downloadBtn.style.display = "inline-flex";
+      downloadBtn.textContent = "⬇️ Télécharger " + (product.name ? ("(" + product.name + ")") : "");
+      downloadBtn.onclick = () => window.open(product.driveUrl, "_blank");
+    }
+
+    function alreadyUsedOnThisDevice(code) {
+      try {
+        const used = JSON.parse(localStorage.getItem("used_codes") || "[]");
+        return used.includes(code);
+      } catch {
+        return false;
+      }
+    }
+
+    function markUsedOnThisDevice(code) {
+      try {
+        const used = JSON.parse(localStorage.getItem("used_codes") || "[]");
+        if (!used.includes(code)) {
+          used.push(code);
+          localStorage.setItem("used_codes", JSON.stringify(used));
+        }
+      } catch {}
+    }
+
+    // Détection automatique produit depuis codes.json
+    function findProductByCode(rawCode) {
+      const code = rawCode.trim();
+
+      // 1) Packs classiques
+      if (Array.isArray(CODES?.starter) && CODES.starter.includes(code)) {
+        return { key: "starter", product: PACKS.starter };
+      }
+      if (Array.isArray(CODES?.pro) && CODES.pro.includes(code)) {
+        return { key: "pro", product: PACKS.pro };
+      }
+      if (Array.isArray(CODES?.ultimate) && CODES.ultimate.includes(code)) {
+        return { key: "ultimate", product: PACKS.ultimate };
+      }
+
+      // 2) DCA (nouvelle structure)
+      const dca = CODES?.dca;
+      if (dca && typeof dca === "object") {
+        for (const botKey of Object.keys(dca)) {
+          const bot = dca[botKey];
+          const codesList = bot?.codes;
+
+          if (Array.isArray(codesList) && codesList.includes(code)) {
+            // Support des deux formats possibles :
+            // - drive_link (comme je t’ai généré)
+            // - driveUrl (si jamais tu changes)
+            const driveUrl = bot.drive_link || bot.driveUrl || bot.drive_url;
+
+            const price = (bot.price_usd != null)
+              ? `${bot.price_usd} $ — paiement unique`
+              : "Paiement unique";
+
+            const product = {
+              name: bot.name || botKey,
+              price,
+              description: [
+                "Bot DCA PulseChain.",
+                "Version Windows + macOS (bat + .command).",
+                "Instructions incluses."
+              ],
+              chips: ["DCA", "Windows", "macOS", "Guide"],
+              driveUrl
+            };
+
+            return { key: botKey, product };
+          }
+        }
+      }
+
+      return null;
+    }
+
+    // Charger codes.json (avec anti-cache)
     fetch("codes.json?nocache=" + Date.now())
       .then(r => r.json())
       .then(json => { CODES = json; })
       .catch(() => {
-        statusEl.textContent = "Erreur de chargement des codes. Réessaie dans quelques instants.";
-        statusEl.className = "status status-error";
+        setStatus("Erreur de chargement des codes. Réessaie dans quelques instants.", false);
         validateBtn.disabled = true;
       });
 
@@ -406,39 +481,34 @@
       const raw = codeInput.value.trim();
       statusEl.className = "status";
       statusEl.textContent = "";
+      resetUI();
 
       if (!raw) {
-        statusEl.textContent = "Merci d’entrer ton code de déverrouillage.";
-        statusEl.className = "status status-error";
+        setStatus("Merci d’entrer ton code de déverrouillage.", false);
         return;
       }
 
       if (!CODES) {
-        statusEl.textContent = "Codes non disponibles pour le moment. Réessaie dans quelques instants.";
-        statusEl.className = "status status-error";
+        setStatus("Codes non disponibles pour le moment. Réessaie dans quelques instants.", false);
         return;
       }
 
-      const list = CODES[packKey] || [];
-      const isValid = list.includes(raw);
-
-      if (!isValid) {
-        statusEl.textContent =
-          "Code invalide. Vérifie les tirets et la casse (majuscules/minuscules).";
-        statusEl.className = "status status-error";
-        downloadBtn.style.display = "none";
+      if (alreadyUsedOnThisDevice(raw)) {
+        setStatus("Ce code a déjà été utilisé sur cet appareil. Si tu as besoin d’aide, contacte le support.", false);
         return;
       }
 
-      // Code accepté
-      statusEl.textContent = "Code valide. Téléchargement déverrouillé ✅";
-      statusEl.className = "status status-success";
-      downloadBtn.style.display = "inline-flex";
+      const found = findProductByCode(raw);
 
-      // Quand on clique sur le bouton, on ouvre le lien Drive du pack
-      downloadBtn.onclick = () => {
-        window.open(pack.driveUrl, "_blank");
-      };
+      if (!found || !found.product || !found.product.driveUrl) {
+        setStatus("Code invalide (ou lien non trouvé). Vérifie bien les tirets et la casse.", false);
+        return;
+      }
+
+      // OK
+      setStatus("Code valide. Téléchargement déverrouillé ✅", true);
+      renderProductUI(found.product);
+      markUsedOnThisDevice(raw);
     });
   </script>
 </body>
