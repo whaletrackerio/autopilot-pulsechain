@@ -433,30 +433,63 @@
     }
 
     // =========================
-    // 5) Détection produit depuis codes.json
+    // 5) Détection produit depuis codes.json (FIX: APB jamais DCA)
     // =========================
     function findProductByCode(codeUpper) {
-      // 1) Packs
-      if (Array.isArray(CODES?.starter) && CODES.starter.includes(codeUpper)) {
-        return PACKS.starter;
-      }
-      if (Array.isArray(CODES?.pro) && CODES.pro.includes(codeUpper)) {
-        return PACKS.pro;
-      }
-      if (Array.isArray(CODES?.ultimate) && CODES.ultimate.includes(codeUpper)) {
-        return PACKS.ultimate;
+      const isAPB = codeUpper.startsWith("APB-");
+      const isDCA = codeUpper.startsWith("DCA-");
+
+      // APB -> packs uniquement
+      if (isAPB) {
+        if (Array.isArray(CODES?.starter) && CODES.starter.includes(codeUpper)) return PACKS.starter;
+        if (Array.isArray(CODES?.pro) && CODES.pro.includes(codeUpper)) return PACKS.pro;
+        if (Array.isArray(CODES?.ultimate) && CODES.ultimate.includes(codeUpper)) return PACKS.ultimate;
+        return null; // APB ne bascule jamais en DCA
       }
 
-      // 2) DCA
+      // DCA -> dca uniquement
+      if (isDCA) {
+        const dca = CODES?.dca;
+        if (dca && typeof dca === "object") {
+          for (const botKey of Object.keys(dca)) {
+            const bot = dca[botKey];
+            if (Array.isArray(bot?.codes) && bot.codes.includes(codeUpper)) {
+              const driveUrl = bot.drive_link || bot.driveUrl || bot.drive_url;
+              if (!driveUrl) return null;
+
+              const price = (bot.price_usd != null)
+                ? `${bot.price_usd} $ — paiement unique`
+                : "Paiement unique";
+
+              return {
+                name: bot.name || botKey,
+                price,
+                description: [
+                  "Bot DCA PulseChain.",
+                  "Version Windows + macOS (bat + .command).",
+                  "Instructions incluses."
+                ],
+                chips: ["DCA", "Windows", "macOS", "Guide"],
+                driveUrl
+              };
+            }
+          }
+        }
+        return null;
+      }
+
+      // Préfixe inconnu : on tente packs puis dca (optionnel)
+      if (Array.isArray(CODES?.starter) && CODES.starter.includes(codeUpper)) return PACKS.starter;
+      if (Array.isArray(CODES?.pro) && CODES.pro.includes(codeUpper)) return PACKS.pro;
+      if (Array.isArray(CODES?.ultimate) && CODES.ultimate.includes(codeUpper)) return PACKS.ultimate;
+
       const dca = CODES?.dca;
       if (dca && typeof dca === "object") {
         for (const botKey of Object.keys(dca)) {
           const bot = dca[botKey];
-          const codesList = bot?.codes;
-          if (Array.isArray(codesList) && codesList.includes(codeUpper)) {
-
-            // IMPORTANT : on accepte plusieurs noms de champ pour le lien
+          if (Array.isArray(bot?.codes) && bot.codes.includes(codeUpper)) {
             const driveUrl = bot.drive_link || bot.driveUrl || bot.drive_url;
+            if (!driveUrl) return null;
 
             const price = (bot.price_usd != null)
               ? `${bot.price_usd} $ — paiement unique`
@@ -481,13 +514,27 @@
     }
 
     // =========================
-    // 6) Charger codes.json (anti-cache)
+    // 6) Charger codes.json (anti-cache + preuve)
     // =========================
     fetch("codes.json?nocache=" + Date.now())
-      .then(r => r.json())
-      .then(json => { CODES = json; })
-      .catch(() => {
-        setStatus("Erreur de chargement des codes. Réessaie dans quelques instants.", false);
+      .then(r => {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      })
+      .then(json => {
+        CODES = json;
+
+        const s0 = Array.isArray(CODES?.starter) ? CODES.starter[0] : "starter KO";
+        const p0 = Array.isArray(CODES?.pro) ? CODES.pro[0] : "pro KO";
+        const u0 = Array.isArray(CODES?.ultimate) ? CODES.ultimate[0] : "ultimate KO";
+        const d0 = (CODES?.dca && typeof CODES.dca === "object") ? Object.keys(CODES.dca)[0] : "dca KO";
+
+        console.log("✅ codes.json chargé", { s0, p0, u0, d0, CODES });
+        setStatus(`codes.json OK ✅ (ex: ${s0} | ${p0} | ${u0} | dca: ${d0})`, true);
+      })
+      .catch((err) => {
+        console.error("❌ Erreur chargement codes.json:", err);
+        setStatus("Erreur de chargement des codes. Vérifie que codes.json est dans le même dossier que livraison.html.", false);
         validateBtn.disabled = true;
       });
 
@@ -510,10 +557,8 @@
         return;
       }
 
-      // NORMALISATION (évite bugs de casse)
       const codeUpper = raw.toUpperCase();
 
-      // check déjà utilisé (version normalisée)
       if (alreadyUsedOnThisDevice(codeUpper)) {
         setStatus("Ce code a déjà été utilisé sur cet appareil. Si tu as besoin d’aide, contacte le support.", false);
         return;
@@ -526,10 +571,9 @@
         return;
       }
 
-      // OK
       setStatus("Code valide. Téléchargement déverrouillé ✅", true);
       renderProductUI(product);
-      markUsedOnThisDevice(codeUpper); // on marque la version MAJ
+      markUsedOnThisDevice(codeUpper);
     });
 
     // Entrée = appuyer sur ENTER
