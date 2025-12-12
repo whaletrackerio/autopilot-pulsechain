@@ -227,6 +227,8 @@
       justify-content:space-between;
       font-size:13px;
       color:var(--muted);
+      gap:14px;
+      flex-wrap:wrap;
     }
     .footer a {
       color:var(--accent-soft);
@@ -290,7 +292,7 @@
         </div>
 
         <div class="input-row">
-          <input type="text" id="code-input" placeholder="Exemple : DCA-ATROPA-0001" />
+          <input type="text" id="code-input" placeholder="Exemple : DCA-ATROPA-0001" autocomplete="off" />
           <button class="btn-primary" id="validate-btn">✅ Valider</button>
         </div>
 
@@ -313,7 +315,9 @@
   </main>
 
   <script>
-    // --- Texte des packs (starter/pro/ultimate) ---
+    // =========================
+    // 1) PACKS (Starter/Pro/Ultimate)
+    // =========================
     const PACKS = {
       starter: {
         name: "Pack Starter",
@@ -350,6 +354,9 @@
       }
     };
 
+    // =========================
+    // 2) DOM
+    // =========================
     const codeInput   = document.getElementById("code-input");
     const validateBtn = document.getElementById("validate-btn");
     const statusEl    = document.getElementById("status");
@@ -360,8 +367,12 @@
     const descUl      = document.getElementById("pack-description");
     const chipsDiv    = document.getElementById("pack-chips");
 
+    // codes.json chargé
     let CODES = null;
 
+    // =========================
+    // 3) Helpers UI
+    // =========================
     function setStatus(msg, ok=false) {
       statusEl.textContent = msg;
       statusEl.className = "status " + (ok ? "status-success" : "status-error");
@@ -370,6 +381,10 @@
     function resetUI() {
       downloadBtn.style.display = "none";
       downloadBtn.onclick = null;
+      packNameEl.textContent = "En attente…";
+      packPriceEl.textContent = "—";
+      descUl.innerHTML = "<li>Entre ton code pour afficher le produit et le lien de téléchargement.</li>";
+      chipsDiv.innerHTML = "";
     }
 
     function renderProductUI(product) {
@@ -393,62 +408,61 @@
       });
 
       downloadBtn.style.display = "inline-flex";
-      downloadBtn.textContent = "⬇️ Télécharger " + (product.name ? ("(" + product.name + ")") : "");
+      downloadBtn.textContent = "⬇️ Télécharger (" + (product.name || "Produit") + ")";
       downloadBtn.onclick = () => window.open(product.driveUrl, "_blank");
     }
 
-    function alreadyUsedOnThisDevice(code) {
-      try {
-        const used = JSON.parse(localStorage.getItem("used_codes") || "[]");
-        return used.includes(code);
-      } catch {
-        return false;
-      }
+    // =========================
+    // 4) Protection "déjà utilisé sur cet appareil"
+    // =========================
+    function getUsedCodes() {
+      try { return JSON.parse(localStorage.getItem("used_codes") || "[]"); }
+      catch { return []; }
     }
-
-    function markUsedOnThisDevice(code) {
+    function alreadyUsedOnThisDevice(codeUpper) {
+      return getUsedCodes().includes(codeUpper);
+    }
+    function markUsedOnThisDevice(codeUpper) {
       try {
-        const used = JSON.parse(localStorage.getItem("used_codes") || "[]");
-        if (!used.includes(code)) {
-          used.push(code);
+        const used = getUsedCodes();
+        if (!used.includes(codeUpper)) {
+          used.push(codeUpper);
           localStorage.setItem("used_codes", JSON.stringify(used));
         }
       } catch {}
     }
 
-    // Détection automatique produit depuis codes.json
-    function findProductByCode(rawCode) {
-      const code = rawCode.trim();
+    // =========================
+    // 5) Détection produit depuis codes.json
+    // =========================
+    function findProductByCode(codeUpper) {
+      // 1) Packs
+      if (Array.isArray(CODES?.starter) && CODES.starter.includes(codeUpper)) {
+        return PACKS.starter;
+      }
+      if (Array.isArray(CODES?.pro) && CODES.pro.includes(codeUpper)) {
+        return PACKS.pro;
+      }
+      if (Array.isArray(CODES?.ultimate) && CODES.ultimate.includes(codeUpper)) {
+        return PACKS.ultimate;
+      }
 
-      // 1) Packs classiques
-      if (Array.isArray(CODES?.starter) && CODES.starter.includes(code)) {
-        return { key: "starter", product: PACKS.starter };
-      }
-      if (Array.isArray(CODES?.pro) && CODES.pro.includes(code)) {
-        return { key: "pro", product: PACKS.pro };
-      }
-      if (Array.isArray(CODES?.ultimate) && CODES.ultimate.includes(code)) {
-        return { key: "ultimate", product: PACKS.ultimate };
-      }
-
-      // 2) DCA (nouvelle structure)
+      // 2) DCA
       const dca = CODES?.dca;
       if (dca && typeof dca === "object") {
         for (const botKey of Object.keys(dca)) {
           const bot = dca[botKey];
           const codesList = bot?.codes;
+          if (Array.isArray(codesList) && codesList.includes(codeUpper)) {
 
-          if (Array.isArray(codesList) && codesList.includes(code)) {
-            // Support des deux formats possibles :
-            // - drive_link (comme je t’ai généré)
-            // - driveUrl (si jamais tu changes)
+            // IMPORTANT : on accepte plusieurs noms de champ pour le lien
             const driveUrl = bot.drive_link || bot.driveUrl || bot.drive_url;
 
             const price = (bot.price_usd != null)
               ? `${bot.price_usd} $ — paiement unique`
               : "Paiement unique";
 
-            const product = {
+            return {
               name: bot.name || botKey,
               price,
               description: [
@@ -459,8 +473,6 @@
               chips: ["DCA", "Windows", "macOS", "Guide"],
               driveUrl
             };
-
-            return { key: botKey, product };
           }
         }
       }
@@ -468,7 +480,9 @@
       return null;
     }
 
-    // Charger codes.json (avec anti-cache)
+    // =========================
+    // 6) Charger codes.json (anti-cache)
+    // =========================
     fetch("codes.json?nocache=" + Date.now())
       .then(r => r.json())
       .then(json => { CODES = json; })
@@ -477,11 +491,14 @@
         validateBtn.disabled = true;
       });
 
+    // =========================
+    // 7) Validation
+    // =========================
     validateBtn.addEventListener("click", () => {
       const raw = codeInput.value.trim();
+      resetUI();
       statusEl.className = "status";
       statusEl.textContent = "";
-      resetUI();
 
       if (!raw) {
         setStatus("Merci d’entrer ton code de déverrouillage.", false);
@@ -493,22 +510,31 @@
         return;
       }
 
-      if (alreadyUsedOnThisDevice(raw)) {
+      // NORMALISATION (évite bugs de casse)
+      const codeUpper = raw.toUpperCase();
+
+      // check déjà utilisé (version normalisée)
+      if (alreadyUsedOnThisDevice(codeUpper)) {
         setStatus("Ce code a déjà été utilisé sur cet appareil. Si tu as besoin d’aide, contacte le support.", false);
         return;
       }
 
-      const found = findProductByCode(raw);
+      const product = findProductByCode(codeUpper);
 
-      if (!found || !found.product || !found.product.driveUrl) {
+      if (!product || !product.driveUrl) {
         setStatus("Code invalide (ou lien non trouvé). Vérifie bien les tirets et la casse.", false);
         return;
       }
 
       // OK
       setStatus("Code valide. Téléchargement déverrouillé ✅", true);
-      renderProductUI(found.product);
-      markUsedOnThisDevice(raw);
+      renderProductUI(product);
+      markUsedOnThisDevice(codeUpper); // on marque la version MAJ
+    });
+
+    // Entrée = appuyer sur ENTER
+    codeInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") validateBtn.click();
     });
   </script>
 </body>
